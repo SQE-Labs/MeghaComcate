@@ -3,16 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TCsNewAgencySetup.AppPreRequisites">
+      <class name="TCsNewAgencySetup.TemplateManagement">
         <methods>
-          <include name="SetProp"/>
+          <include name="TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated"/>
           <include name="setExtent"/>
+          <include name="SetProp"/>
           <include name="endReport"/>
           <include name="tearDown"/>
-          <include name="AgencySetup_VerifyCreationOfCategories"/>
           <include name="RunEnvironmentSetup"/>
         </methods>
-      </class> <!-- TCsNewAgencySetup.AppPreRequisites -->
+      </class> <!-- TCsNewAgencySetup.TemplateManagement -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

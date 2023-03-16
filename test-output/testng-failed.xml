@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Comcate]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TCsNewAgencySetup.AppPreRequisites">
+      <class name="TCsNewAgencySetup.TemplateManagement">
         <methods>
-          <include name="SetProp"/>
+          <include name="TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated"/>
           <include name="setExtent"/>
+          <include name="SetProp"/>
           <include name="endReport"/>
           <include name="tearDown"/>
           <include name="RunEnvironmentSetup"/>
-          <include name="AgencySetup_VerifyCreationOf50PlusSubmissions"/>
-          <include name="AgencySetup_VerifyCaseCreationWithEntityViolation"/>
         </methods>
-      </class> <!-- TCsNewAgencySetup.AppPreRequisites -->
+      </class> <!-- TCsNewAgencySetup.TemplateManagement -->
     </classes>
-  </test> <!-- Test(failed) -->
-</suite> <!-- Failed suite [Comcate] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

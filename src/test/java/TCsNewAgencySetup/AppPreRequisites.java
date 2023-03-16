@@ -15,7 +15,7 @@ public class AppPreRequisites extends AppPreRequisitesUtils {
 		extentTest.setDescription(
 				" Verify that all the corresponding configurations appear, after user enters the Agency from Admin Login. ");
 		//String RandomAgencyName =  RandomAgencyName;
-		AppPreRequisitesUtils.AgencySetup_VerifyAppConfigurations("NAVA_XpuzjUAj");
+		AppPreRequisitesUtils.AgencySetup_VerifyAppConfigurations("AlphaSquad");
 		
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(GetCRMTrace, "CRM");
@@ -146,7 +146,7 @@ public class AppPreRequisites extends AppPreRequisitesUtils {
 	}
 
 	@Test(priority = 12)
-	public static void AgencySetup_AgencySetup_VerifyCreationOfHTMLNotice() throws InterruptedException {
+	public static void AgencySetup_VerifyCreationOfHTMLNotice() throws InterruptedException {
 		extentTest = extent.startTest(" AgencySetup_AgencySetup_VerifyCreationOfHTMLNotice ");
 		extentTest.setDescription(
 				" Verify that user is able to create an HTML Notice of 'Case Notice' type, with a Violation type linked, on 'Notices' page. ");
@@ -230,7 +230,160 @@ public class AppPreRequisites extends AppPreRequisitesUtils {
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertAll();
 	}
-
+	
+	@Test(priority = 20)
+	public static void AgencySetup_VerifyCreateFinePopup() throws InterruptedException {
+		extentTest = extent.startTest(" AgencySetup_VerifyCreateFinePopup ");
+	    extentTest.setDescription("Verrify that user is able open 'Create Fine' pop up on clicking 'Create File' button on 'Fine' page and close the pop up when click on 'Cancel' Button'");
+//	    Login.LoginAgencyStage();
+	    AppPreRequisitesUtils.AgencySetup_VerifyCreateFinePopup();	    
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(CreateFineText, "Create Fine");
+		softAssert.assertEquals(CloseCreateFinePOpup, 0);
+		softAssert.assertAll();
+	}
+	
+	
+	@Test(priority = 21)
+	public static void AgencySetup_VerifyFlatFineCreationDoNotAttachedNotices() throws InterruptedException {
+		extentTest = extent.startTest(" AgencySetup_VerifyFlatFineCreationDoNotAttachedNotices ");
+	    extentTest.setDescription("Verify that user is able to add new flat fine on 'Fine' Page When 'Do not Associate a notice' check box is checked");
+//	    Login.LoginAgencyStage();
+	    AppPreRequisitesUtils.AgencySetup_VerifyFlatFineCreationDoNotAttachedNotices();	    
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(ActualCrtFineLabelValidMsg, ExpectedCrtFineLabelValidMsg);
+		softAssert.assertEquals(ActualCrtFineDefaultAmntValidMsg, ExpectedCrtFineDefaultAmntValidMsg);
+		softAssert.assertEquals(BeforActiveFines + 1, AfterActiveFines);
+		softAssert.assertAll();
+	}
+	
+	
+	
+	@Test(priority = 22)
+	public static void AgencySetup_VerifyFlatFineCreationAttachedNotices() throws InterruptedException {
+		extentTest = extent.startTest(" AgencySetup_VerifyFlatFineCreationAttachedNotices ");
+	    extentTest.setDescription("Verify that user is able to add new flat fine on 'Fine' Page When 'Do not Associate a notice' check box is  unchecked");
+//	    Login.LoginAgencyStage();
+	    AppPreRequisitesUtils.AgencySetup_VerifyFlatFineCreationAttachedNotices();	    
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(ActualNoticeRequiresValidMsg, ExpectedNoticeRequiresValidMsg);
+		softAssert.assertEquals(BeforActiveFines + 1, AfterActiveFines);
+		softAssert.assertAll();
+	}
+	
+	
+	@Test(priority = 23)
+	public static void AgencySetup_VerifyFlatFineEdit() throws InterruptedException {
+		extentTest = extent.startTest(" AgencySetup_VerifyFlatFineEdit ");
+	    extentTest.setDescription("Verify that user is able to edit flat fine on 'Fine' Page ");
+	    //Login.LoginAgencyStage();
+	    AppPreRequisitesUtils.AgencySetup_VerifyFlatFineEdit();	    
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(labelNameAfter,EditedLabelName );
+		//softAssert.assertEquals(EditedDefAmt,DefltAmtAfter );
+		//softAssert.assertTrue(EditedDefAmt.contains(DefltAmtAfter));
+		softAssert.assertAll();
+	}
+	
+	@Test(priority = 24)
+	public static void AgencySetup_VerifyInactivateActiveFines() throws InterruptedException {
+		extentTest = extent.startTest(" AgencySetup_VerifyInactivateActiveFines ");
+	    extentTest.setDescription("Verify that user is able to Inactivate the Active fine on 'Fine Page' ");
+//	    Login.LoginAgencyStage();
+	    AppPreRequisitesUtils.AgencySetup_VerifyInactivateActiveFines();
+	    
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(InactivefineCountBefore + 1, InactivefineCountafter);
+		softAssert.assertEquals(inactiveFineLabel, true);
+		softAssert.assertAll();
+	}
+	
+	
+	@Test(priority = 25)
+	public static void AgencySetup_VerifyActivateInactiveFines() throws InterruptedException {
+		extentTest = extent.startTest(" AgencySetup_VerifyInactivateActiveFines ");
+	    extentTest.setDescription("Verify that user is able to Inactivate the Active fine on 'Fine Page' ");
+//	    Login.LoginAgencyStage();
+	    AppPreRequisitesUtils.AgencySetup_VerifyActivateInactiveFines();
+	    
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(activefineCountBefore + 1, activefineCountafter);
+		softAssert.assertEquals(ActiveFineLabel, true);
+		softAssert.assertAll();
+	}
+	
+	
+	@Test(priority = 26)
+	public static void AgencySetup_VerifyOpenCloseCreateLateFeePopup() throws InterruptedException {
+		extentTest = extent.startTest(" AgencySetup_VerifyOpenCloseCreateLateFeePopup ");
+	    extentTest.setDescription("Verify that user is able to open 'Create Late Fee' Pop up after clicking 'Create Late Fee' button and able to close the pop up after clicking 'Cancel' button on 'Create Late Fee' pop up");
+//	    Login.LoginAgencyStage();
+	    AppPreRequisitesUtils.AgencySetup_VerifyOpenCloseCreateLateFeePopup();
+	    
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(ActualcreateLateFeePOp, ExpectedCreateLateFeePopup);
+		softAssert.assertEquals(CloseCreateLateFeePOpup, 0);
+		softAssert.assertEquals(ActualCrtLateFeeLabelValidMsg, ExpectedCrtLateFeeLabelValidMsg);
+		softAssert.assertAll();
+	}
+	
+	@Test(priority = 27)
+	public static void AgencySetup_VerifyCreateFixedManualFlatFineLateFee() throws InterruptedException {
+		extentTest = extent.startTest(" AgencySetup_VerifyCreateFixedManualFlatFine ");
+	    extentTest.setDescription("Verify that user is able to create a Flat, Fixed Amount type Manual Late Fee on 'Late Fee' page");
+	   // Login.LoginAgencyStage();
+	    AppPreRequisitesUtils.AgencySetup_VerifyCreateFixedManualFlatFineLateFee();
+	    
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(BeforeActiveLateFeeCount + 1, AfterActiveLateFeeCount);
+		softAssert.assertEquals(NewAddedLateFeeLable, true);
+		softAssert.assertAll();
+	}
+	
+	
+	@Test(priority = 27)
+	public static void AgencySetup_VerifyCreateOutStdManualFlatFineLateFee() throws InterruptedException {
+		extentTest = extent.startTest(" AgencySetup_VerifyCreateOutStdManualFlatFine ");
+	    extentTest.setDescription("Verify that user is able to create a Flat, % of outstanding balance type Manual Late Fee on 'Late Fee' page");
+//	    Login.LoginAgencyStage();
+	    AppPreRequisitesUtils.AgencySetup_VerifyCreateOutStdManualFlatFineLateFee();
+	    
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(BeforeActiveLateFeeCount + 1, AfterActiveLateFeeCount);
+		softAssert.assertEquals(NewAddedLateFeeLable, true);
+		softAssert.assertAll();
+	}
+	
+	@Test(priority = 28)
+	public static void AgencySetup_VerifyInactivateActiveLateFee() throws InterruptedException {
+		extentTest = extent.startTest(" AgencySetup_VerifyInactivateActiveLateFee ");
+	    extentTest.setDescription("Verify that user is able to Inactivate the Active fine on 'Fine Page' ");
+//        Login.LoginAgencyStage();
+	    AppPreRequisitesUtils.AgencySetup_VerifyInactivateActiveLateFee();
+	    
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(InactiveLateFeeCountBefore + 1, InactiveLateFeeCountafter);
+		softAssert.assertEquals(inactiveLateFeeLabel, true);
+		softAssert.assertAll();
+	}
+	
+	@Test(priority = 29)
+	public static void AgencySetup_VerifyActivateInActiveLateFee() throws InterruptedException {
+		extentTest = extent.startTest(" AgencySetup_VerifyActivateInActiveLateFee ");
+	    extentTest.setDescription("Verify that user is able to Activate the Inactive Late Fee on 'Late Fee' Page");
+//        Login.LoginAgencyStage();
+	    AppPreRequisitesUtils.AgencySetup_VerifyActivateInActiveLateFee();
+	    
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertEquals(activeLateFeeCountBefore + 1, activeLateFeeCountafter);
+		softAssert.assertEquals(ActiveLateFeeLabel, true);
+		softAssert.assertAll();
+	}
+	
+	
+	
+	
+	
 //	@Test(priority = )
 //	public static void AgencySetup_VerifyAllLinksForCEDashboard() throws InterruptedException {
 //		extentTest = extent.startTest(" AgencySetup_VerifyAllLinksForCEDashboard ");

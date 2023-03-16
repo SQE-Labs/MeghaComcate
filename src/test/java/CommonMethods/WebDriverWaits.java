@@ -1,5 +1,6 @@
 package CommonMethods;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -163,6 +164,40 @@ public class WebDriverWaits extends BrowsersInvoked {
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("window.scrollBy(0,-400)");
 	}
+	
+	public static WebElement FindElementByXPath(String selector) {
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(selector)));
+		WebElement ele = driver.findElement(By.xpath(selector));
+		return ele;
+	}
+	
+	public static WebElement FindElementByCssSelector(String selector) {
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(selector)));
+		WebElement ele = driver.findElement(By.cssSelector(selector));
+		return ele;
+	}
+	
+	public static WebElement FindElementById(String selector) {
+		wait.until(ExpectedConditions.elementToBeClickable(By.id(selector)));
+		WebElement ele = driver.findElement(By.id(selector));
+		return ele;
+	}
+	
+	
+	public static WebElement FindElementByPartialLinkTxt(String selector) {
+		wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText(selector)));
+		WebElement ele = driver.findElement(By.partialLinkText(selector));
+		return ele;
+	}
+	
+	
+	public static WebElement FindElementByName(String selector) {
+		wait.until(ExpectedConditions.elementToBeClickable(By.name(selector)));
+		WebElement ele = driver.findElement(By.name(selector));
+		return ele;
+	}
+	
+	
 	
 	
 }

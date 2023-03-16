@@ -1,5 +1,6 @@
 package CommonMethods;
 
+import java.awt.AWTException;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,6 +11,8 @@ import BrowsersBase.DataInterface;
 import POMCRM.CSDPUtils;
 import POMCRM.CSPExternalUtils;
 import POMCRM.CSPInternalUtils;
+import POMNewAgencySetup.AppPreRequisitesUtils;
+import POMNewAgencySetup.TemplateMangementUtils;
 import TestCasesCRM.CSPInternal;
 import TestCasesCRM.Categories;
 
@@ -558,6 +561,72 @@ public class CRMCommonMethods {
 		Thread.sleep(4000);
 		WebDriverWaits.ClickOn(YesBtnConfirmationPopup);
 		Thread.sleep(7000);
+	}
+	
+	public static void NavigateTo_AgencySetup () throws InterruptedException {
+		
+		WebDriverWaits.ScrollIntoView(AppPreRequisitesUtils.AppMenuIcon);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickOn(AppPreRequisitesUtils.AppMenuIcon);
+		Thread.sleep(5000);
+		WebDriverWaits.ClickOn(AppPreRequisitesUtils.AgencySetupIcon);
+		Thread.sleep(12000);
+		WebDriverWaits.ScrollIntoView(AppPreRequisitesUtils.AuditTrial);
+		Thread.sleep(2000);
+	}
+	
+	public static void NavigateTo_Fines() throws InterruptedException {
+		WebDriverWaits.ScrollIntoView(AppPreRequisitesUtils.CEProdSideBar);
+		if(!BrowsersInvoked.driver.findElement(AppPreRequisitesUtils.FinesSideBar).isDisplayed()) {
+			WebDriverWaits.ClickOn(AppPreRequisitesUtils.CEProdSideBar);
+			Thread.sleep(5000);
+		}
+		WebDriverWaits.ClickOn(AppPreRequisitesUtils.FinesSideBar);
+		Thread.sleep(5000);
+		WebDriverWaits.scrolltoUp();
+		Thread.sleep(2000);
+		
+	}
+	
+	
+	public static void NavigateTo_LateFeesSubTab() throws InterruptedException {
+		WebDriverWaits.ScrollIntoView(AppPreRequisitesUtils.CEProdSideBar);
+		if(!BrowsersInvoked.driver.findElement(AppPreRequisitesUtils.FinesSideBar).isDisplayed()) {
+			WebDriverWaits.ClickOn(AppPreRequisitesUtils.CEProdSideBar);
+			Thread.sleep(5000);
+		}
+		WebDriverWaits.ScrollIntoView(AppPreRequisitesUtils.FinesSideBar);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickOn(AppPreRequisitesUtils.FinesSideBar);
+		Thread.sleep(5000);
+		WebDriverWaits.scrolltoUp();
+		Thread.sleep(2000);
+		WebDriverWaits.ScrollIntoView(AppPreRequisitesUtils.LateFeeSubtab);
+		WebDriverWaits.ClickByJsExecuter(AppPreRequisitesUtils.LateFeeSubtab);
+		Thread.sleep(2000);
+		
+	}
+	
+	
+	public static void NavigateTo_TemplateManagement() throws InterruptedException {
+		WebDriverWaits.ScrollIntoView(TemplateMangementUtils.TemplateManagementSideBarTab);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickOn(TemplateMangementUtils.TemplateManagementSideBarTab);
+		Thread.sleep(5000);
+		
+	}
+	
+	
+	public static void AddTemplateFiles(String selector,String filePath) throws InterruptedException, AWTException {
+		Thread.sleep(1000);
+		WebDriverWaits.ScrollIntoView(By.xpath(selector));
+		Thread.sleep(2000);
+		WebElement adddocument = BrowsersInvoked.driver.findElement(By.xpath(selector));
+		adddocument.click();
+		Thread.sleep(2000);
+		RobotClass.RobotClassUploadMedia(filePath);
+		Thread.sleep(3000);
+		
 	}
 
 }

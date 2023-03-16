@@ -1,91 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="27" total="31" passed="4" failed="0" skipped="0">
+<testng-results ignored="8" total="9" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-03-10T12:35:08 IST" name="Comcate" finished-at="2023-03-10T12:38:25 IST" duration-ms="197024">
+  <suite started-at="2023-03-16T12:55:18 IST" name="Default suite" finished-at="2023-03-16T12:57:51 IST" duration-ms="152913">
     <groups>
     </groups>
-    <test started-at="2023-03-10T12:35:08 IST" name="Test" finished-at="2023-03-10T12:38:25 IST" duration-ms="197024">
-      <class name="TCsNewAgencySetup.AppPreRequisites">
-        <test-method signature="AgencySetup_VerifyAppConfigurations()[pri:1, instance:TCsNewAgencySetup.AppPreRequisites@1750fbeb]" started-at="2023-03-10T12:35:19 IST" name="AgencySetup_VerifyAppConfigurations" finished-at="2023-03-10T12:35:44 IST" duration-ms="24496" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AgencySetup_VerifyAppConfigurations -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:TCsNewAgencySetup.AppPreRequisites@1750fbeb]" started-at="2023-03-10T12:35:44 IST" name="tearDown" finished-at="2023-03-10T12:35:44 IST" duration-ms="1" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=AgencySetup_VerifyAppConfigurations status=SUCCESS method=AppPreRequisites.AgencySetup_VerifyAppConfigurations()[pri:1, instance:TCsNewAgencySetup.AppPreRequisites@1750fbeb] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method signature="AgencySetup_VerifySuccessfulDirectionToCCP()[pri:16, instance:TCsNewAgencySetup.AppPreRequisites@1750fbeb]" started-at="2023-03-10T12:35:44 IST" name="AgencySetup_VerifySuccessfulDirectionToCCP" finished-at="2023-03-10T12:36:14 IST" duration-ms="30474" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AgencySetup_VerifySuccessfulDirectionToCCP -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:TCsNewAgencySetup.AppPreRequisites@1750fbeb]" started-at="2023-03-10T12:36:14 IST" name="tearDown" finished-at="2023-03-10T12:36:14 IST" duration-ms="1" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=AgencySetup_VerifySuccessfulDirectionToCCP status=SUCCESS method=AppPreRequisites.AgencySetup_VerifySuccessfulDirectionToCCP()[pri:16, instance:TCsNewAgencySetup.AppPreRequisites@1750fbeb] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method signature="AgencySetup_VerifyCaseCreationWithEntityViolation()[pri:19, instance:TCsNewAgencySetup.AppPreRequisites@1750fbeb]" started-at="2023-03-10T12:36:14 IST" name="AgencySetup_VerifyCaseCreationWithEntityViolation" finished-at="2023-03-10T12:38:25 IST" duration-ms="131044" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AgencySetup_VerifyCaseCreationWithEntityViolation -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:TCsNewAgencySetup.AppPreRequisites@1750fbeb]" started-at="2023-03-10T12:38:25 IST" name="tearDown" finished-at="2023-03-10T12:38:25 IST" duration-ms="1" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=AgencySetup_VerifyCaseCreationWithEntityViolation status=SUCCESS method=AppPreRequisites.AgencySetup_VerifyCaseCreationWithEntityViolation()[pri:19, instance:TCsNewAgencySetup.AppPreRequisites@1750fbeb] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- TCsNewAgencySetup.AppPreRequisites -->
-      <class name="TestCasesCRM.Login">
-        <test-method is-config="true" signature="RunEnvironmentSetup()[pri:0, instance:TestCasesCRM.Login@402c4085]" started-at="2023-03-10T12:35:03 IST" name="RunEnvironmentSetup" finished-at="2023-03-10T12:35:03 IST" duration-ms="5" status="PASS">
+    <test started-at="2023-03-16T12:55:18 IST" name="Default test" finished-at="2023-03-16T12:57:51 IST" duration-ms="152913">
+      <class name="TCsNewAgencySetup.TemplateManagement">
+        <test-method is-config="true" signature="RunEnvironmentSetup()[pri:0, instance:TCsNewAgencySetup.TemplateManagement@cc43f62]" started-at="2023-03-16T12:55:14 IST" name="RunEnvironmentSetup" finished-at="2023-03-16T12:55:14 IST" duration-ms="7" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- RunEnvironmentSetup -->
-        <test-method is-config="true" signature="SetProp()[pri:0, instance:TestCasesCRM.Login@402c4085]" started-at="2023-03-10T12:35:03 IST" name="SetProp" finished-at="2023-03-10T12:35:08 IST" duration-ms="4792" status="PASS">
+        <test-method is-config="true" signature="SetProp()[pri:0, instance:TCsNewAgencySetup.TemplateManagement@cc43f62]" started-at="2023-03-16T12:55:14 IST" name="SetProp" finished-at="2023-03-16T12:55:18 IST" duration-ms="4119" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SetProp -->
-        <test-method is-config="true" signature="setExtent()[pri:0, instance:TestCasesCRM.Login@402c4085]" started-at="2023-03-10T12:35:08 IST" name="setExtent" finished-at="2023-03-10T12:35:08 IST" depends-on-methods="BrowsersBase.BrowsersInvoked.RunEnvironmentSetup, BrowsersBase.BrowsersInvoked.SetProp" duration-ms="69" status="PASS">
+        <test-method is-config="true" signature="setExtent()[pri:0, instance:TCsNewAgencySetup.TemplateManagement@cc43f62]" started-at="2023-03-16T12:55:18 IST" name="setExtent" finished-at="2023-03-16T12:55:18 IST" depends-on-methods="BrowsersBase.BrowsersInvoked.RunEnvironmentSetup, BrowsersBase.BrowsersInvoked.SetProp" duration-ms="89" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setExtent -->
-        <test-method signature="LoginAdmin()[pri:0, instance:TestCasesCRM.Login@402c4085]" started-at="2023-03-10T12:35:08 IST" name="LoginAdmin" finished-at="2023-03-10T12:35:19 IST" duration-ms="10961" status="PASS">
+        <test-method signature="TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated()[pri:5, instance:TCsNewAgencySetup.TemplateManagement@cc43f62]" started-at="2023-03-16T12:55:19 IST" name="TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated" finished-at="2023-03-16T12:57:51 IST" duration-ms="152872" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- LoginAdmin -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:TestCasesCRM.Login@402c4085]" started-at="2023-03-10T12:35:19 IST" name="tearDown" finished-at="2023-03-10T12:35:19 IST" duration-ms="6" status="PASS">
+        </test-method> <!-- TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:TCsNewAgencySetup.TemplateManagement@cc43f62]" started-at="2023-03-16T12:57:51 IST" name="tearDown" finished-at="2023-03-16T12:57:51 IST" duration-ms="14" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=LoginAdmin status=SUCCESS method=Login.LoginAdmin()[pri:0, instance:TestCasesCRM.Login@402c4085] output={null}]]]>
+                <![CDATA[[TestResult name=TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated status=SUCCESS method=TemplateManagement.TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated()[pri:5, instance:TCsNewAgencySetup.TemplateManagement@cc43f62] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="endReport()[pri:0, instance:TestCasesCRM.Login@402c4085]" started-at="2023-03-10T12:38:25 IST" name="endReport" finished-at="2023-03-10T12:38:26 IST" duration-ms="201" status="PASS">
+        <test-method is-config="true" signature="endReport()[pri:0, instance:TCsNewAgencySetup.TemplateManagement@cc43f62]" started-at="2023-03-16T12:57:51 IST" name="endReport" finished-at="2023-03-16T12:57:52 IST" duration-ms="704" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
-      </class> <!-- TestCasesCRM.Login -->
-    </test> <!-- Test -->
-  </suite> <!-- Comcate -->
+      </class> <!-- TCsNewAgencySetup.TemplateManagement -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

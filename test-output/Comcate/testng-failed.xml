@@ -5,15 +5,25 @@
     <classes>
       <class name="TCsNewAgencySetup.AppPreRequisites">
         <methods>
+          <include name="setExtent"/>
+          <include name="SetProp"/>
+          <include name="endReport"/>
+          <include name="tearDown"/>
+          <include name="AgencySetup_VerifyAppConfigurations"/>
+          <include name="RunEnvironmentSetup"/>
+        </methods>
+      </class> <!-- TCsNewAgencySetup.AppPreRequisites -->
+      <class name="TCsNewAgencySetup.TemplateManagement">
+        <methods>
           <include name="SetProp"/>
           <include name="setExtent"/>
           <include name="endReport"/>
           <include name="tearDown"/>
           <include name="RunEnvironmentSetup"/>
-          <include name="AgencySetup_VerifyCreationOf50PlusSubmissions"/>
-          <include name="AgencySetup_VerifyCaseCreationWithEntityViolation"/>
+          <include name="TemplateMangement_CloseandOpenCreateTemplatePOpup"/>
+          <include name="TemplateMangement_PreRequisite"/>
         </methods>
-      </class> <!-- TCsNewAgencySetup.AppPreRequisites -->
+      </class> <!-- TCsNewAgencySetup.TemplateManagement -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Comcate] -->

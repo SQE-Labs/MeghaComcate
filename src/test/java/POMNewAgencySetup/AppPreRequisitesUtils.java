@@ -15,6 +15,7 @@ import POMCRM.CSPInternalUtils;
 import POMCRM.CreateCRMUserUtils;
 import POMCRM.DashboardCRMUtils;
 import POMCRM.SubmissionSettingsUtils;
+import net.bytebuddy.utility.RandomString;
 
 public class AppPreRequisitesUtils extends AgencyCreationUtils {
 
@@ -95,12 +96,53 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 	public static By CRMProdSideBar = By
 			.xpath("//div[@class='sidebar__options-container__options flex-column--left'][2]/label");
 	public static By CategoriesSideBar = By.xpath("//label[text()='Categories']");
+	public static By FinesSideBar = By.xpath("//label[text()='Fines']"); 
+	public static By LateFeeSubtab = By.xpath("//div[text()='Late Fees']");
 	public static By SubmissionSettingsSideBar = By.xpath("//label[text()='Submission Settings']");
 	public static By CodeEnforcementOption = By.xpath("//label[text()='Code Enforcement Case']");
 	public static By CreateACasePopupTitle = By.xpath("//h1[text()='Create A Case']");
 	public static By CancelButton = By.xpath("//button[text()='Cancel']");
     public static By AuditTrial   = By.xpath("//label[text()='Audit Trail']");
-//	public static By  = By.xpath("");
+    public static By CreateFineBtn = By.xpath("//button[text()='Create Fine']");
+    public static By CreateFinePopup = By.xpath("//div[@class='modal-header']");
+    public static By CancelCreateFine = By.xpath("//button[text()='Cancel']");
+    public static By DoNotAttachedNoticeChk = By.xpath("//label[text()='Do not associate a notice']");
+    public static By CreateFinePopUpbtn = By.xpath("//div[text()='Create Fine'][@class='modal-header']//parent::div//button[text()='Create Fine']");
+  
+    public static By CrtFineLabelValidMsg = By.xpath("(//span[@class='field__error'])[1]");
+    public static By CrtFineDefaultAmountValidMsg = By.xpath("(//span[@class='field__error'])[2]");
+    public static By CrtFineNoticeRequiredValidMsg = By.xpath("(//span[@class='field__error'])[4]");
+    public static By CrtFineLabelName = By.xpath("//input[@name='label']");
+    public static By CrtDefaultAmnt = By.xpath("//input[@name='defaultAmount']");
+    public static By ActiveFines = By.xpath("(//div[@class='agency-setup-tab__section__header']//h2)[1]");
+    public static By CrtFineSelectNoitce = By.xpath("//span[text()='Select Notice']");
+    public static By CrtFineCheckHtmlNotice = By.xpath("(//input[@name='associatedNoticeIds'][@type='checkbox'][not (@disabled)])[1]");
+    public static By CrtFineApplyNotices = By.xpath("//button[text()='Apply']");
+    public static By CreateFineGridValLable = By.xpath("(//div[@class='rt-tr-group']//div[@class='rt-td']//div)[1]");
+    public static By CrtFineGridDefAmt = By.xpath("(//div[@class='rt-tr-group']//div[@class='rt-td'])[4]");
+    public static By EditActiveFine = By.xpath("//h2[contains(text(),'Active')]//ancestor::div[@class='agency-setup-tab__section']//button[@class='edit-btn space-right btn btn-primary']");
+    public static By EditSavebtn = By.xpath("//button[text()='Save']");
+    public static By EditInactiveFine = By.xpath("//h2[contains(text(),'Inactive')]//ancestor::div[@class='agency-setup-tab__section']//button[@class='edit-btn space-right btn btn-primary']");
+    public static By InactiveFinebtn = By.xpath("//button[text()='Inactive']");
+    public static By ActiveFinetoogle = By.xpath("//button[text()='Active']");
+    public static By InactiveFines = By.xpath("(//div[@class='agency-setup-tab__section__header']//h2)[2]");
+    public static By InactiveFineGridData = By.xpath("//h2[contains(text(),'Inactive')]//ancestor::div[@class='agency-setup-tab__section']//div[@class='rt-tr-group']//div[@class='rt-td']");
+    public static By ActiveFineGridData = By.xpath("//h2[contains(text(),'Active')]//ancestor::div[@class='agency-setup-tab__section']//div[@class='rt-tr-group']//div[@class='rt-td']");
+    public static By CreateLateFeebtn = By.xpath("//button[text()='Create Late Fee']");
+    public static By CreateLateFeePopupText = By.xpath("//div[text()='Create Late Fee']");
+    public static By CreateLateFeebtnpopup = By.xpath("//div[text()='Create Late Fee']//ancestor::div//button[text()='Create Late Fee']");
+    public static By CrtLateFineLabelName = By.xpath("//div[text()='Create Late Fee']//parent::div//input[@name='label']");
+    public static By CrtLateFineLabeldesc = By.xpath("//div[text()='Create Late Fee']//parent::div//input[@name='description']");
+    public static By CrtLateFeeManualToggle = By.xpath("//div[text()='Create Late Fee']//parent::div//button[text()='Manual Late Fee']");
+    public static By CrtLateFeeFlatToggle = By.xpath("//div[text()='Create Late Fee']//parent::div//button[text()='Flat Late Fee']");
+    public static By CrtLateFeeFixedAmtToggle = By.xpath("//div[text()='Create Late Fee']//parent::div//button[text()='Fixed Amount']");
+    public static By CrtLateFeeAmount = By.xpath("//div[text()='Create Late Fee']//parent::div//input[@name='amount']");
+    public static By AfterDayLateFeePayDue = By.xpath("//div[text()='Create Late Fee']//parent::div//input[@name='payByDays']");
+    public static By CrtLateFeeOutstdBalToggle = By.xpath("//div[text()='Create Late Fee']//parent::div//button[text()='% of outstanding balance']");
+    
+    
+    
+    //	public static By  = By.xpath("");
 //	public static By  = By.xpath("");
 //	public static By  = By.xpath("");
 //	public static By  = By.xpath("");
@@ -283,7 +325,9 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 	public static void AgencySetup_VerifyUploadedAgencyBoundary() throws InterruptedException {
 		Thread.sleep(5000);
 		driver.navigate().refresh();
-		Thread.sleep(5000);
+		Thread.sleep(8000);
+		WebDriverWaits.ScrollIntoView(AgencyBoundaryTab);
+		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(AgencyBoundaryTab);
 		Thread.sleep(5000);
 		BoundaryTabTitle = WebDriverWaits.GetText(AgencyBoundaryTab);
@@ -747,5 +791,429 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 //	public static void AgencySetup_VerifyAllLinksForCEDashboard() throws InterruptedException {
 //	Thread.sleep(2000);
 //}
+	
+	public static String CreateFineText;
+	public static int CloseCreateFinePOpup ;
+	
+	public static void AgencySetup_VerifyCreateFinePopup() throws InterruptedException {
+		
+		Thread.sleep(2000);
+		driver.navigate().refresh();
+		Thread.sleep(8000);
+		CRMCommonMethods.NavigateTo_AgencySetup();
+		CRMCommonMethods.NavigateTo_Fines();
+		WebDriverWaits.ScrollIntoView(CreateFineBtn);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickByJsExecuter(CreateFineBtn);
+		Thread.sleep(3000);
+		CreateFineText = WebDriverWaits.GetText(CreateFinePopup);
+		WebDriverWaits.ScrollIntoView(CancelCreateFine);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickByJsExecuter(CancelCreateFine);
+		Thread.sleep(2000);
+		CloseCreateFinePOpup = driver.findElements(CreateFinePopup).size();
+		Thread.sleep(1000);
+		
+		
+	}
+	
+	public static String ActualCrtFineLabelValidMsg ;
+	public static String ActualCrtFineDefaultAmntValidMsg ;
+	
+	public static String ExpectedCrtFineLabelValidMsg = "The Label is required." ;
+	public static String ExpectedCrtFineDefaultAmntValidMsg  = "Number should be greater than 0"; 
+	
+	public static String ActualNoticeRequiresValidMsg ;
+	public static String ExpectedNoticeRequiresValidMsg = "The Notice is required.";
+	
+	
+	public static String labelName ;
+	public static String DefaultFineAmount ;
+	public static int BeforActiveFines ;
+	public static int AfterActiveFines ;
+	
+	
+	
+	public static void AgencySetup_VerifyFlatFineCreationDoNotAttachedNotices() throws InterruptedException {
+		
+		//Thread.sleep(1000);
+		Thread.sleep(5000);
+//		CRMCommonMethods.NavigateTo_AgencySetup();
+//		CRMCommonMethods.NavigateTo_Fines();
+		String ActiveFinesVal = (WebDriverWaits.GetText(ActiveFines).split(" "))[0];
+		BeforActiveFines = Integer.parseInt(ActiveFinesVal);
+		WebDriverWaits.ScrollIntoView(CreateFineBtn);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickByJsExecuter(CreateFineBtn);
+		Thread.sleep(3000);
+		WebDriverWaits.ClickByJsExecuter(DoNotAttachedNoticeChk);
+		WebDriverWaits.ClickOn(CreateFinePopUpbtn);
+		Thread.sleep(2000);
+		ActualCrtFineLabelValidMsg = WebDriverWaits.GetText(CrtFineLabelValidMsg);
+		ActualCrtFineDefaultAmntValidMsg = WebDriverWaits.GetText(CrtFineDefaultAmountValidMsg);
+		labelName = RandomStrings.RequiredString(3) +  "Fine";
+		WebDriverWaits.SendKeys(CrtFineLabelName, labelName);
+		DefaultFineAmount = RandomStrings.RequiredDigits(4);
+		WebDriverWaits.SendKeys(CrtDefaultAmnt, DefaultFineAmount);
+		WebDriverWaits.ClickOn(CreateFinePopUpbtn);
+		Thread.sleep(4000);
+		AfterActiveFines = Integer.parseInt((WebDriverWaits.GetText(ActiveFines).split(" "))[0]);
+		Thread.sleep(1000);
+		
+		
+		
+	}
+	
+	
+    public static void AgencySetup_VerifyFlatFineCreationAttachedNotices() throws InterruptedException {
+		
+		//Thread.sleep(1000);
+		Thread.sleep(5000);
+//		CRMCommonMethods.NavigateTo_AgencySetup();
+//		CRMCommonMethods.NavigateTo_Fines();
+		String ActiveFinesVal = (WebDriverWaits.GetText(ActiveFines).split(" "))[0];
+		BeforActiveFines = Integer.parseInt(ActiveFinesVal);
+		WebDriverWaits.ScrollIntoView(CreateFineBtn);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickByJsExecuter(CreateFineBtn);
+		Thread.sleep(3000);
+
+		WebDriverWaits.ClickOn(CreateFinePopUpbtn);
+		Thread.sleep(2000);
+		ActualNoticeRequiresValidMsg = WebDriverWaits.GetText(CrtFineNoticeRequiredValidMsg);
+		labelName = RandomStrings.RequiredString(3) +  "Fine";
+		WebDriverWaits.SendKeys(CrtFineLabelName, labelName);
+		DefaultFineAmount = RandomStrings.RequiredDigits(4);
+		WebDriverWaits.SendKeys(CrtDefaultAmnt, DefaultFineAmount);
+		Thread.sleep(1000);
+		WebDriverWaits.ClickByJsExecuter(CrtFineSelectNoitce);
+		Thread.sleep(1000);
+		WebDriverWaits.ClickByJsExecuter(CrtFineCheckHtmlNotice);
+		Thread.sleep(1000);
+		WebDriverWaits.ClickOn(CrtFineApplyNotices);
+		Thread.sleep(1000);
+		
+		WebDriverWaits.ClickOn(CreateFinePopUpbtn);
+		Thread.sleep(4000);
+		AfterActiveFines = Integer.parseInt((WebDriverWaits.GetText(ActiveFines).split(" "))[0]);
+		Thread.sleep(1000);
+		
+		
+		
+	}
+    
+    public static String LabelValBefore ;
+    public static String labelNameAfter;
+    public static String DefltAmtAfter;
+    public static String DefltAmtBefore;
+    public static String EditedLabelName;
+    public static String EditedDefAmt;
+    
+    public static void AgencySetup_VerifyFlatFineEdit() throws InterruptedException{
+    	
+    	
+    			Thread.sleep(5000);
+//    			CRMCommonMethods.NavigateTo_AgencySetup();
+//    			CRMCommonMethods.NavigateTo_Fines();
+    			WebDriverWaits.ClickByJsExecuter(EditActiveFine);
+    			Thread.sleep(2000);
+    			LabelValBefore = driver.findElement(CrtFineLabelName).getAttribute("value");
+    			labelNameAfter = RandomStrings.RequiredString(3) +  "FineEdited";
+    			WebDriverWaits.Clear(CrtFineLabelName);
+    			WebDriverWaits.SendKeys(CrtFineLabelName, labelNameAfter);
+    			DefltAmtAfter = RandomStrings.RequiredDigits(2);
+    			
+    			WebDriverWaits.Clear(CrtDefaultAmnt);
+    			WebDriverWaits.SendKeys(CrtDefaultAmnt, DefltAmtAfter);
+    			DefltAmtAfter = driver.findElement(CrtDefaultAmnt).getAttribute("value");
+    			Thread.sleep(1000);
+    			WebDriverWaits.ClickOn(EditSavebtn);
+    			Thread.sleep(4000);
+    			EditedLabelName = WebDriverWaits.GetText(CreateFineGridValLable);
+    			EditedDefAmt = WebDriverWaits.GetText(CrtFineGridDefAmt);
+    			Thread.sleep(3000);
+    			
+    			
+    	
+    }
+    
+    public static int InactivefineCountBefore;
+    public static int InactivefineCountafter;
+    public static String activeFineLabel;
+    public static Boolean inactiveFineLabel;
+   
+	
+    public static void AgencySetup_VerifyInactivateActiveFines() throws InterruptedException {
+    	
+    	Thread.sleep(5000);
+//		CRMCommonMethods.NavigateTo_AgencySetup();
+//		CRMCommonMethods.NavigateTo_Fines();
+		InactivefineCountBefore = Integer.parseInt((WebDriverWaits.GetText(InactiveFines)).split(" ")[0]);
+		WebDriverWaits.ClickByJsExecuter(EditActiveFine);
+		Thread.sleep(2000);
+		activeFineLabel = driver.findElement(CrtFineLabelName).getAttribute("value");
+		WebDriverWaits.ScrollIntoView(InactiveFinebtn);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickOn(InactiveFinebtn);
+		Thread.sleep(1000);
+		WebDriverWaits.ClickOn(EditSavebtn);
+		Thread.sleep(4000);
+		List<String> allinactiveFineLabels = new ArrayList<>();
+		InactivefineCountafter = Integer.parseInt((WebDriverWaits.GetText(InactiveFines)).split(" ")[0]);
+		driver.findElements(InactiveFineGridData)
+		.stream()
+		.forEach(x -> allinactiveFineLabels.add(x.getText()));
+
+		inactiveFineLabel = allinactiveFineLabels.contains(activeFineLabel);
+		Thread.sleep(2000);
+		
+    }
+    
+    public static int activefineCountBefore;
+    public static int activefineCountafter;
+    public static String InactiveFineLabel;
+    public static Boolean ActiveFineLabel;
+public static void AgencySetup_VerifyActivateInactiveFines() throws InterruptedException {
+    	
+    	Thread.sleep(5000);
+//		CRMCommonMethods.NavigateTo_AgencySetup();
+//		CRMCommonMethods.NavigateTo_Fines();
+		activefineCountBefore = Integer.parseInt((WebDriverWaits.GetText(ActiveFines)).split(" ")[0]);
+		WebDriverWaits.ClickByJsExecuter(EditInactiveFine);
+		Thread.sleep(2000);
+		InactiveFineLabel = driver.findElement(CrtFineLabelName).getAttribute("value");
+		WebDriverWaits.ScrollIntoView(ActiveFinetoogle);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickOn(ActiveFinetoogle);
+		Thread.sleep(1000);
+		WebDriverWaits.ClickOn(EditSavebtn);
+		Thread.sleep(4000);
+		List<String> allactiveFineLabels = new ArrayList<>();
+		activefineCountafter = Integer.parseInt((WebDriverWaits.GetText(ActiveFines)).split(" ")[0]);
+		driver.findElements(ActiveFineGridData)
+		.stream()
+		.forEach(x -> allactiveFineLabels.add(x.getText()));
+
+		ActiveFineLabel = allactiveFineLabels.contains(InactiveFineLabel);
+		Thread.sleep(2000);
+		
+    }
+
+     public static String ActualcreateLateFeePOp;
+     public static String  ExpectedCreateLateFeePopup = "Create Late Fee";
+     public static int CloseCreateLateFeePOpup;
+     public static String ExpectedCrtLateFeeLabelValidMsg = "The Label is required." ;
+     public static String ActualCrtLateFeeLabelValidMsg ;
+     
+	 public static void AgencySetup_VerifyOpenCloseCreateLateFeePopup () throws InterruptedException {
+		 
+		 Thread.sleep(5000);
+//		CRMCommonMethods.NavigateTo_AgencySetup();
+        CRMCommonMethods.NavigateTo_LateFeesSubTab();
+        WebDriverWaits.ScrollIntoView(CreateLateFeebtn);
+        Thread.sleep(1000);
+        WebDriverWaits.ClickByJsExecuter(CreateLateFeebtn);
+        Thread.sleep(2000);
+        ActualcreateLateFeePOp = WebDriverWaits.GetText(CreateLateFeePopupText);
+        Thread.sleep(1000);
+        WebDriverWaits.ScrollIntoView(CreateLateFeebtnpopup);
+        Thread.sleep(2000);
+        WebDriverWaits.ClickByJsExecuter(CreateLateFeebtnpopup);
+        Thread.sleep(2000);
+        WebDriverWaits.ScrollIntoView(CrtFineLabelValidMsg);
+        Thread.sleep(2000); 
+        
+        ActualCrtLateFeeLabelValidMsg = WebDriverWaits.GetText(CrtFineLabelValidMsg);
+        WebDriverWaits.ScrollIntoView(CancelButton);
+        Thread.sleep(2000);
+        WebDriverWaits.ClickOn(CancelButton);
+        Thread.sleep(1000);
+        CloseCreateLateFeePOpup = driver.findElements(CreateFinePopup).size();
+		Thread.sleep(1000);
+        
+        
+        
+		 
+	 }
+	 
+	 public static String LateFeeLabel;
+	 public static String LateFeeLabelDesc; 
+	 public static String LateFeeAmount;
+	 public static String PayDueAfterDay;
+	 public static int AfterActiveLateFeeCount;
+	 public static int BeforeActiveLateFeeCount;
+	 public static Boolean NewAddedLateFeeLable;
+	 
+	 public static void AgencySetup_VerifyCreateFixedManualFlatFineLateFee() throws InterruptedException {
+		 
+		    Thread.sleep(5000);
+//			CRMCommonMethods.NavigateTo_AgencySetup();
+	        CRMCommonMethods.NavigateTo_LateFeesSubTab();
+	        BeforeActiveLateFeeCount  = Integer.parseInt((WebDriverWaits.GetText(ActiveFines).split(" "))[0]);
+	        WebDriverWaits.ScrollIntoView(CreateLateFeebtn);
+	        Thread.sleep(1000);
+	        WebDriverWaits.ClickByJsExecuter(CreateLateFeebtn);
+	        Thread.sleep(2000);
+	        LateFeeLabel = RandomStrings.RequiredCharacters(3) + " LateFine";
+	        WebDriverWaits.SendKeys(CrtLateFineLabelName, LateFeeLabel); 
+	        Thread.sleep(1000);
+	        LateFeeLabelDesc = RandomStrings.RequiredCharacters(3) + " LateFineDesc";
+	        WebDriverWaits.SendKeys(CrtLateFineLabeldesc, LateFeeLabelDesc);
+	        Thread.sleep(1000);
+	        WebDriverWaits.ClickByJsExecuter(CrtLateFeeManualToggle);
+	        Thread.sleep(1000);
+	        
+	        WebDriverWaits.ClickByJsExecuter(CrtLateFeeFlatToggle);
+	        Thread.sleep(1000);
+	        
+	        WebDriverWaits.ClickByJsExecuter(CrtLateFeeFixedAmtToggle);
+	        Thread.sleep(1000);
+	        
+	        WebDriverWaits.ScrollIntoView(CrtLateFeeAmount);
+	        Thread.sleep(1000);
+	        LateFeeAmount = RandomStrings.RequiredDigits(4);
+	        WebDriverWaits.SendKeys(CrtLateFeeAmount, LateFeeAmount);
+	        PayDueAfterDay = RandomStrings.RequiredDigits(1);
+	        Thread.sleep(1000);
+	        WebDriverWaits.SendKeys(AfterDayLateFeePayDue, PayDueAfterDay);
+	        Thread.sleep(1000);
+	        WebDriverWaits.ClickByJsExecuter(CreateLateFeebtnpopup);
+	        Thread.sleep(2000);
+	        AfterActiveLateFeeCount = Integer.parseInt((WebDriverWaits.GetText(ActiveFines).split(" "))[0]);
+			Thread.sleep(1000);
+			List<String> allactiveLateFeeLabels = new ArrayList<>();
+			driver.findElements(ActiveFineGridData)
+			.stream()
+			.forEach(x -> allactiveLateFeeLabels.add(x.getText()));
+			
+			NewAddedLateFeeLable = allactiveLateFeeLabels.contains(LateFeeLabel);
+			Thread.sleep(2000);
+	        
+	        
+	 }
+	 
+	 
+	 public static void AgencySetup_VerifyCreateOutStdManualFlatFineLateFee() throws InterruptedException {
+		 
+		    Thread.sleep(5000);
+//			CRMCommonMethods.NavigateTo_AgencySetup();
+	        CRMCommonMethods.NavigateTo_LateFeesSubTab();
+	        BeforeActiveLateFeeCount  = Integer.parseInt((WebDriverWaits.GetText(ActiveFines).split(" "))[0]);
+	        WebDriverWaits.ScrollIntoView(CreateLateFeebtn);
+	        Thread.sleep(1000);
+	        WebDriverWaits.ClickByJsExecuter(CreateLateFeebtn);
+	        Thread.sleep(2000);
+	        LateFeeLabel = RandomStrings.RequiredCharacters(3) + " LateFine";
+	        WebDriverWaits.SendKeys(CrtLateFineLabelName, LateFeeLabel); 
+	        Thread.sleep(1000);
+	        LateFeeLabelDesc = RandomStrings.RequiredCharacters(3) + " LateFineDesc";
+	        WebDriverWaits.SendKeys(CrtLateFineLabeldesc, LateFeeLabelDesc);
+	        Thread.sleep(1000);
+	        WebDriverWaits.ClickByJsExecuter(CrtLateFeeManualToggle);
+	        Thread.sleep(1000);
+	        
+	        WebDriverWaits.ClickByJsExecuter(CrtLateFeeFlatToggle);
+	        Thread.sleep(1000);
+	        
+	        WebDriverWaits.ClickByJsExecuter(CrtLateFeeOutstdBalToggle);
+	        Thread.sleep(1000);
+	        
+	        WebDriverWaits.ScrollIntoView(CrtLateFeeAmount);
+	        Thread.sleep(1000);
+	        LateFeeAmount = RandomStrings.RequiredDigits(4);
+	        WebDriverWaits.SendKeys(CrtLateFeeAmount, LateFeeAmount);
+	        PayDueAfterDay = RandomStrings.RequiredDigits(1);
+	        Thread.sleep(1000);
+	        WebDriverWaits.SendKeys(AfterDayLateFeePayDue, PayDueAfterDay);
+	        Thread.sleep(1000);
+	        WebDriverWaits.ClickByJsExecuter(CreateLateFeebtnpopup);
+	        Thread.sleep(2000);
+	        AfterActiveLateFeeCount = Integer.parseInt((WebDriverWaits.GetText(ActiveFines).split(" "))[0]);
+			Thread.sleep(1000);
+			List<String> allactiveLateFeeLabels = new ArrayList<>();
+			driver.findElements(ActiveFineGridData)
+			.stream()
+			.forEach(x -> allactiveLateFeeLabels.add(x.getText()));
+			
+			NewAddedLateFeeLable = allactiveLateFeeLabels.contains(LateFeeLabel);
+			Thread.sleep(2000);
+	        
+	        
+	 }
+	 
+	 
+	 
+	 public static int InactiveLateFeeCountBefore;
+	    public static int InactiveLateFeeCountafter;
+	    public static String activeLateFeeLabel;
+	    public static Boolean inactiveLateFeeLabel;
+	   
+		
+	    public static void AgencySetup_VerifyInactivateActiveLateFee() throws InterruptedException {
+	    	
+	    	Thread.sleep(5000);
+//	    	CRMCommonMethods.NavigateTo_AgencySetup();
+	        CRMCommonMethods.NavigateTo_LateFeesSubTab();
+	    	InactiveLateFeeCountBefore = Integer.parseInt((WebDriverWaits.GetText(InactiveFines)).split(" ")[0]);
+			WebDriverWaits.ClickByJsExecuter(EditActiveFine);
+			Thread.sleep(2000);
+			activeLateFeeLabel = driver.findElement(CrtFineLabelName).getAttribute("value");
+			WebDriverWaits.ScrollIntoView(InactiveFinebtn);
+			Thread.sleep(2000);
+			WebDriverWaits.ClickOn(InactiveFinebtn);
+			Thread.sleep(1000);
+			WebDriverWaits.ClickOn(EditSavebtn);
+			Thread.sleep(4000);
+			List<String> allinactiveFineLabels = new ArrayList<>();
+			InactiveLateFeeCountafter = Integer.parseInt((WebDriverWaits.GetText(InactiveFines)).split(" ")[0]);
+			driver.findElements(InactiveFineGridData)
+			.stream()
+			.forEach(x -> allinactiveFineLabels.add(x.getText()));
+
+			inactiveLateFeeLabel = allinactiveFineLabels.contains(activeLateFeeLabel);
+			Thread.sleep(2000);
+			
+	    }
+	 
+	    
+	    
+	    public static int activeLateFeeCountBefore;
+	    public static int activeLateFeeCountafter;
+	    public static String InactiveLateFeeLabel;
+	    public static Boolean ActiveLateFeeLabel;
+	public static void AgencySetup_VerifyActivateInActiveLateFee() throws InterruptedException {
+	    	
+	    	Thread.sleep(5000);
+//			CRMCommonMethods.NavigateTo_AgencySetup();
+			CRMCommonMethods.NavigateTo_LateFeesSubTab();
+	    	activeLateFeeCountBefore = Integer.parseInt((WebDriverWaits.GetText(ActiveFines)).split(" ")[0]);
+			WebDriverWaits.ClickByJsExecuter(EditInactiveFine);
+			Thread.sleep(2000);
+			InactiveLateFeeLabel = driver.findElement(CrtFineLabelName).getAttribute("value");
+			WebDriverWaits.ScrollIntoView(ActiveFinetoogle);
+			Thread.sleep(2000);
+			WebDriverWaits.ClickOn(ActiveFinetoogle);
+			Thread.sleep(1000);
+			WebDriverWaits.ClickOn(EditSavebtn);
+			Thread.sleep(4000);
+			List<String> allactiveFineLabels = new ArrayList<>();
+			activeLateFeeCountafter = Integer.parseInt((WebDriverWaits.GetText(ActiveFines)).split(" ")[0]);
+			driver.findElements(ActiveFineGridData)
+			.stream()
+			.forEach(x -> allactiveFineLabels.add(x.getText()));
+
+			ActiveLateFeeLabel = allactiveFineLabels.contains(InactiveLateFeeLabel);
+			Thread.sleep(2000);
+			
+	    }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 
 }

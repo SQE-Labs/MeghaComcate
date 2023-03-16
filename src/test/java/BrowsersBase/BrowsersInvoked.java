@@ -57,29 +57,29 @@ public class BrowsersInvoked {
 		}
 		}
 
-		//driver.manage().window().maximize();
+		driver.manage().window().maximize();
 //		System.out.println(DataInterface.AgencyURL);
 //		driver.get(DataInterface.AgencyURL);
 		
 		
-		driver.manage().window().maximize();
-		Dimension currentDimension = driver.manage().window().getSize();
-		int height = currentDimension.getHeight();
-		int width = currentDimension.getWidth();
-		System.out.println("Current height: "+ height);
-		System.out.println("Current width: "+width);
+		//driver.manage().window().maximize();
+//		Dimension currentDimension = driver.manage().window().getSize();
+//		int height = currentDimension.getHeight();
+//		int width = currentDimension.getWidth();
+//		System.out.println("Current height: "+ height);
+//		System.out.println("Current width: "+width);
 //		
 //		// Set new size
-		Dimension newDimension = new Dimension(1024, 768);
+		//Dimension newDimension = new Dimension(1024, 768);
 		//Dimension newDimension = new Dimension(768, 1024);
-		driver.manage().window().setSize(newDimension);
+		//driver.manage().window().setSize(newDimension);
 //		
 //		// Getting 
-		Dimension newSetDimension = driver.manage().window().getSize();
-		int newHeight = newSetDimension.getHeight();
-	    int newWidth = newSetDimension.getWidth();
-	    System.out.println("New height: "+ newHeight);
-		System.out.println("New width: "+newWidth);
+//		Dimension newSetDimension = driver.manage().window().getSize();
+//		int newHeight = newSetDimension.getHeight();
+//	    int newWidth = newSetDimension.getWidth();
+//	    System.out.println("New height: "+ newHeight);
+//		System.out.println("New width: "+newWidth);
 		
 		driver.get(DataInterface.AgencyURL);
 	}
@@ -103,8 +103,8 @@ public class BrowsersInvoked {
 		case "QA": {
 			AgencyID = 659;
 			Instance = "https://app-qa-new.comcate.com/agencies/";
-			AgencyUsername = "alphamodeqa1@yopmail.com";
-			AgencyPassword = "Hello@123";
+			AgencyUsername = "659qa2@yopmail.com";
+			AgencyPassword = "Test@123";
 			AdminURL = "https://admin-qa-new.comcate.com";
 			AdminUsername = "support@comcate.com";
 			AdminPassword = "test@123";
