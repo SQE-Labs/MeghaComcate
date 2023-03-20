@@ -628,5 +628,48 @@ public class CRMCommonMethods {
 		Thread.sleep(3000);
 		
 	}
+	
+	public static void addNewTemplate(String templateName) throws InterruptedException, AWTException {
+		
+		
+		WebDriverWaits.ScrollIntoView(TemplateMangementUtils.CreateTemplateBtn);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickByJsExecuter(TemplateMangementUtils.CreateTemplateBtn);
+		Thread.sleep(4000); 
+		
+		Thread.sleep(2000);
+		WebDriverWaits.ScrollIntoView(TemplateMangementUtils.TemplateNameTxt);
+		Thread.sleep(2000);
+		
+		WebDriverWaits.SendKeys(TemplateMangementUtils.TemplateNameTxt, templateName);
+		Thread.sleep(2000);
+		WebDriverWaits.ScrollIntoView(TemplateMangementUtils.EmailSubLineInput);
+		String rndSubLine = RandomStrings.RequiredString(3) + "EmailSubjectLine";
+		Thread.sleep(5000);
+		WebDriverWaits.Clear(TemplateMangementUtils.EmailSubLineInput);
+		Thread.sleep(2000);
+		WebDriverWaits.SendKeys(TemplateMangementUtils.EmailSubLineInput, rndSubLine);
+		Thread.sleep(5000);
+		WebDriverWaits.ScrollIntoView(TemplateMangementUtils.TemplateManagementSideBarTab);
+		Thread.sleep(2000);
+		String TemplateMessgae = RandomStrings.RequiredCharacters(10);
+		String ExpectedpreviewTemplateData = TemplateMessgae;
+		WebElement switchFrame = WebDriverWaits.WaitUntilVisibleWE(TemplateMangementUtils.IframeBody);
+		Thread.sleep(2000);
+		
+		BrowsersInvoked.driver.switchTo().frame(switchFrame);
+		WebDriverWaits.SendKeys(TemplateMangementUtils.MessageBody, TemplateMessgae);
+		BrowsersInvoked.driver.switchTo().defaultContent();
+		Thread.sleep(2000);
+		WebDriverWaits.ScrollIntoView(TemplateMangementUtils.IncludeMagicLinkchk);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickByJsExecuter(TemplateMangementUtils.IncludeMagicLinkchk);
+		Thread.sleep(1000);
+		WebDriverWaits.ScrollIntoView(TemplateMangementUtils.SaveCrtTemplate);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickByJsExecuter(TemplateMangementUtils.SaveCrtTemplate);
+		Thread.sleep(3000);
+		
+	}
 
 }

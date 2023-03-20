@@ -5,11 +5,11 @@
     <classes>
       <class name="TCsNewAgencySetup.TemplateManagement">
         <methods>
-          <include name="TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated"/>
-          <include name="setExtent"/>
           <include name="SetProp"/>
+          <include name="setExtent"/>
           <include name="endReport"/>
           <include name="tearDown"/>
+          <include name="TemplateMangement_VerifyActivateAndDeActivateTemplate"/>
           <include name="RunEnvironmentSetup"/>
         </methods>
       </class> <!-- TCsNewAgencySetup.TemplateManagement -->

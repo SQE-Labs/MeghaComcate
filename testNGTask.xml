@@ -77,6 +77,13 @@
 				<methods> 
 					<include name="TemplateMangement_PreRequisite"></include>
 					<include name="TemplateMangement_CloseandOpenCreateTemplatePOpup"></include>
+					<include name="TemplateMangement_VerifyValidationsOnCreateTemplatePOpup"></include> 
+					<include name="TemplateMangement_VerifyAdditionofMultipleDocTemplatePOpup"></include> 
+					<include name="TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated"></include> 
+					<include name="TemplateMangement_VerifyTemplateAdditionOfTemplate"></include> 
+					<include name="TemplateMangement_VerifyEditTheTemplate"></include> 
+					<include name="TemplateMangement_VerifyErrorMessgeOnAdditionOfExistingTemplate"></include> 
+					<include name="TemplateMangement_VerifyActivateAndDeActivateTemplate"></include>
 				</methods>
 			</class>
 
