@@ -85,6 +85,12 @@
 					<include name="TemplateMangement_VerifyErrorMessgeOnAdditionOfExistingTemplate"></include> 
 					<include name="TemplateMangement_VerifyActivateAndDeActivateTemplate"></include>
 				</methods>
+			</class> 
+			
+			<class name="TCsNewAgencySetup.NotificationManagement"> 
+				<methods> 
+					
+				</methods>
 			</class>
 
 		</classes>
