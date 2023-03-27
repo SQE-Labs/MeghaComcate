@@ -3,16 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TCsNewAgencySetup.TemplateManagement">
+      <class name="TCsNewAgencySetup.SLA">
         <methods>
-          <include name="SetProp"/>
           <include name="setExtent"/>
+          <include name="SetProp"/>
           <include name="endReport"/>
           <include name="tearDown"/>
-          <include name="TemplateMangement_VerifyActivateAndDeActivateTemplate"/>
           <include name="RunEnvironmentSetup"/>
+          <include name="AgencySetup_CreateSLA_AddRule"/>
         </methods>
-      </class> <!-- TCsNewAgencySetup.TemplateManagement -->
+      </class> <!-- TCsNewAgencySetup.SLA -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

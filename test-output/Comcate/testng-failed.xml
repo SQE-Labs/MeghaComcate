@@ -3,41 +3,16 @@
 <suite name="Failed suite [Comcate]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="TestCasesCRM.SMSAndEmailVerification">
+      <class name="TCsNewAgencySetup.NotificationManagement">
         <methods>
-          <include name="setExtent"/>
-          <include name="ComposeMessage"/>
-          <include name="SetProp"/>
-          <include name="endReport"/>
-          <include name="tearDown"/>
-          <include name="RunEnvironmentSetup"/>
-          <include name="ComposeMail"/>
-        </methods>
-      </class> <!-- TestCasesCRM.SMSAndEmailVerification -->
-      <class name="TestCasesCRM.DashboardCRM">
-        <methods>
-          <include name="Dashboard_VerifyTheCountOfSubmissions"/>
           <include name="SetProp"/>
           <include name="setExtent"/>
           <include name="endReport"/>
           <include name="tearDown"/>
           <include name="RunEnvironmentSetup"/>
+          <include name="AgencySetup_CreateNotificationCreateNotifiction"/>
         </methods>
-      </class> <!-- TestCasesCRM.DashboardCRM -->
-      <class name="TestCasesCRM.CreateCRMUser">
-        <methods>
-          <include name="SetProp"/>
-          <include name="setExtent"/>
-          <include name="endReport"/>
-          <include name="CreateCRMUser_UpdateCEOnlyUserToCRMOnly"/>
-          <include name="tearDown"/>
-          <include name="RunEnvironmentSetup"/>
-          <include name="CreateCRMUser_VerifyCRMProductAccessToCRMUser"/>
-          <include name="CreateCRMUser_CreateStandardUser"/>
-          <include name="CreateCRMUser_CreateProductAdminUser"/>
-          <include name="CreateCRMUser_VerifyNoCEAccessToCRMOnlyUser"/>
-        </methods>
-      </class> <!-- TestCasesCRM.CreateCRMUser -->
+      </class> <!-- TCsNewAgencySetup.NotificationManagement -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Comcate] -->
