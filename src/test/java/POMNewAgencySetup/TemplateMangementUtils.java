@@ -210,7 +210,12 @@ public class TemplateMangementUtils extends AgencyCreationUtils {
 				
 				filescountAf = driver.findElements(AddedFiles).size();
 				filesAfterCountCheck = filescountAf < filescount ;
+				String path_1 = System.getProperty("user.dir") + "\\TestData\\Jellyfish_11zon.jpg";
+				Thread.sleep(2000);
+				System.out.println(path_1);
+				CRMCommonMethods.AddTemplateFiles(AddDocument,path_1);
 				
+				Thread.sleep(3000);
 				
 				
 			}

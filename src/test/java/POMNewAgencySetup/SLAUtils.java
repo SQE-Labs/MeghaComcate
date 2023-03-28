@@ -534,6 +534,8 @@ public class SLAUtils extends AgencyCreationUtils {
  	   activeSLACount = Integer.parseInt(WebDriverWaits.GetText(ActiveSLADet).split(" ")[0]);
  	   
  	   int gridindx = 4 * activeSLACount; 
+ 	   WebDriverWaits.ScrollIntoView(By.xpath(GetActiveSLAGridData(gridindx - 3)));
+ 	   Thread.sleep(3000);
 	   activeSLAName = WebDriverWaits.GetText(By.xpath(GetActiveSLAGridData(gridindx - 3)));
 	   Thread.sleep(2000);
     }

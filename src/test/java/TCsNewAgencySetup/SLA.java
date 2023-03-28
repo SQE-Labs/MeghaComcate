@@ -16,7 +16,7 @@ public class SLA extends SLAUtils {
 	public static void AgencySetup_SLAPreRequisite() throws InterruptedException {
 		extentTest = extent.startTest(" AgencySetup_SLAPreRequisite ");
 	    extentTest.setDescription(" Navigate to SLA Page");
-	    Login.LoginAgencyStage();
+//	    Login.LoginAgencyStage();
 	    SLAUtils.AgencySetup_SLAPreRequisite();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(ActualSLAHeader, expectedSLAHeader);
@@ -126,7 +126,7 @@ public class SLA extends SLAUtils {
 	public static void AgencySetup_EditSLA() throws InterruptedException {
 		extentTest = extent.startTest(" AgencySetup_EditSLA ");
 	    extentTest.setDescription("Verify that user is able to edit SLA on 'SLA' page");
-	    AgencySetup_SLAPreRequisite();
+//	    AgencySetup_SLAPreRequisite();
 	    SLAUtils.AgencySetup_EditSLA();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(newEditSLA,sLALableName);
@@ -142,7 +142,7 @@ public class SLA extends SLAUtils {
 	public static void AgencySetup_ErrorMessageAppearCreatingExistingSLAName() throws InterruptedException {
 		extentTest = extent.startTest(" AgencySetup_ErrorMessageAppearCreatingExistingSLAName ");
 	    extentTest.setDescription("Verify that error message appears & Template does not get created, when user clicks on 'Save' button, after entering existing data in 'Name' field, on 'Create SLA' popup.");
-	    AgencySetup_SLAPreRequisite();
+//	    AgencySetup_SLAPreRequisite();
 	    SLAUtils.AgencySetup_ErrorMessageAppearCreatingExistingSLAName();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(actualErrorMsg,expectedduplicatErrorMessage);
@@ -153,7 +153,7 @@ public class SLA extends SLAUtils {
 	public static void AgencySetup_InactivteActiveSLA() throws InterruptedException {
 		extentTest = extent.startTest(" AgencySetup_ErrorMessageAppearCreatingExistingSLAName ");
 	    extentTest.setDescription("Verify that user able to Inactivate the active SLA on 'SLA' page");
-	    AgencySetup_SLAPreRequisite();
+//	    AgencySetup_SLAPreRequisite();
 	    SLAUtils.AgencySetup_InactivteActiveSLA();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(inactiveSLACountBefore + 1,inactiveSLACount);
@@ -166,7 +166,7 @@ public class SLA extends SLAUtils {
 	public static void AgencySetup_ActivateInactiveSLA() throws InterruptedException {
 		extentTest = extent.startTest(" AgencySetup_ActivateInactiveSLA ");
 	    extentTest.setDescription("Verify that user able to Activate the Inactive SLA on 'SLA' page");
-	    AgencySetup_SLAPreRequisite();
+//	    AgencySetup_SLAPreRequisite();
 	    SLAUtils.AgencySetup_ActivateInactiveSLA();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(activeSLACountBefore + 1,activeSLACount);
