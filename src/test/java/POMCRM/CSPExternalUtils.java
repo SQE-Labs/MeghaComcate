@@ -11,6 +11,7 @@ import BrowsersBase.DataInterface;
 import CommonMethods.CRMCommonMethods;
 import CommonMethods.RandomStrings;
 import CommonMethods.WebDriverWaits;
+import TestCasesCRM.CSPInternal;
 
 public class CSPExternalUtils extends CSPInternalUtils {
 
@@ -297,10 +298,28 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		WebDriverWaits.ClickOn(NextButtonSec3);
 		ValidationMsgLocation = WebDriverWaits.GetText(LocationValidationMsg);
 		ExpectedMsgLoc = "The location is required.";
-		WebDriverWaits.ClickOn(LocationSearchField);
-		WebDriverWaits.SendKeys(LocationSearchField, "Texas City Museum");
-		Thread.sleep(4000);
-		WebDriverWaits.ClickOn(LocationSearchResult);
+		
+//		WebDriverWaits.ClickOn(LocationSearchField);
+//		WebDriverWaits.SendKeys(LocationSearchField, "Texas City Museum");
+//		Thread.sleep(4000);
+//		WebDriverWaits.ClickOn(LocationSearchResult);
+		
+		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) ){
+			CRMCommonMethods.searchLocationExternalCS(DataInterface.searchLocationKey1O);
+		}
+		
+		else {
+			CRMCommonMethods.searchLocationExternalCS(DataInterface.searchLocationKey);
+		}
+		
+		
+		if( WebDriverWaits.ElementIsDisplayed(CSPInternal.ToggleChecked)) {
+			   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
+			   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
+			   System.out.println("clicked toggle twice");
+
+			}
+		
 		WebDriverWaits.ClickOn(NextButtonSec3);
 		Thread.sleep(2000);
 		SubmitPageTitle = WebDriverWaits.GetText(SubmitSubmissionPage);
@@ -421,7 +440,7 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		Thread.sleep(4000);
 		//CRMCommonMethods.CRM_CreateExternalSubmission("Yes","Location Not Required","No","Yes");
 		CRMCommonMethods.CRM_CreateExternalSubmissionWithoutLogin("Yes","Location Not Required","No","Yes");
-		Thread.sleep(5000);
+		Thread.sleep(12000);
 		SubmissionSuccessMsgNA = WebDriverWaits.GetText(SuccessMessage);
 	}
 

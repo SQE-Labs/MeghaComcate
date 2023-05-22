@@ -6,8 +6,8 @@
 			<class name="TestCasesCRM.Login">
 				<methods>
 					<include name="LoginAgency" /> 
-					<!--<include name="LoginAgencyStage"></include> 
-					<include name="LoginAgencyCI"></include>-->
+					<!--<include name="LoginAgencyStage"></include> -->
+					<!--<include name="LoginAgencyCI"></include> -->
 				</methods>
 			</class>
 			
@@ -56,7 +56,7 @@
 					<include name="CSPInternal_AddAttachments" />
 					<include name="CSPInternal_VerifySubmissionCreation" />
 				</methods>
-			</class>
+			</class> 
 			
 			
 			<class name="TestCasesCRM.CSDP">
@@ -128,7 +128,7 @@
 					<include name="CSLP_VerifyDirectionToRespectiveSubmission" />
 					<include name="CSLP_VerifySubmissionsForMineButton" />
 				</methods>
-			</class>
+			</class>  
 			<class name="TestCasesCRM.DashboardCRM">
 				<methods>
 					<include name="Dashboard_VerifyCRMToggleButton" />
@@ -141,7 +141,7 @@
 			</class>
 			
 			
-			<class name="TestCasesCRM.ReportsCRM">
+		<class name="TestCasesCRM.ReportsCRM">
 				<methods>
 					<include name="Reports_PreRequisite" />
 					<include name="Reports_VerifyAdditionOfNewReports" />
@@ -150,7 +150,7 @@
 					<include name="Reports_VerifyAllCRMReports" />
 				</methods>
 			</class>
-			
+		
 			
 			
 			
@@ -174,7 +174,8 @@
 					<include name="CSPExternal_VerifyAnonymousSubmission" />
 					<include name="CSPExternal_VerifyNonAnonymousSubmission" />
 				</methods>
-			</class>
+			</class> 
+			
 			<class name="TestCasesCRM.CreateCRMUser">
 				<methods>
 					<include name="CreateCRMUser_CreateStandardUser" />
@@ -183,7 +184,7 @@
 					<include name="CreateCRMUser_VerifyCRMProductAccessToCRMUser" />
 					<include name="CreateCRMUser_VerifyNoCEAccessToCRMOnlyUser" />
 				</methods>
-			</class>
+			</class>	
 			
 			<class name="TestCasesCRM.SMSAndEmailVerification">
 				<methods>

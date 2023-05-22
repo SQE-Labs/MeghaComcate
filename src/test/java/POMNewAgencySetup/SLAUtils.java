@@ -259,7 +259,7 @@ public class SLAUtils extends AgencyCreationUtils {
 		 WebDriverWaits.ScrollIntoView(NotificationMangementUtils.CrtCreateRule);
 		 Thread.sleep(2000);
 		 WebDriverWaits.ClickByJsExecuter(NotificationMangementUtils.CrtCreateRule);
-		 Thread.sleep(3000); 
+		 Thread.sleep(6000); 
 		 WebDriverWaits.ScrollIntoView(NotificationMangementUtils.AddedRuleCriteria);
 		 Thread.sleep(2000);
 		 AddedRuleDesc = WebDriverWaits.GetText(NotificationMangementUtils.AddedRuleCriteria);
@@ -273,7 +273,7 @@ public class SLAUtils extends AgencyCreationUtils {
 	 public static String EdditedRuleDesc;
 	 public static void AgencySetup_CreateSLA_EditAddRule() throws InterruptedException {
 		 
-		 Thread.sleep(2000);
+		 Thread.sleep(8000);
 		 WebDriverWaits.ScrollIntoView(EditRule);
 		 Thread.sleep(2000);
 		 WebDriverWaits.ClickOn(EditRule);
@@ -336,8 +336,8 @@ public class SLAUtils extends AgencyCreationUtils {
 	    
 	    WebDriverWaits.ScrollIntoView(CrtSLACreateSLA);
 	    Thread.sleep(2000);
-	    WebDriverWaits.ClickOn(CrtSLACreateSLA);
-	    Thread.sleep(4000);
+	    WebDriverWaits.ClickByJsExecuter(CrtSLACreateSLA);
+	    Thread.sleep(10000);
 	    
 	    WebDriverWaits.ScrollIntoView(ActiveSLADet);
 	    Thread.sleep(2000);
@@ -372,7 +372,7 @@ public class SLAUtils extends AgencyCreationUtils {
 	    Thread.sleep(2000);
 	    BeforeactiveSLACount = Integer.parseInt(WebDriverWaits.GetText(ActiveSLADet).split(" ")[0]);
 	    int indx = BeforeactiveSLACount;
-	    WebDriverWaits.ClickOn(By.xpath(GetActiveSLAEditIcon(indx)));
+	    WebDriverWaits.ClickByJsExecuter(By.xpath(GetActiveSLAEditIcon(indx)));
 	    Thread.sleep(4000);
 	    sLALableName = "EditSLA"+ RandomStrings.RequiredCharacters(4);
 	    Thread.sleep(3000);
@@ -411,7 +411,7 @@ public class SLAUtils extends AgencyCreationUtils {
     
     public static void AgencySetup_ErrorMessageAppearCreatingExistingSLAName() throws InterruptedException{
     	
-    	Thread.sleep(3000);
+    	Thread.sleep(5000);
     	WebDriverWaits.ScrollIntoView(ActiveSLADet);
  	    Thread.sleep(2000);
  	    AfteractiveSLACount = Integer.parseInt(WebDriverWaits.GetText(ActiveSLADet).split(" ")[0]);
@@ -467,6 +467,7 @@ public class SLAUtils extends AgencyCreationUtils {
 	
     public static void AgencySetup_InactivteActiveSLA() throws InterruptedException {
     	
+    	Thread.sleep(5000);
     	WebDriverWaits.ScrollIntoView(InActiveSLADet);
 	    Thread.sleep(2000);
 	    inactiveSLACountBefore = Integer.parseInt(WebDriverWaits.GetText(InActiveSLADet).split(" ")[0]);
@@ -476,6 +477,7 @@ public class SLAUtils extends AgencyCreationUtils {
  	    Thread.sleep(2000);
  	    activeSLACount = Integer.parseInt(WebDriverWaits.GetText(ActiveSLADet).split(" ")[0]);
  	    int gridindx = 4 * activeSLACount; 
+ 	    Thread.sleep(2000);
  	   activeSLAName = WebDriverWaits.GetText(By.xpath(GetActiveSLAGridData(gridindx - 3)));
  	   
  	   WebDriverWaits.ScrollIntoView(By.xpath(GetActiveSLAEditIcon(activeSLACount)));
@@ -488,7 +490,7 @@ public class SLAUtils extends AgencyCreationUtils {
 	   WebDriverWaits.ScrollIntoView(EditSLASave);
 	    Thread.sleep(2000);
 	   WebDriverWaits.ClickOn(EditSLASave);
-	   Thread.sleep(4000);
+	   Thread.sleep(10000);
 	   
 	   WebDriverWaits.ScrollIntoView(InActiveSLADet);
 	   Thread.sleep(2000);
@@ -512,7 +514,7 @@ public class SLAUtils extends AgencyCreationUtils {
  	   activeSLACountBefore = Integer.parseInt(WebDriverWaits.GetText(ActiveSLADet).split(" ")[0]);
  	   
  	   WebDriverWaits.ScrollIntoView(InActiveSLADet);
-	   Thread.sleep(2000);
+	   Thread.sleep(4000);
 	   inactiveSLACount = Integer.parseInt(WebDriverWaits.GetText(InActiveSLADet).split(" ")[0]);
 	   int indx = 4 * inactiveSLACount; 
 	   inactivateSLA = WebDriverWaits.GetText(By.xpath(GetInactiveSLAGridData(indx - 3)));

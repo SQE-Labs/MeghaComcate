@@ -78,7 +78,7 @@ public class AgencyCreationUtils extends Login{
 		executor.executeScript("arguments[0].click();", element);
 		//WebDriverWaits.ClickOn(CreateAgencyButton);
 		CreateAgencyPopupTitle = WebDriverWaits.GetText(CreateAgencyPopup);
-		WebDriverWaits.ClickOn(SendFromTextMessageToggle);
+		//WebDriverWaits.ClickOn(SendFromTextMessageToggle);
 		WebDriverWaits.ClickOn(CreateAgencyButton2);
 		
 	}
@@ -157,11 +157,13 @@ public class AgencyCreationUtils extends Login{
 		WebDriverWaits.SendKeys(EmailField, "newagencyviaautomation@yopmail.com");
 		WebDriverWaits.SendKeys(WebsiteURLField, "https://demo.comcate.com");
 		WebDriverWaits.SendKeys(SendFromEmailField, "team-comcate");
+		WebDriverWaits.ClickByJsExecuter(By.xpath("(//div[@class='react-toggle-thumb'])[3]"));
+		Thread.sleep(2000);
 		WebDriverWaits.SendKeys(SendFromTextMessageField, "+12057547399");
 		WebDriverWaits.ClickOn(CreateAgencyButton2);
-		Thread.sleep(8000);
-		WebDriverWaits.SendKeys(AgencySearchField, RandomAgencyName);
 		Thread.sleep(10000);
+		WebDriverWaits.SendKeys(AgencySearchField, RandomAgencyName);
+		Thread.sleep(13000);
 		NewAgencyTitle = WebDriverWaits.GetText(NewAgencyCreated);
 	}
 	

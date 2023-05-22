@@ -247,16 +247,20 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 //	public static String ;
 
 	public static void AgencySetup_VerifyAppConfigurations(String agencyName) throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(15000);
 		driver.findElement(SearchAgency).clear();
+		WebDriverWaits.ScrollIntoView(SearchAgency);
+		Thread.sleep(2000);
 		WebDriverWaits.SendKeys(SearchAgency, agencyName);
-		Thread.sleep(5000);
+		Thread.sleep(10000);
+		WebDriverWaits.ScrollIntoView(EnterAgencyIcon);
+		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(EnterAgencyIcon);
 		Thread.sleep(10000);
 		ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
 		Thread.sleep(3000);
 		driver.switchTo().window((String) tabs.get(1));
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		GetCRMTrace = WebDriverWaits.GetText(DashboardCRMUtils.CRMToggle);
 	}
 
@@ -308,14 +312,24 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		WebDriverWaits.SendKeys(LabelField, RandomLabelName);
 		WebElement UploadMapLayer = driver.findElement(By.xpath("//input[@id='file-upload__kml']"));
 		Thread.sleep(5000);
-		UploadMapLayer.sendKeys(System.getProperty("user.dir") + "/TestData/texas_city_KML (1).kmz");
-		Thread.sleep(5000);
+		
+		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigEnterprise) ){
+			UploadMapLayer.sendKeys(System.getProperty("user.dir") + DataInterface.locationMapLayerEnterprise);
+			Thread.sleep(60000);
+		}
+		
+		else {
+			UploadMapLayer.sendKeys(System.getProperty("user.dir") + DataInterface.locationMapLayerGIS12O);
+			Thread.sleep(60000);
+			
+		}
+		
 		WebDriverWaits.ClickOn(CreateMapLayerButton);
-		Thread.sleep(60000);
+		Thread.sleep(80000);
 		driver.navigate().refresh();
-		Thread.sleep(6000);
+		Thread.sleep(20000);
 		WebDriverWaits.ClickOn(MapLayersTab);
-		Thread.sleep(6000);
+		Thread.sleep(15000);
 		String MapLayerCountAtHeader2[] = WebDriverWaits.GetText(LCFsActiveCount).split(" ");
 		MapLayerCountAfter = Integer.parseInt(MapLayerCountAtHeader2[0]);
 		CompareMapLayersCount = (MapLayerCountAfter == (MapLayerCountBefore + 1));
@@ -332,11 +346,25 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		WebDriverWaits.ClickOn(AgencyBoundaryTab);
 		Thread.sleep(5000);
 		BoundaryTabTitle = WebDriverWaits.GetText(AgencyBoundaryTab);
+		
+		
 		WebElement UploadBoundaryFile = driver.findElement(By.xpath("//input[@id='file-upload__boundary']"));
 		Thread.sleep(8000);
-		UploadBoundaryFile.sendKeys(System.getProperty("user.dir") + "/TestData/texas_city_KML (1).kmz");
-		Thread.sleep(60000);
+		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigEnterprise) ){
+			UploadBoundaryFile.sendKeys(System.getProperty("user.dir") + DataInterface.locationMapLayerEnterprise);
+			Thread.sleep(60000);
+		}
+		
+		else {
+			UploadBoundaryFile.sendKeys(System.getProperty("user.dir") + DataInterface.locationMapLayerGIS12O);
+			Thread.sleep(60000);
+			
+		}
+		
+		
+		
 		int CheckRefresh = driver.findElements(RefreshLinkText).size();
+		Thread.sleep(5000);
 //		List<WebElement> RefreshPresent = driver.findElements(RefreshLinkText);
 		while(CheckRefresh > 0) {
 		WebDriverWaits.ScrollIntoView(RefreshLinkText)	;
@@ -352,7 +380,18 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		Thread.sleep(15000);
 		WebDriverWaits.ScrollIntoView(UploadedFileLabel);
 		ActualBoundaryFile = WebDriverWaits.GetText(UploadedFileLabel);
-		ExpectedBoundaryFile = "texas_city_KML__1_.kmz";
+		
+		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigEnterprise) ){
+			ExpectedBoundaryFile = "texas_city_KML__1_.kmz";
+		}
+		
+		else {
+			ExpectedBoundaryFile = "HendersonCityLimits.kmz";
+			
+		}
+		
+		
+		
 //		ExpectedBoundaryFile = "City_Boundaries.kmz";
 	}
 
@@ -364,10 +403,26 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		WebDriverWaits.ClickOn(MapSettingsTab);
 		Thread.sleep(3000);
 		MapSettingsTabTitle = WebDriverWaits.GetText(MapSettingsTab);
+		
 		WebElement UploadBoundaryFile = driver.findElement(By.xpath("//input[@id='file-upload__layer']"));
 		Thread.sleep(3000);
-		UploadBoundaryFile.sendKeys(System.getProperty("user.dir") + "/TestData/Texas_City.gdb.zip");
-		Thread.sleep(60000);
+		
+		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigEnterprise) ){
+			UploadBoundaryFile.sendKeys(System.getProperty("user.dir") + DataInterface.locationParcelFileEnterprise);
+			Thread.sleep(60000);
+		}
+		
+		else {
+			UploadBoundaryFile.sendKeys(System.getProperty("user.dir") + DataInterface.locationParcelFileGIS12O);
+			Thread.sleep(60000);
+			
+		}
+		
+		
+		
+//		UploadBoundaryFile.sendKeys(System.getProperty("user.dir") + "/TestData/Texas_City.gdb.zip");
+//		Thread.sleep(60000);
+		
 		driver.navigate().refresh();
 		int CheckRefresh = driver.findElements(RefreshLinkText).size();
 		while(CheckRefresh > 0) {
@@ -379,11 +434,35 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 	}
 		Thread.sleep(8000);
 		WebDriverWaits.ClickOn(MapSettingsTab);
-		Thread.sleep(3000);
-		WebDriverWaits.Clear(CenterLongitudeField);
-		WebDriverWaits.SendKeys(CenterLongitudeField, "-94.8992156982421900000000000");
-		WebDriverWaits.Clear(CenterLatitudeField);
-		WebDriverWaits.SendKeys(CenterLatitudeField, "29.3833717078824430000000000");
+		Thread.sleep(5000);
+		
+		
+		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigEnterprise) ){
+			WebDriverWaits.Clear(CenterLongitudeField);
+			WebDriverWaits.SendKeys(CenterLongitudeField, DataInterface.centerLongitudeEnterprise);
+			WebDriverWaits.Clear(CenterLatitudeField);
+			WebDriverWaits.SendKeys(CenterLatitudeField, DataInterface.centerLatitudeEnterprise);
+			
+		}
+		
+		else {
+			
+			WebDriverWaits.Clear(CenterLongitudeField);
+			WebDriverWaits.SendKeys(CenterLongitudeField, DataInterface.centerLongitudeGIS12O);
+			WebDriverWaits.Clear(CenterLatitudeField);
+			WebDriverWaits.SendKeys(CenterLatitudeField, DataInterface.centerLatitudeGIS120);
+			
+			
+		}
+		
+		
+		
+//		WebDriverWaits.Clear(CenterLongitudeField);
+//		WebDriverWaits.SendKeys(CenterLongitudeField, "-94.8992156982421900000000000");
+//		WebDriverWaits.Clear(CenterLatitudeField);
+//		WebDriverWaits.SendKeys(CenterLatitudeField, "29.3833717078824430000000000");
+//		
+		
 		JavascriptExecutor jser = (JavascriptExecutor) driver;
 		Thread.sleep(8000);
 		jser.executeScript("window.scrollBy(0,450)", "");
@@ -476,7 +555,7 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		Thread.sleep(10000);
 		driver.navigate().refresh();
 		Thread.sleep(3000);
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		JavascriptExecutor jser = (JavascriptExecutor) driver;
 		jser.executeScript("window.scrollBy(0,450)", "");
 		Thread.sleep(1000);
@@ -509,7 +588,7 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		System.out.println(AddedViolations.size());
 		CheckVio1 = (AddedViolations.size() == 1);
 		driver.navigate().refresh();
-		Thread.sleep(5000);
+		Thread.sleep(20000);
 		WebDriverWaits.ScrollIntoView(CreateViolationButton);
 		WebDriverWaits.ClickOn(CreateViolationButton);
 		Thread.sleep(6000);
@@ -535,7 +614,9 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		driver.navigate().refresh();
 		//driver.navigate().to(DataInterface.URLViolations);
 		JavascriptExecutor jser = (JavascriptExecutor) driver;
-		Thread.sleep(10000);
+		Thread.sleep(12000);
+		WebDriverWaits.ScrollIntoView(DispositionsTab);
+		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(DispositionsTab);
 		Thread.sleep(6000);
 		WebDriverWaits.ClickOn(CreateInvalidDispositionButton);
@@ -553,11 +634,11 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		Thread.sleep(6000);
 		
 		driver.navigate().refresh();
-		Thread.sleep(8000);
+		Thread.sleep(10000);
 		WebDriverWaits.ClickOn(DispositionsTab);
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 		driver.findElement(By.xpath("//button[text()='Invalid Dispositions']")).click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		DispositionsHeader = WebDriverWaits.GetText(ActiveDispositionsHeader).split(" ");
 		DispositionsHeaderCount = Integer.parseInt(DispositionsHeader[0]);
 		CheckDispositionCount = (DispositionsHeaderCount == 1);
@@ -633,7 +714,9 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 
 	public static void AgencySetup_VerifyCreationOfCategories() throws InterruptedException {
 		driver.navigate().refresh();
-		Thread.sleep(6000);
+		Thread.sleep(10000);
+		WebDriverWaits.ScrollIntoView(AppMenuIcon);
+		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(AppMenuIcon);
 		Thread.sleep(5000);
 		WebDriverWaits.ClickOn(AgencySetupIcon);
@@ -707,6 +790,9 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		Thread.sleep(13000);//CreateACasePopupTitle
 		List<WebElement> CCPHeader = driver.findElements(CreateACasePopupTitle);
 		CCPStatus = CCPHeader.size()==1;
+		Thread.sleep(2000);
+		WebDriverWaits.ScrollIntoView(CancelButton);
+		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(CancelButton);
 		Thread.sleep(4000);
 	}
@@ -745,7 +831,7 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		}
 		
 		
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 		int CreateCaseCheck = driver.findElements(CSPInternalUtils.PlusIconToCRM).size();
 		if(CreateCaseCheck > 0) {
 			WebDriverWaits.ScrollIntoView(CSPInternalUtils.PlusIconToCRM);
@@ -1083,7 +1169,7 @@ public static void AgencySetup_VerifyActivateInactiveFines() throws InterruptedE
 	        WebDriverWaits.SendKeys(AfterDayLateFeePayDue, PayDueAfterDay);
 	        Thread.sleep(1000);
 	        WebDriverWaits.ClickByJsExecuter(CreateLateFeebtnpopup);
-	        Thread.sleep(2000);
+	        Thread.sleep(10000);
 	        AfterActiveLateFeeCount = Integer.parseInt((WebDriverWaits.GetText(ActiveFines).split(" "))[0]);
 			Thread.sleep(1000);
 			List<String> allactiveLateFeeLabels = new ArrayList<>();

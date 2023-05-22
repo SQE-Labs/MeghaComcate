@@ -19,11 +19,41 @@ import TestCasesCRM.CSPInternal;
 import TestCasesCRM.Categories;
 
 public class CRMCommonMethods {
+	
+	
+	
+	public static void searchLocationCSP(String Address) throws InterruptedException {
+		WebDriverWaits.SendKeys(CSPInternal.LocationField, Address);
+		Thread.sleep(4000);
+		WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
+		Thread.sleep(10000);
+		WebDriverWaits.ClickOn(CSPInternal.LocationSearchResult);
+		Thread.sleep(10000);
+	}
+	
+	public static void searchLocationExternalCS(String Address) throws InterruptedException {
+		WebDriverWaits.ClickOn(CSPExternalUtils.LocationSearchField);
+		Thread.sleep(4000);
+		WebDriverWaits.SendKeys(CSPExternalUtils.LocationSearchField, Address);
+		Thread.sleep(4000);
+		WebDriverWaits.ClickOn(CSPExternalUtils.LocationSearchResult);
+		Thread.sleep(10000);
+	}
+	
+	
+	public static void CreationOf50PlusSubmissions() throws InterruptedException {
+		Thread.sleep(5000);
+		for(int i = 0; i <= 50; i++) {
+			CRMCommonMethods.CRM_CreateSubmission("No", "Yes", "Yes", "Yes", "Yes","Location Required");
+			Thread.sleep(3000);
+			System.out.println(i + "Submission Created..");
+		}
+	}
 
 	public static void CRM_CreateSubmission(String Anonymous, String Customer, String Tags, String Location,
 			String Attachment, String CategoryName) throws InterruptedException {
 		BrowsersInvoked.driver.navigate().to(DataInterface.URLCreateCustomerSubmission);
-		Thread.sleep(10000);
+		Thread.sleep(15000);
 		WebDriverWaits.ClickOn(CSPInternal.CategoryDropdown);
 		
 //		WebDriverWaits.SendKeys(CSPInternal.SearchCategory, Categories.RandomCategoryname);
@@ -45,8 +75,30 @@ public class CRMCommonMethods {
 			WebDriverWaits.SendKeys(CSPInternal.AddExistingCustomerField, "a");
 			Thread.sleep(4000);
 			WebDriverWaits.ClickOn(CSPInternal.ContactSearchResults);
-			 if(WebDriverWaits.GetValueAttribute(WorkPhoneField).isEmpty())
-		         WebDriverWaits.SendKeys(CSPInternal.WorkPhoneField, "12057547399");
+			 if(WebDriverWaits.GetValueAttribute(CellPhoneField).isEmpty())
+			 {
+		         WebDriverWaits.SendKeys(CSPInternal.CellPhoneField, "12057547399");
+			 }
+			 Thread.sleep(5000);
+			 int Emailcheck = BrowsersInvoked.driver.findElements(By.xpath("//button[@class='square-btn preference-selected-button btn btn-primary'][text()='Email']")).size();
+			 
+			 int Textcheck = BrowsersInvoked.driver.findElements(By.xpath("//button[@class='square-btn preference-selected-button btn btn-primary'][text()='Text Message']")).size();
+			 Thread.sleep(2000);
+			 if(Emailcheck == 0) {
+				 WebDriverWaits.ClickOn(By.xpath("//button[contains(text(),'Email')]"));
+				 Thread.sleep(3000);
+			 }
+			 
+			 if(Textcheck == 0) {
+				 WebDriverWaits.ClickOn(By.xpath("//button[text()='Text Message']"));
+				 Thread.sleep(3000);
+			 }
+			 
+			 
+			
+			 Thread.sleep(2000);
+			 Thread.sleep(2000);
+			 
 		      
 		}
 		if (Tags == "Yes") {
@@ -56,14 +108,24 @@ public class CRMCommonMethods {
 			}
 		}
 		if (Location == "Yes") {
-			WebDriverWaits.SendKeys(CSPInternal.LocationField, "Texas ");
-			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
-			WebDriverWaits.SendKeys(CSPInternal.LocationField, "City Museum");
-			Thread.sleep(3000);
-			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
-			Thread.sleep(3000);
-			WebDriverWaits.ClickOn(CSPInternal.LocationSearchResult);
-			Thread.sleep(4000);
+//			WebDriverWaits.SendKeys(CSPInternal.LocationField, "Texas ");
+//			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
+//			WebDriverWaits.SendKeys(CSPInternal.LocationField, "City Museum");
+//			Thread.sleep(3000);
+//			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
+//			Thread.sleep(3000);
+//			WebDriverWaits.ClickOn(CSPInternal.LocationSearchResult);
+//			Thread.sleep(4000);
+			
+			if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) ){
+				CRMCommonMethods.searchLocationCSP(DataInterface.searchLocationKey1O);
+			}
+			
+			else {
+				CRMCommonMethods.searchLocationCSP(DataInterface.searchLocationKey);
+			}
+			
+			
 			if( WebDriverWaits.ElementIsDisplayed(CSPInternal.ToggleChecked)) {
 				   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
 				   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
@@ -83,12 +145,17 @@ public class CRMCommonMethods {
 			Thread.sleep(3000);
 		}
 		
-		WebDriverWaits.ClickOn(CSPInternal.CreateSubmissionButton);
-		Thread.sleep(2000);
+		WebDriverWaits.ScrollIntoView(CSPInternal.CreateSubmissionButton);
+		Thread.sleep(4000);
+		WebDriverWaits.ClickByJsExecuter(CSPInternal.CreateSubmissionButton);
+		Thread.sleep(25000);
 		List<WebElement> DuplicateSubsPopup = BrowsersInvoked.driver
 				.findElements(CSDPUtils.PossibleDuplicateSubmissionsPopup);
 		if (DuplicateSubsPopup.size() == 1) {
+			WebDriverWaits.ScrollIntoView(CSDPUtils.SubmitAnywayButton);
+			Thread.sleep(3000);
 			WebDriverWaits.ClickOn(CSDPUtils.SubmitAnywayButton);
+			Thread.sleep(20000);
 		}
 		Thread.sleep(5000);
 	}
@@ -157,14 +224,31 @@ public class CRMCommonMethods {
 			}
 		}
 		if (Location == "Yes") {
-			WebDriverWaits.SendKeys(CSPInternal.LocationField, "Texas ");
-			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
-			WebDriverWaits.SendKeys(CSPInternal.LocationField, "City Museum");
-			Thread.sleep(3000);
-			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
-			Thread.sleep(3000);
-			WebDriverWaits.ClickOn(CSPInternal.LocationSearchResult);
-			Thread.sleep(4000);
+//			WebDriverWaits.SendKeys(CSPInternal.LocationField, "Texas ");
+//			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
+//			WebDriverWaits.SendKeys(CSPInternal.LocationField, "City Museum");
+//			Thread.sleep(3000);
+//			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
+//			Thread.sleep(3000);
+//			WebDriverWaits.ClickOn(CSPInternal.LocationSearchResult);
+//			Thread.sleep(4000);
+			
+			if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) ){
+				CRMCommonMethods.searchLocationCSP(DataInterface.searchLocationKey1O);
+			}
+			
+			else {
+				CRMCommonMethods.searchLocationCSP(DataInterface.searchLocationKey);
+			}
+			
+			
+			if( WebDriverWaits.ElementIsDisplayed(CSPInternal.ToggleChecked)) {
+				   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
+				   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
+				   System.out.println("clicked toggle twice");
+
+				}
+			
 			if( WebDriverWaits.ElementIsDisplayed(CSPInternal.ToggleChecked)) {
 				   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
 				   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
@@ -459,6 +543,7 @@ public class CRMCommonMethods {
 	public static By NameField = By.xpath("//input[@name='name']");
 	public static By EmailField = By.xpath("//input[@name='email']");
 	public static By WorkPhoneField = By.xpath("//input[@name='workPhone']");
+	public static By CellPhoneField = By.xpath("//input[@name='phoneNumber']");
 	public static By CreateContactBtn = By.xpath("(//div[@class='full-page-modal__header']//button[2])[2]");
 	public static By PropertyOwnerOption = By.xpath("//span/label[text()='Property Owner']");
 	public static By ApplyButton = By.xpath("//button[text()='Apply']");
@@ -514,15 +599,34 @@ public class CRMCommonMethods {
 		WebDriverWaits.ClickOn(AddButton);
 		Thread.sleep(2000);
 	}
+	
+	
+	public static void serachLocationCCP(String Address) throws InterruptedException {
+		WebDriverWaits.SendKeys(LocationSearchField, Address);
+		WebDriverWaits.WaitUntilVisible(LocationSearchResult);
+		Thread.sleep(10000);
+		WebDriverWaits.ClickOn(LocationSearchResult);
+		Thread.sleep(15000);
+	}
+	
 
 	public static void CE_AddLocation() throws InterruptedException {
-		Thread.sleep(3000);
-		WebDriverWaits.SendKeys(LocationSearchField, "Texas ");
-		WebDriverWaits.WaitUntilVisible(LocationSearchResult);
-		WebDriverWaits.SendKeys(LocationSearchField, "City Museum");
-		Thread.sleep(5000);
-		WebDriverWaits.ClickOn(LocationSearchResult);
-		Thread.sleep(4000);
+//		Thread.sleep(3000);
+//		WebDriverWaits.SendKeys(LocationSearchField, "Texas ");
+//		WebDriverWaits.WaitUntilVisible(LocationSearchResult);
+//		WebDriverWaits.SendKeys(LocationSearchField, "City Museum");
+//		Thread.sleep(5000);
+//		WebDriverWaits.ClickOn(LocationSearchResult);
+//		Thread.sleep(4000);
+		
+		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) ){
+			CRMCommonMethods.serachLocationCCP(DataInterface.searchLocationKey1O);
+		}
+		
+		else {
+			CRMCommonMethods.serachLocationCCP(DataInterface.searchLocationKey);
+		}
+		
 	}
 
 	public static void CE_AddViolation() throws InterruptedException {
@@ -628,7 +732,7 @@ public class CRMCommonMethods {
 		Thread.sleep(3000);
 		WebElement adddocument = BrowsersInvoked.driver.findElement(By.xpath(selector));
 		adddocument.click();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		RobotClass.RobotClassUploadMedia(filePath);
 		Thread.sleep(3000);
 		

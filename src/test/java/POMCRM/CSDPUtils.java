@@ -18,6 +18,7 @@ public class CSDPUtils extends CSPExternalUtils {
 	public static String validationMsgReason = "//textarea[@name='reason']/following::span";
 	public static String dueByDatepicker = "//input[@name='dueBy']";
 	public static String updateDueDate = "//td[@class='rdtDay rdtActive']/following::td[1]";
+	public static String updateDueDates = "//td[@class='rdtDay rdtActive rdtToday']/following::td[1]";
 	public static String changedDueDate = "//label[text()='Due By']/following::label[1]";
 	public static String internalNotesContent = "//div[@class='internal-note-tile-content__content']";
 	public static String internalNotesContent2 = "(//div[@class='internal-note-tile-content__content'])[2]";
@@ -43,6 +44,7 @@ public class CSDPUtils extends CSPExternalUtils {
 	public static By ValidationMsgReason = By.xpath(CSDPUtils.validationMsgReason);
 	public static By DueByDatepicker = By.xpath(CSDPUtils.dueByDatepicker);
 	public static By UpdateDueDate = By.xpath(CSDPUtils.updateDueDate);
+	public static By UpdateDueDates = By.xpath(CSDPUtils.updateDueDates);
 	public static By ChangedDueDate = By.xpath(CSDPUtils.changedDueDate);
 	public static By InternalNotesContent = By.xpath(CSDPUtils.internalNotesContent);
 	public static By InternalNotesContent2 = By.xpath(CSDPUtils.internalNotesContent2);
@@ -150,7 +152,9 @@ public class CSDPUtils extends CSPExternalUtils {
 		RandomReason = RandomStrings.RequiredString(50);
 		WebDriverWaits.SendKeys(ReasonField, RandomReason);
 		WebDriverWaits.ClickOn(DueByDatepicker);
-		WebDriverWaits.ClickOn(UpdateDueDate);
+		Thread.sleep(2000);
+		WebDriverWaits.ClickOn(UpdateDueDates);
+		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(SaveButton);
 	}
 
@@ -265,7 +269,7 @@ public class CSDPUtils extends CSPExternalUtils {
 		RandomEditedNote = RandomNote;
 		WebDriverWaits.SendKeys(InternalNoteField, RandomNote);
 		WebDriverWaits.ClickOn(SaveButton);
-		Thread.sleep(10000);
+		Thread.sleep(15000);
 		WebDriverWaits.ScrollIntoView(InternalNotesContent);
 		EditedNotes = WebDriverWaits.GetText(InternalNotesContent);
 	}
