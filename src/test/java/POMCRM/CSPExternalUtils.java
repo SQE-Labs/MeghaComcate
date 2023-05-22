@@ -11,6 +11,7 @@ import BrowsersBase.DataInterface;
 import CommonMethods.CRMCommonMethods;
 import CommonMethods.RandomStrings;
 import CommonMethods.WebDriverWaits;
+import TestCasesCRM.CSPInternal;
 
 public class CSPExternalUtils extends CSPInternalUtils {
 
@@ -306,11 +307,37 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		WebDriverWaits.ClickOn(NextButtonSec3);
 		ValidationMsgLocation = WebDriverWaits.GetText(LocationValidationMsg);
 		ExpectedMsgLoc = "The location is required.";
+<<<<<<< HEAD
 		WebDriverWaits.ClickOn(LocationSearchField);
 		Thread.sleep(2000);
 		WebDriverWaits.SendKeys(LocationSearchField, "Texas City Museum");
 		Thread.sleep(4000);
 		WebDriverWaits.ClickOn(LocationSearchResult);
+=======
+		
+//		WebDriverWaits.ClickOn(LocationSearchField);
+//		WebDriverWaits.SendKeys(LocationSearchField, "Texas City Museum");
+//		Thread.sleep(4000);
+//		WebDriverWaits.ClickOn(LocationSearchResult);
+		
+		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) ){
+			CRMCommonMethods.searchLocationExternalCS(DataInterface.searchLocationKey1O);
+		}
+		
+		else {
+			CRMCommonMethods.searchLocationExternalCS(DataInterface.searchLocationKey);
+		}
+		
+		
+		if( WebDriverWaits.ElementIsDisplayed(CSPInternal.ToggleChecked)) {
+			   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
+			   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
+			   System.out.println("clicked toggle twice");
+
+			}
+		
+		WebDriverWaits.ClickOn(NextButtonSec3);
+>>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(NextButtonSec3);
 		Thread.sleep(4000);
@@ -431,8 +458,13 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		//driver.navigate().to("https://admin-stage.comcate.com/agencies"); // stage  
 		driver.navigate().to(DataInterface.AdminURL);
 		Thread.sleep(4000);
+<<<<<<< HEAD
 		CRMCommonMethods.CRM_CreateExternalSubmission("Yes","Location Not Required","No","Yes");
 		//CRMCommonMethods.CRM_CreateExternalSubmissionWithoutLogin("Yes","Location Not Required","No","Yes");
+=======
+		//CRMCommonMethods.CRM_CreateExternalSubmission("Yes","Location Not Required","No","Yes");
+		CRMCommonMethods.CRM_CreateExternalSubmissionWithoutLogin("Yes","Location Not Required","No","Yes");
+>>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		Thread.sleep(12000);
 		SubmissionSuccessMsgNA = WebDriverWaits.GetText(SuccessMessage);
 	}

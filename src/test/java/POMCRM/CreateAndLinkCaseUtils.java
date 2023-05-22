@@ -101,7 +101,11 @@ public class CreateAndLinkCaseUtils extends CSDPUtils {
 		CreateCasePopupTitle = WebDriverWaits.GetText(CreateCasePopup);
 		Thread.sleep(5000);
 		WebDriverWaits.ClickOn(CreateScheduleInspectionButton);
+<<<<<<< HEAD
 		Thread.sleep(15000);
+=======
+		Thread.sleep(25000);
+>>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		AssociatedSubmission = WebDriverWaits.GetText(AssociatedSubmissionLink);
 	}
 

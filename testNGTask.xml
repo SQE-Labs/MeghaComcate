@@ -29,19 +29,19 @@
 				</methods>
 			</class> -->
 
-			<class name="TCsNewAgencySetup.AgencyCreation">
+			<!--<class name="TCsNewAgencySetup.AgencyCreation">
 				<methods>
 					<include name="AgencyCreation_OpenCreateAgencyPopup" />
 					<include name="AgencyCreation_ConfigureCE" />
 					<include name="AgencyCreation_ConfigureCRM" />
 					<include name="AgencyCreation_VerifyNewAgencyCreation" />
 				</methods>
-			</class>
+			</class>-->
 
 			<class name="TCsNewAgencySetup.AppPreRequisites">
 				<methods>
 					<include name="AgencySetup_VerifyAppConfigurations" />
-					<include name="AgencySetup_VerifyCreationOfLCFs" />
+					<!--<include name="AgencySetup_VerifyCreationOfLCFs" />
 					<include name="AgencySetup_VerifyUploadedMapLayer" />
 					<include name="AgencySetup_VerifyUploadedAgencyBoundary" />
 					<include name="AgencySetup_VerifyUploadedAgencyParcelFile" />
@@ -55,6 +55,7 @@
 					<include name="AgencySetup_VerifyCreationOfFADocument" />
 					<include name="AgencySetup_VerifyCreationOfCategories" />
 					<include name="AgencySetup_VerifySavedSubmissionSettings" />
+<<<<<<< HEAD
 					<include name="AgencySetup_VerifySuccessfulDirectionToCCP" />
 
 
@@ -63,6 +64,15 @@
 
 
 					<include name="AgencySetup_VerifyCaseCreationWithEntityViolation" />
+=======
+					<include name="AgencySetup_VerifySuccessfulDirectionToCCP" />-->
+					
+				<!--<include name="AgencySetup_VerifyCreationOf50PlusCases" />
+					<include name="AgencySetup_VerifyCreationOf50PlusSubmissions" />  -->
+					
+					<!--<include name="AgencySetup_VerifyCaseCreationWithEntityViolation" />-->
+					
+>>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 					<include name="AgencySetup_VerifyCreateFinePopup"></include>
 					<include name="AgencySetup_VerifyFlatFineCreationDoNotAttachedNotices"></include>
 					<include name="AgencySetup_VerifyFlatFineCreationAttachedNotices"></include>

@@ -1,6 +1,7 @@
 package POMCRM;
 
 import CommonMethods.CRMCommonMethods;
+import CommonMethods.PropertiesUtils;
 import CommonMethods.RandomStrings;
 import com.twilio.Twilio;
 import com.twilio.base.ResourceSet;
@@ -83,8 +84,13 @@ public class SMSAndEmailVerificationUtils extends CSDPUtils {
 //	public static final String ACCOUNT_SID = "AC98027249ebb226c5a5fac9eb11850e95";
 //	public static final String AUTH_TOKEN = "dfbfa613117596b5aab78f1e228143b3";
 	
+<<<<<<< HEAD
 	public static final String ACCOUNT_SID = "AC98027249ebb226c5a5fac9eb11850e95";
 	public static final String AUTH_TOKEN = "c6c334bf072ff393cf2e600789d8dc5d";
+=======
+	public static final String ACCOUNT_SID =PropertiesUtils.getPropertyValue("ACCOUNT_SID");
+	public static final String AUTH_TOKEN = PropertiesUtils.getPropertyValue("AUTH_TOKEN");
+>>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 	
 	public static String URLSubmissionInfo;
 	public static String LatestSID;

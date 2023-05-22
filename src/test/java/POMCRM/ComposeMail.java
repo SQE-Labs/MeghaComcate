@@ -58,6 +58,7 @@ public class ComposeMail extends CSPInternalUtils {
 //		System.out.println("Mail send time : " + mailSendTime.toString());
 
 		List<javax.mail.Message> inboxMessageList = gmailHelper.searchEmail(2, "Inbox", SearchBySubject);
+		Thread.sleep(2000);
 //			Message firstMessage = inboxMessageList.get(0);
 //			String body = gmailHelper.getText(true, (Part) firstMessage.getContent());
 //

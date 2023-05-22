@@ -163,7 +163,11 @@ public class AgencyCreationUtils extends Login{
 		WebDriverWaits.ScrollIntoView(CreateAgencyButton2);
 		Thread.sleep(3000);
 		WebDriverWaits.ClickOn(CreateAgencyButton2);
+<<<<<<< HEAD
 		Thread.sleep(15000);
+=======
+		Thread.sleep(10000);
+>>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		WebDriverWaits.SendKeys(AgencySearchField, RandomAgencyName);
 		Thread.sleep(13000);
 		NewAgencyTitle = WebDriverWaits.GetText(NewAgencyCreated);

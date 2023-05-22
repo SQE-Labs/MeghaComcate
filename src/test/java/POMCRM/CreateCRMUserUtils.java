@@ -177,7 +177,7 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 		WebDriverWaits.ClickOn(ApplyButton);
 		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(CreateUserPopupBtn);
-		Thread.sleep(15000);
+		Thread.sleep(20000);
 		String[] CountUsers2 = WebDriverWaits.GetText(UsersCount).split(" ");
 		String UsersAfter = CountUsers2[0];
 		int TotalUsersAfter = Integer.parseInt(UsersAfter);

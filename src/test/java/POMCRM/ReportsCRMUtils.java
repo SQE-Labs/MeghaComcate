@@ -124,7 +124,11 @@ public class ReportsCRMUtils extends DashboardCRMUtils {
 		Thread.sleep(10000);
 	}
 	public static void Reports_VerifyEditedQSReport() throws InterruptedException {
+<<<<<<< HEAD
 		Thread.sleep(6000);
+=======
+		Thread.sleep(20000);
+>>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		WebDriverWaits.ClickOn(EditAgencyIcon);
 		Thread.sleep(10000);
 		WebDriverWaits.WaitUntilVisible(CRMSectionEditIcon);
@@ -159,7 +163,11 @@ public class ReportsCRMUtils extends DashboardCRMUtils {
 		//LoginAgency();
 		//driver.navigate().to("https://app-stage.comcate.com/agencies/181/reports");
 		driver.navigate().to(DataInterface.URLReports);
+<<<<<<< HEAD
 		Thread.sleep(15000);
+=======
+		Thread.sleep(25000);
+>>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		WebDriverWaits.WaitUntilVisible(ReportsTab);
 		WebDriverWaits.ClickOn(ReportsTab);
 		Thread.sleep(10000);

@@ -205,6 +205,7 @@ public class CSPInternalUtils extends SubmissionAssignmentUtils {
 	public static void CSPInternal_CategoryWithLocationIncluded() throws InterruptedException {
 		WebDriverWaits.ClickOn(CategoryDropdown);
 		WebDriverWaits.SendKeys(SearchCategory, CreatedCategory2);
+		Thread.sleep(3000);
 		WebDriverWaits.ClickOn(SearchResultsCategory);
 		JavascriptExecutor jser = (JavascriptExecutor) driver;
 		Thread.sleep(3000);
@@ -241,6 +242,7 @@ public class CSPInternalUtils extends SubmissionAssignmentUtils {
 	public static void CSPInternal_VerifySubmissionCreation() throws InterruptedException {
 		Thread.sleep(3000);
 		WebDriverWaits.ClickOn(CreateSubmissionButton);
+		Thread.sleep(10000);
 		StatusOfSubmission = WebDriverWaits.GetText(SubmisionStatus);
 	}
 

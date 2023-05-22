@@ -66,7 +66,7 @@ public class LoginAgencyUtils extends ExtentReportClass {
 			Assert.assertEquals(false, true);
 		}
 		AgencyLoggedInUserName = WebDriverWaits.GetText(AgencyLoggedInUsername);
-		//AppPreRequisites.AgencySetup_VerifyCreationOf50PlusCases();
+		CRMCommonMethods.CreationOf50PlusSubmissions();
 	}
 	
 	public static void LoginAgencyCI() throws InterruptedException {
@@ -102,17 +102,19 @@ public class LoginAgencyUtils extends ExtentReportClass {
 		}
 		AgencyLoggedInUserName = WebDriverWaits.GetText(AgencyLoggedInUsername);
 		
+		Thread.sleep(5000); 
 		
+		//CRMCommonMethods.CreationOf50PlusSubmissions();
 	}
 
 	public static void LoginAdmin() throws InterruptedException {
 		driver.navigate().to(DataInterface.AdminURL);
-		Thread.sleep(4000);
+		Thread.sleep(10000);
 		WebDriverWaits.SendKeys(AdminUsername, DataInterface.AdminUsername);
 		Thread.sleep(2000);
 		WebDriverWaits.SendKeys(AdminPassword, DataInterface.AdminPassword);
 		WebDriverWaits.ClickOn(AdminButton);
-		Thread.sleep(2000);
+		Thread.sleep(10000);
 //		WebDriverWaits.SendKeys(SearchAgency, String.valueOf(DataInterface.AgencyID));
 //		Thread.sleep(2000);
 //		WebDriverWaits.ClickOn(EnterAgencyIcon);
