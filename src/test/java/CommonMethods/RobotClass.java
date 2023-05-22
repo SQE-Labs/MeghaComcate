@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
+
 public class RobotClass {
 	public static String RobotClassUploadMedia(String Path) throws AWTException {
 		Robot rb = new Robot();
@@ -19,4 +20,6 @@ public class RobotClass {
 		rb.keyRelease(KeyEvent.VK_ENTER);
 		return Path;
 	}
+
+
 }

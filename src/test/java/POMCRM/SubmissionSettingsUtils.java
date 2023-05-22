@@ -70,32 +70,37 @@ public class SubmissionSettingsUtils extends CreateAndLinkCaseUtils {
 		CreateAndLinkCase_OpenCCPToLinkTheCase();
 		CreateAndLinkCase_VerifyLinkedCase();
 		CRMCommonMethods.CE_CloseCaseOnCDP();
-		Thread.sleep(3000);
+		Thread.sleep(10000);
 		FetchCaseStatusForYes = WebDriverWaits.GetText(CaseStatus);
+		WebDriverWaits.ScrollIntoView(AssociatedSubmissionLink);
+		Thread.sleep(3000);
 		WebDriverWaits.ClickOn(AssociatedSubmissionLink);
 		ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-		Thread.sleep(5000);
+		Thread.sleep(15000);
 		driver.switchTo().window((String) tabs.get(1));
-		Thread.sleep(10000);
+		Thread.sleep(12000);
 		FetchSubmissionStatusForYes = WebDriverWaits.GetText(SubmissionStatus);
 	}
 
 	public static void SubmissionSettings_VerifyCaseDoesntCloseForNoToggle() throws InterruptedException {
 		WebDriverWaits.CloseOtherTabs();
+		Thread.sleep(3000);
 		driver.navigate().to(DataInterface.URLSubmissionSettings);
-		Thread.sleep(4000);
+		Thread.sleep(10000);
 		WebDriverWaits.ClickOn(NoToggle1);
 		WebDriverWaits.ClickOn(SaveChangesButton);
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		CreateAndLinkCase_PreRequisite();
 		CreateAndLinkCase_OpenCCPToLinkTheCase();
 		CreateAndLinkCase_VerifyLinkedCase();
 		CRMCommonMethods.CE_CloseCaseOnCDP();
-		Thread.sleep(3000);
+		Thread.sleep(10000);
 		FetchCaseStatusForNo = WebDriverWaits.GetText(CaseStatus);
+		WebDriverWaits.ScrollIntoView(AssociatedSubmissionLink);
+		Thread.sleep(3000);
 		WebDriverWaits.ClickOn(AssociatedSubmissionLink);
 		ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-		Thread.sleep(5000);
+		Thread.sleep(15000);
 		driver.switchTo().window((String) tabs.get(1));
 		Thread.sleep(6000);
 		FetchSubmissionStatusForNo = WebDriverWaits.GetText(SubmissionStatus);
@@ -105,10 +110,10 @@ public class SubmissionSettingsUtils extends CreateAndLinkCaseUtils {
 
 	public static void SubmissionSettings_VerifyselectionOfAnonymousToggles() throws InterruptedException {
 		driver.navigate().to(DataInterface.URLSubmissionSettings);
-		Thread.sleep(4000);
+		Thread.sleep(12000);
 		WebDriverWaits.ClickOn(YesToggle2);
 		WebDriverWaits.ClickOn(SaveChangesButton);
-		Thread.sleep(4000);
+		Thread.sleep(10000);
 		String GetClass = WebDriverWaits.WaitUntilVisibleWE(YesToggle2).getAttribute("class");
 		ToggleButtonState4 = GetClass.equals("square-btn btn btn-primary");
 		System.out.println(ToggleButtonState4);		
@@ -119,21 +124,24 @@ public class SubmissionSettingsUtils extends CreateAndLinkCaseUtils {
 		WebDriverWaits.ClickOn(SaveChangesButton);
 		Thread.sleep(8000);
 		WebDriverWaits.ClickOn(PlusIconToCRM);
+		Thread.sleep(1000);
 		WebDriverWaits.ClickOn(CustomerSubmissionOption);
-		Thread.sleep(4000);
+		Thread.sleep(12000);
 		WebElement PostAnonymously = WebDriverWaits.WaitUntilVisibleWE(PostAnonymouslyCheckbox);
 		PostAnonymouslyPresence = PostAnonymously.isDisplayed();
 	}
 
 	public static void SubmissionSettings_VerifyPostAnonymouslyForNoToggle() throws InterruptedException {
+		Thread.sleep(3000);
 		driver.navigate().to(DataInterface.URLSubmissionSettings);
-		Thread.sleep(4000);
+		Thread.sleep(12000);
 		WebDriverWaits.ClickOn(NoToggle2);
 		WebDriverWaits.ClickOn(SaveChangesButton);
 		Thread.sleep(4000);
 		WebDriverWaits.ClickOn(PlusIconToCRM);
+		Thread.sleep(1000);
 		WebDriverWaits.ClickOn(CustomerSubmissionOption);
-		Thread.sleep(4000);
+		Thread.sleep(12000);
 		List<WebElement> PostAnonymously = driver.findElements(PostAnonymouslyCheckbox);
 		PostAnonymouslyAbsence = PostAnonymously.size()==0;
 		SubmissionDefaultsetttings();
@@ -141,12 +149,12 @@ public class SubmissionSettingsUtils extends CreateAndLinkCaseUtils {
 	
 	
 	public static void SubmissionDefaultsetttings() throws InterruptedException {
-		
+		Thread.sleep(2000);
 		driver.navigate().to(DataInterface.URLSubmissionSettings);
-		Thread.sleep(4000);
+		Thread.sleep(12000);
 		WebDriverWaits.ClickOn(YesToggle2);
 		WebDriverWaits.ClickOn(SaveChangesButton);
-		Thread.sleep(8000);
+		Thread.sleep(12000);
 		
 	}
 	

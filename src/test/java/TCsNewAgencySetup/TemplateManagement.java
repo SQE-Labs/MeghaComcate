@@ -36,7 +36,7 @@ public class TemplateManagement extends TemplateMangementUtils {
 		TemplateMangementUtils.TemplateMangement_CloseandOpenCreateTemplatePOpup();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(CrtTemplateHeader, ExpectedCrtTemplateHeader);
-		softAssert.assertEquals(ClosedCrtTemplatePopup, true);
+		softAssert.assertEquals(ClosedCrtTemplatePopup,Boolean.TRUE);
 		softAssert.assertAll();
 	}
 
@@ -67,8 +67,8 @@ public class TemplateManagement extends TemplateMangementUtils {
 		
 		TemplateMangementUtils.TemplateMangement_VerifyAdditionofMultipleDocTemplatePOpup();
 		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertEquals(filesCountCheck, true);
-		softAssert.assertEquals(filesAfterCountCheck, true);
+		softAssert.assertEquals(filesCountCheck, Boolean.TRUE);
+		softAssert.assertEquals(filesAfterCountCheck, Boolean.TRUE);
 		softAssert.assertAll();
 	}
 	
@@ -128,7 +128,7 @@ public class TemplateManagement extends TemplateMangementUtils {
 		TemplateMangementUtils.TemplateMangement_VerifyEditTheTemplate();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(TemplateGridSubLine.trim(), rndSubLine.trim());
-		softAssert.assertEquals(TemplateNameStatus, false);
+		softAssert.assertEquals(TemplateNameStatus, Boolean.FALSE);
 		softAssert.assertEquals(actualTemplateName,EditTemplateHeader);
 		softAssert.assertAll();
 	}

@@ -23,7 +23,9 @@ public class CRMCommonMethods {
 	public static void CRM_CreateSubmission(String Anonymous, String Customer, String Tags, String Location,
 			String Attachment, String CategoryName) throws InterruptedException {
 		BrowsersInvoked.driver.navigate().to(DataInterface.URLCreateCustomerSubmission);
-		Thread.sleep(10000);
+		Thread.sleep(20000);
+		WebDriverWaits.ScrollIntoView(CSPInternal.CategoryDropdown);
+		Thread.sleep(3000);
 		WebDriverWaits.ClickOn(CSPInternal.CategoryDropdown);
 		
 //		WebDriverWaits.SendKeys(CSPInternal.SearchCategory, Categories.RandomCategoryname);
@@ -45,8 +47,30 @@ public class CRMCommonMethods {
 			WebDriverWaits.SendKeys(CSPInternal.AddExistingCustomerField, "a");
 			Thread.sleep(4000);
 			WebDriverWaits.ClickOn(CSPInternal.ContactSearchResults);
-			 if(WebDriverWaits.GetValueAttribute(WorkPhoneField).isEmpty())
-		         WebDriverWaits.SendKeys(CSPInternal.WorkPhoneField, "12057547399");
+			 if(WebDriverWaits.GetValueAttribute(CellPhoneField).isEmpty())
+			 {
+		         WebDriverWaits.SendKeys(CSPInternal.CellPhoneField, "12057547399");
+			 }
+			 Thread.sleep(5000);
+			 int Emailcheck = BrowsersInvoked.driver.findElements(By.xpath("//button[@class='square-btn preference-selected-button btn btn-primary'][text()='Email']")).size();
+			 
+			 int Textcheck = BrowsersInvoked.driver.findElements(By.xpath("//button[@class='square-btn preference-selected-button btn btn-primary'][text()='Text Message']")).size();
+			 Thread.sleep(2000);
+			 if(Emailcheck == 0) {
+				 WebDriverWaits.ClickOn(By.xpath("//button[contains(text(),'Email')]"));
+				 Thread.sleep(3000);
+			 }
+			 
+			 if(Textcheck == 0) {
+				 WebDriverWaits.ClickOn(By.xpath("//button[text()='Text Message']"));
+				 Thread.sleep(3000);
+			 }
+			 
+			 
+			
+			 Thread.sleep(2000);
+			 Thread.sleep(2000);
+			 
 		      
 		}
 		if (Tags == "Yes") {
@@ -84,7 +108,7 @@ public class CRMCommonMethods {
 		}
 		
 		WebDriverWaits.ClickOn(CSPInternal.CreateSubmissionButton);
-		Thread.sleep(2000);
+		Thread.sleep(15000);
 		List<WebElement> DuplicateSubsPopup = BrowsersInvoked.driver
 				.findElements(CSDPUtils.PossibleDuplicateSubmissionsPopup);
 		if (DuplicateSubsPopup.size() == 1) {
@@ -459,6 +483,7 @@ public class CRMCommonMethods {
 	public static By NameField = By.xpath("//input[@name='name']");
 	public static By EmailField = By.xpath("//input[@name='email']");
 	public static By WorkPhoneField = By.xpath("//input[@name='workPhone']");
+	public static By CellPhoneField = By.xpath("//input[@name='phoneNumber']");
 	public static By CreateContactBtn = By.xpath("(//div[@class='full-page-modal__header']//button[2])[2]");
 	public static By PropertyOwnerOption = By.xpath("//span/label[text()='Property Owner']");
 	public static By ApplyButton = By.xpath("//button[text()='Apply']");
@@ -566,7 +591,7 @@ public class CRMCommonMethods {
 	}
 	
 	public static void NavigateTo_AgencySetup () throws InterruptedException {
-		
+		Thread.sleep(2000);
 		WebDriverWaits.ScrollIntoView(AppPreRequisitesUtils.AppMenuIcon);
 		Thread.sleep(5000);
 		WebDriverWaits.ClickByJsExecuter(AppPreRequisitesUtils.AppMenuIcon);
@@ -594,6 +619,7 @@ public class CRMCommonMethods {
 	
 	
 	public static void NavigateTo_LateFeesSubTab() throws InterruptedException {
+		Thread.sleep(4000);
 		WebDriverWaits.ScrollIntoView(AppPreRequisitesUtils.CEProdSideBar);
 		if(!BrowsersInvoked.driver.findElement(AppPreRequisitesUtils.FinesSideBar).isDisplayed()) {
 			WebDriverWaits.ClickOn(AppPreRequisitesUtils.CEProdSideBar);
@@ -628,8 +654,13 @@ public class CRMCommonMethods {
 		Thread.sleep(3000);
 		WebElement adddocument = BrowsersInvoked.driver.findElement(By.xpath(selector));
 		adddocument.click();
-		Thread.sleep(3000);
-		RobotClass.RobotClassUploadMedia(filePath);
+		Thread.sleep(5000);
+		WebElement UploadFile4 = BrowsersInvoked.driver.findElement(By.xpath("//input[@type='file']"));
+		//String testtDataPath = System.getProperty("user.dir");
+		UploadFile4.sendKeys(filePath);
+		Thread.sleep(10000);
+		//RobotClass.RobotClassUploadMedia(filePath);
+		//WebDriverWaits.ActionUploadMedia(filePath);
 		Thread.sleep(3000);
 		
 	}

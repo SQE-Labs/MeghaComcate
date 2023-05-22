@@ -41,7 +41,7 @@ public class NotificationManagement extends NotificationMangementUtils {
 	    NotificationMangementUtils.AgencySetup_CreateNotificationPopCloseOpenAndValidations();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(ActualCrtNotifPopupHeader, expectedCrtNotifPopupHeader);
-		softAssert.assertEquals(PopupClosed, true);
+		softAssert.assertEquals(PopupClosed, Boolean.TRUE);
 		softAssert.assertEquals(actualLabelNameValid, expectedLableNameValid);
 		softAssert.assertEquals(actualNotifGlobalValidMsg, expectedNotifGlobalValidMsg);
 		softAssert.assertAll();

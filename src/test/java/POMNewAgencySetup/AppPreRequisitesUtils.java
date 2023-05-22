@@ -247,16 +247,20 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 //	public static String ;
 
 	public static void AgencySetup_VerifyAppConfigurations(String agencyName) throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		driver.findElement(SearchAgency).clear();
+		WebDriverWaits.ScrollIntoView(SearchAgency);
+		Thread.sleep(2000);
 		WebDriverWaits.SendKeys(SearchAgency, agencyName);
 		Thread.sleep(5000);
+		WebDriverWaits.ScrollIntoView(EnterAgencyIcon);
+		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(EnterAgencyIcon);
 		Thread.sleep(10000);
 		ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
 		Thread.sleep(3000);
 		driver.switchTo().window((String) tabs.get(1));
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		GetCRMTrace = WebDriverWaits.GetText(DashboardCRMUtils.CRMToggle);
 	}
 
@@ -311,11 +315,11 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		UploadMapLayer.sendKeys(System.getProperty("user.dir") + "/TestData/texas_city_KML (1).kmz");
 		Thread.sleep(5000);
 		WebDriverWaits.ClickOn(CreateMapLayerButton);
-		Thread.sleep(60000);
+		Thread.sleep(80000);
 		driver.navigate().refresh();
-		Thread.sleep(6000);
+		Thread.sleep(15000);
 		WebDriverWaits.ClickOn(MapLayersTab);
-		Thread.sleep(6000);
+		Thread.sleep(15000);
 		String MapLayerCountAtHeader2[] = WebDriverWaits.GetText(LCFsActiveCount).split(" ");
 		MapLayerCountAfter = Integer.parseInt(MapLayerCountAtHeader2[0]);
 		CompareMapLayersCount = (MapLayerCountAfter == (MapLayerCountBefore + 1));
@@ -535,7 +539,9 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		driver.navigate().refresh();
 		//driver.navigate().to(DataInterface.URLViolations);
 		JavascriptExecutor jser = (JavascriptExecutor) driver;
-		Thread.sleep(10000);
+		Thread.sleep(12000);
+		WebDriverWaits.ScrollIntoView(DispositionsTab);
+		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(DispositionsTab);
 		Thread.sleep(6000);
 		WebDriverWaits.ClickOn(CreateInvalidDispositionButton);
@@ -553,11 +559,11 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		Thread.sleep(6000);
 		
 		driver.navigate().refresh();
-		Thread.sleep(8000);
+		Thread.sleep(10000);
 		WebDriverWaits.ClickOn(DispositionsTab);
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 		driver.findElement(By.xpath("//button[text()='Invalid Dispositions']")).click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		DispositionsHeader = WebDriverWaits.GetText(ActiveDispositionsHeader).split(" ");
 		DispositionsHeaderCount = Integer.parseInt(DispositionsHeader[0]);
 		CheckDispositionCount = (DispositionsHeaderCount == 1);
@@ -633,7 +639,9 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 
 	public static void AgencySetup_VerifyCreationOfCategories() throws InterruptedException {
 		driver.navigate().refresh();
-		Thread.sleep(6000);
+		Thread.sleep(10000);
+		WebDriverWaits.ScrollIntoView(AppMenuIcon);
+		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(AppMenuIcon);
 		Thread.sleep(5000);
 		WebDriverWaits.ClickOn(AgencySetupIcon);
@@ -707,6 +715,9 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		Thread.sleep(13000);//CreateACasePopupTitle
 		List<WebElement> CCPHeader = driver.findElements(CreateACasePopupTitle);
 		CCPStatus = CCPHeader.size()==1;
+		Thread.sleep(2000);
+		WebDriverWaits.ScrollIntoView(CancelButton);
+		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(CancelButton);
 		Thread.sleep(4000);
 	}
@@ -745,7 +756,7 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		}
 		
 		
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 		int CreateCaseCheck = driver.findElements(CSPInternalUtils.PlusIconToCRM).size();
 		if(CreateCaseCheck > 0) {
 			WebDriverWaits.ScrollIntoView(CSPInternalUtils.PlusIconToCRM);
@@ -800,7 +811,7 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
 		
 		Thread.sleep(2000);
 		driver.navigate().refresh();
-		Thread.sleep(8000);
+		Thread.sleep(15000);
 		CRMCommonMethods.NavigateTo_AgencySetup();
 		CRMCommonMethods.NavigateTo_Fines();
 		WebDriverWaits.ScrollIntoView(CreateFineBtn);
@@ -983,6 +994,8 @@ public static void AgencySetup_VerifyActivateInactiveFines() throws InterruptedE
     	Thread.sleep(5000);
 //		CRMCommonMethods.NavigateTo_AgencySetup();
 //		CRMCommonMethods.NavigateTo_Fines();
+	    WebDriverWaits.ScrollIntoView(ActiveFines);
+		Thread.sleep(3000);
 		activefineCountBefore = Integer.parseInt((WebDriverWaits.GetText(ActiveFines)).split(" ")[0]);
 		WebDriverWaits.ClickByJsExecuter(EditInactiveFine);
 		Thread.sleep(2000);
@@ -1083,7 +1096,7 @@ public static void AgencySetup_VerifyActivateInactiveFines() throws InterruptedE
 	        WebDriverWaits.SendKeys(AfterDayLateFeePayDue, PayDueAfterDay);
 	        Thread.sleep(1000);
 	        WebDriverWaits.ClickByJsExecuter(CreateLateFeebtnpopup);
-	        Thread.sleep(2000);
+	        Thread.sleep(10000);
 	        AfterActiveLateFeeCount = Integer.parseInt((WebDriverWaits.GetText(ActiveFines).split(" "))[0]);
 			Thread.sleep(1000);
 			List<String> allactiveLateFeeLabels = new ArrayList<>();

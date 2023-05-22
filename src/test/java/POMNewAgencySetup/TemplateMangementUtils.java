@@ -202,11 +202,18 @@ public class TemplateMangementUtils extends AgencyCreationUtils {
 				Thread.sleep(2000);
 				System.out.println(path2);
 				CRMCommonMethods.AddTemplateFiles(AddDocument,path2);
-				Thread.sleep(3000); 
+				Thread.sleep(5000);
 				filescount = driver.findElements(AddedFiles).size();
+				System.out.println(filescount);
 				filesCountCheck = filescount == 2;
-				WebDriverWaits.ClickByJsExecuter(RemoveFiles);
-				Thread.sleep(2000);
+				WebElement ele = driver.findElement(RemoveFiles);
+				ele.click();
+				Thread.sleep(3000);
+
+//				WebDriverWaits.ScrollIntoView(RemoveFiles);
+//				Thread.sleep(3000);
+//				WebDriverWaits.ClickByJsExecuter(RemoveFiles);
+//				Thread.sleep(4000);
 				
 				filescountAf = driver.findElements(AddedFiles).size();
 				filesAfterCountCheck = filescountAf < filescount ;
@@ -326,7 +333,7 @@ public class TemplateMangementUtils extends AgencyCreationUtils {
 				WebDriverWaits.ScrollIntoView(SaveCrtTemplate); 
 				Thread.sleep(2000); 
 				WebDriverWaits.ClickByJsExecuter(SaveCrtTemplate);
-				Thread.sleep(5000);
+				Thread.sleep(10000);
 				WebDriverWaits.ScrollIntoView(ActiveTemplates);
 				ActiveTemplatecount = WebDriverWaits.GetText(ActiveTemplates).split(" ")[0];
 				int index  = ((Integer.parseInt(ActiveTemplatecount))*5)- 4;
@@ -335,6 +342,7 @@ public class TemplateMangementUtils extends AgencyCreationUtils {
 				TemplateGridSubLine = driver.findElement(By.xpath(GetCustomTemplateGridXPath(index+1))).getText();
 				Thread.sleep(4000);
 				WebElement ele = driver.findElement(By.xpath(GetCustomTemplateMoreLinlXPath(index + 2)));
+				Thread.sleep(2000);
 				JavascriptExecutor jse = (JavascriptExecutor) driver;
 				jse.executeScript("arguments[0].click();", ele);
 				//WebDriverWaits.ClickByJsExecuter(By.xpath(GetCustomTemplateMoreLinlXPath(index + 2)));

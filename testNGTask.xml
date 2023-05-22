@@ -7,18 +7,18 @@
 				<class name="TestCasesCRM.Login">
                     <methods>
                       <include name="LoginAdmin" />
-                      <!-- <include name="LoginAgencyStage" />-->
+                     <!--  <include name="LoginAgencyStage" /> -->
                     </methods>
                 </class>
 
-			<!-- <class name="TestCasesCRM.CSP_CSDP">
+		<!--	<class name="TestCasesCRM.CSP_CSDP">
                  <methods>
                      <include name="CSP_CSDP_CreateSubmissionWithAnonymousUser" />
                       <include name="CSP_CSDP_CreateSubmissionWithoutContact" />
                      <include name="CSP_CSDP_CreateSubmissionWithoutLocation" />
                      <include name="CSP_CSDP_CreateSubmissionWithoutTags" />
                  </methods>
-             </class>-->
+             </class> -->
 
 			<!--<class name="TestCasesCRM.SMSAndEmailVerification">
 				<methods>
@@ -56,8 +56,12 @@
 					<include name="AgencySetup_VerifyCreationOfCategories" />
 					<include name="AgencySetup_VerifySavedSubmissionSettings" />
 					<include name="AgencySetup_VerifySuccessfulDirectionToCCP" />
-					<!--<include name="AgencySetup_VerifyCreationOf50PlusCases" />
-					<include name="AgencySetup_VerifyCreationOf50PlusSubmissions" /> -->
+
+
+				<!--	<include name="AgencySetup_VerifyCreationOf50PlusCases" />
+					<include name="AgencySetup_VerifyCreationOf50PlusSubmissions" />  -->
+
+
 					<include name="AgencySetup_VerifyCaseCreationWithEntityViolation" />
 					<include name="AgencySetup_VerifyCreateFinePopup"></include>
 					<include name="AgencySetup_VerifyFlatFineCreationDoNotAttachedNotices"></include>
@@ -69,7 +73,7 @@
 					<include name="AgencySetup_VerifyCreateFixedManualFlatFineLateFee"></include> 
 					<include name="AgencySetup_VerifyCreateOutStdManualFlatFineLateFee"></include>  
 					<include name="AgencySetup_VerifyInactivateActiveLateFee"></include>  
-					<include name="AgencySetup_VerifyActivateInActiveLateFee"></include> 
+					<include name="AgencySetup_VerifyActivateInActiveLateFee"></include>
 				</methods>
 			</class>
 			
@@ -87,7 +91,7 @@
 				</methods>
 			</class> 
 			
-			<class name="TCsNewAgencySetup.NotificationManagement"> 
+			<class name="TCsNewAgencySetup.NotificationManagement">
 				<methods> 
 					<include name="AgencySetup_NotificationPreRequisiteAndDefaultNotificationCount"></include>
 					<include name="AgencySetup_CreateNotificationPopCloseOpenAndValidations"></include> 

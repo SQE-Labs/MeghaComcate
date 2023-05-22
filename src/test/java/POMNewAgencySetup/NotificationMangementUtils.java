@@ -690,7 +690,7 @@ public class NotificationMangementUtils extends AgencyCreationUtils {
 	     Thread.sleep(2000);
 	     WebDriverWaits.ClickOn(EditNotifSaveBtn);
 	     Thread.sleep(5000);
-	     Thread.sleep(2000);
+	     Thread.sleep(5000);
 	     WebDriverWaits.ScrollIntoView(ActiveNotifdetails);
 	     Thread.sleep(2000);
 	     ActiveNotifCountAfter = Integer.parseInt(WebDriverWaits.GetText(ActiveNotifdetails).split(" ")[0]);

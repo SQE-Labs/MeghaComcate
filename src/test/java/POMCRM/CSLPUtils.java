@@ -430,7 +430,7 @@ public class CSLPUtils extends CSDPUtils {
 		Thread.sleep(10000);
 		//SuccessMsgCSV = WebDriverWaits.GetText(CSVSuccessMessage);
 		ExpectedMsgCSV = "CSV file downloaded successfully";
-		Thread.sleep(5000);
+		Thread.sleep(12000);
 		
 		
 		

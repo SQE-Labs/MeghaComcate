@@ -265,8 +265,10 @@ public class CSDPUtils extends CSPExternalUtils {
 		RandomEditedNote = RandomNote;
 		WebDriverWaits.SendKeys(InternalNoteField, RandomNote);
 		WebDriverWaits.ClickOn(SaveButton);
-		Thread.sleep(10000);
+		Thread.sleep(5000);
+		Thread.sleep(15000);
 		WebDriverWaits.ScrollIntoView(InternalNotesContent);
+		Thread.sleep(3000);
 		EditedNotes = WebDriverWaits.GetText(InternalNotesContent);
 	}
 	

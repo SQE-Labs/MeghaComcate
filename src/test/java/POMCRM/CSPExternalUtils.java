@@ -139,8 +139,10 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		WebDriverWaits.CloseOtherTabs();
 		//LoginAdmin();
 		driver.navigate().to(DataInterface.AdminURL);
-		Thread.sleep(7000);
+		Thread.sleep(20000);
 		String AgencyID = Integer.toString(DataInterface.AgencyID);
+		Thread.sleep(3000);
+		WebDriverWaits.ScrollIntoView(AgencySearchField);
 		Thread.sleep(3000);
 		WebDriverWaits.SendKeys(AgencySearchField, AgencyID);
 		Thread.sleep(7000);
@@ -259,8 +261,11 @@ public class CSPExternalUtils extends CSPInternalUtils {
 				}
 			}
 		}
+		Thread.sleep(5000);
+		WebDriverWaits.ScrollIntoView(NextButtonSec2);
 		Thread.sleep(3000);
 		WebDriverWaits.ClickOn(NextButtonSec2);
+		Thread.sleep(3000);
 		List<WebElement> LocationSec = driver.findElements(LocationSection);
 		NoLocationSection = LocationSec.size() == 0;
 		PageTitleSubmitSubmission = WebDriverWaits.GetText(SubmitSubmissionPage);
@@ -292,19 +297,26 @@ public class CSPExternalUtils extends CSPInternalUtils {
 				}
 			}
 		}
+		WebDriverWaits.ScrollIntoView(NextButtonSec2);
+		Thread.sleep(3000);
 		WebDriverWaits.ClickOn(NextButtonSec2);
-		Thread.sleep(1000);
+		Thread.sleep(3000);
+		WebDriverWaits.ScrollIntoView(NextButtonSec3);
+		Thread.sleep(3000);
 		WebDriverWaits.ClickOn(NextButtonSec3);
 		ValidationMsgLocation = WebDriverWaits.GetText(LocationValidationMsg);
 		ExpectedMsgLoc = "The location is required.";
 		WebDriverWaits.ClickOn(LocationSearchField);
+		Thread.sleep(2000);
 		WebDriverWaits.SendKeys(LocationSearchField, "Texas City Museum");
 		Thread.sleep(4000);
 		WebDriverWaits.ClickOn(LocationSearchResult);
-		WebDriverWaits.ClickOn(NextButtonSec3);
 		Thread.sleep(2000);
+		WebDriverWaits.ClickOn(NextButtonSec3);
+		Thread.sleep(4000);
 		SubmitPageTitle = WebDriverWaits.GetText(SubmitSubmissionPage);
 		WebDriverWaits.ClickOn(BackButton);
+		Thread.sleep(2000);
 	}
 
 	public static void CSPExternal_VerifyNonMandatoryLocationSection() throws InterruptedException {
@@ -419,9 +431,9 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		//driver.navigate().to("https://admin-stage.comcate.com/agencies"); // stage  
 		driver.navigate().to(DataInterface.AdminURL);
 		Thread.sleep(4000);
-		//CRMCommonMethods.CRM_CreateExternalSubmission("Yes","Location Not Required","No","Yes");
-		CRMCommonMethods.CRM_CreateExternalSubmissionWithoutLogin("Yes","Location Not Required","No","Yes");
-		Thread.sleep(5000);
+		CRMCommonMethods.CRM_CreateExternalSubmission("Yes","Location Not Required","No","Yes");
+		//CRMCommonMethods.CRM_CreateExternalSubmissionWithoutLogin("Yes","Location Not Required","No","Yes");
+		Thread.sleep(12000);
 		SubmissionSuccessMsgNA = WebDriverWaits.GetText(SuccessMessage);
 	}
 

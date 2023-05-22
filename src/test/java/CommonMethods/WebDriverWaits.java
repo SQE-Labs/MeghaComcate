@@ -1,5 +1,8 @@
 package CommonMethods;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +10,12 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 import BrowsersBase.BrowsersInvoked;
 import BrowsersBase.DataInterface;
@@ -203,8 +209,18 @@ public class WebDriverWaits extends BrowsersInvoked {
 		WebElement ele = driver.findElement(By.name(selector));
 		return ele;
 	}
-	
-	
+
+	public static String ActionUploadMedia(String Path) throws AWTException {
+		Actions act = new Actions(driver);
+		StringSelection str = new StringSelection(Path);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
+		act.keyDown(Keys.CONTROL);
+		act.sendKeys("V");
+		act.keyUp(Keys.CONTROL);
+		act.build().perform();
+		return Path;
+
+	}
 	
 	
 }

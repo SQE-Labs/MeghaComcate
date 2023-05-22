@@ -11,7 +11,7 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Part;
 import java.io.IOException;
-import java.security.GeneralSecurityException;
+//import java.security.GeneralSecurityException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;

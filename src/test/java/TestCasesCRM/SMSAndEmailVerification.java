@@ -14,7 +14,7 @@ public class SMSAndEmailVerification extends SMSAndEmailVerificationUtils{
 	@Test(priority = 1)
 	public static void ComposeMessage() throws InterruptedException {
 		extentTest = extent.startTest(" ComposeMessage ");
-		Login.LoginAgency();
+//		Login.LoginAgency();
 		SMSAndEmailVerificationUtils.ComposeMessage();
 	}
 

@@ -5,9 +5,9 @@
 		<classes>
 			<class name="TestCasesCRM.Login">
 				<methods>
-					<include name="LoginAgency" /> 
-					<!--<include name="LoginAgencyStage"></include> 
-					<include name="LoginAgencyCI"></include>-->
+				<!--	<include name="LoginAgency" /> -->
+					<include name="LoginAgencyStage"></include>
+					<!--<include name="LoginAgencyCI"></include>-->
 				</methods>
 			</class>
 			
@@ -139,7 +139,7 @@
 					<include name="Dashboard_VerifyTheCountOfSubmissions" />
 				</methods>
 			</class>
-			
+
 			
 			<class name="TestCasesCRM.ReportsCRM">
 				<methods>
@@ -184,6 +184,7 @@
 					<include name="CreateCRMUser_VerifyNoCEAccessToCRMOnlyUser" />
 				</methods>
 			</class>
+
 			
 			<class name="TestCasesCRM.SMSAndEmailVerification">
 				<methods>

@@ -294,7 +294,7 @@ public class AppPreRequisites extends AppPreRequisitesUtils {
 	    
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(InactivefineCountBefore + 1, InactivefineCountafter);
-		softAssert.assertEquals(inactiveFineLabel, true);
+		softAssert.assertEquals(inactiveFineLabel, Boolean.TRUE);
 		softAssert.assertAll();
 	}
 	
@@ -308,7 +308,7 @@ public class AppPreRequisites extends AppPreRequisitesUtils {
 	    
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(activefineCountBefore + 1, activefineCountafter);
-		softAssert.assertEquals(ActiveFineLabel, true);
+		softAssert.assertEquals(ActiveFineLabel, Boolean.TRUE);
 		softAssert.assertAll();
 	}
 	
@@ -336,7 +336,7 @@ public class AppPreRequisites extends AppPreRequisitesUtils {
 	    
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(BeforeActiveLateFeeCount + 1, AfterActiveLateFeeCount);
-		softAssert.assertEquals(NewAddedLateFeeLable, true);
+		softAssert.assertEquals(NewAddedLateFeeLable, Boolean.TRUE);
 		softAssert.assertAll();
 	}
 	
@@ -350,7 +350,7 @@ public class AppPreRequisites extends AppPreRequisitesUtils {
 	    
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(BeforeActiveLateFeeCount + 1, AfterActiveLateFeeCount);
-		softAssert.assertEquals(NewAddedLateFeeLable, true);
+		softAssert.assertEquals(NewAddedLateFeeLable, Boolean.TRUE);
 		softAssert.assertAll();
 	}
 	
@@ -363,7 +363,7 @@ public class AppPreRequisites extends AppPreRequisitesUtils {
 	    
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(InactiveLateFeeCountBefore + 1, InactiveLateFeeCountafter);
-		softAssert.assertEquals(inactiveLateFeeLabel, true);
+		softAssert.assertEquals(inactiveLateFeeLabel, Boolean.TRUE);
 		softAssert.assertAll();
 	}
 	
@@ -376,7 +376,7 @@ public class AppPreRequisites extends AppPreRequisitesUtils {
 	    
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(activeLateFeeCountBefore + 1, activeLateFeeCountafter);
-		softAssert.assertEquals(ActiveLateFeeLabel, true);
+		softAssert.assertEquals(ActiveLateFeeLabel, Boolean.TRUE);
 		softAssert.assertAll();
 	}
 	

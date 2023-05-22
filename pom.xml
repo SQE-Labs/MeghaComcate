@@ -25,6 +25,7 @@
 					<configuration>
 						<suiteXmlFiles>
 							<suiteXmlFile>testngCRM.xml</suiteXmlFile>
+							<!--<suiteXmlFile>testNGTask.xml</suiteXmlFile>-->
 						</suiteXmlFiles>
 					</configuration>
 				</plugin>

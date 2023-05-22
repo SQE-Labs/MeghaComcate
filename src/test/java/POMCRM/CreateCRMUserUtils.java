@@ -208,9 +208,9 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 		WebDriverWaits.ClickOn(ApplyButton);
 		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(CreateUserPopupBtn);
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 		driver.navigate().refresh();
-		Thread.sleep(9000);
+		Thread.sleep(12000);
 		String[] CountUsers2 = WebDriverWaits.GetText(UsersCount).split(" ");
 		String UsersAfter = CountUsers2[0];
 		int TotalUsersAfter = Integer.parseInt(UsersAfter);
@@ -449,9 +449,9 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 		Thread.sleep(5000);
 		WebDriverWaits.VisibilityOfElementLocated(EditUserIcon, 2);
 		WebDriverWaits.ClickOn(EditUserIcon);
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		WebDriverWaits.WaitForElementInteractable(RoleDropdown,2);
-		
+		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(RoleDropdown);	
 		Thread.sleep(5000);
 		//WebDriverWaits.VisibilityOfElementLocated(AgencyAdminCEM, 1);

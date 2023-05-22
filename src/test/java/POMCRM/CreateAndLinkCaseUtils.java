@@ -65,9 +65,11 @@ public class CreateAndLinkCaseUtils extends CSDPUtils {
 
 	public static void CreateAndLinkCase_PreRequisite() throws InterruptedException {
 		WebDriverWaits.CloseOtherTabs();
-		//Login.LoginAgency();
+		//Login.LoginAgencyStage();
 		CRMCommonMethods.CRM_CreateSubmission("No", "Yes", "Yes", "No", "Yes", "Location Not Required");
-		Thread.sleep(5000);
+		Thread.sleep(10000);
+		driver.navigate().refresh();
+		Thread.sleep(12000);
 		DescriptionCSDP = WebDriverWaits.GetText(DescriptionTextCSDP);
 		AttachmentsCountCSDP = WebDriverWaits.GetText(AttachmentsHeaderCSDP);
 		CustomerOnCSDP = WebDriverWaits.GetText(AddedCustomerCSDP);
@@ -76,11 +78,11 @@ public class CreateAndLinkCaseUtils extends CSDPUtils {
 	}
 
 	public static void CreateAndLinkCase_OpenCCPToLinkTheCase() throws InterruptedException {
-		Thread.sleep(6000);
+		Thread.sleep(12000);
 		WebDriverWaits.ClickOn(MoreButtonCSDP);
 		Thread.sleep(4000);
 		WebDriverWaits.ClickOn(CreateAndLinkCaseOption);
-		Thread.sleep(6000);
+		Thread.sleep(12000);
 		CCPTitle = WebDriverWaits.GetText(CreateACasePage);
 	}
 
@@ -99,7 +101,7 @@ public class CreateAndLinkCaseUtils extends CSDPUtils {
 		CreateCasePopupTitle = WebDriverWaits.GetText(CreateCasePopup);
 		Thread.sleep(5000);
 		WebDriverWaits.ClickOn(CreateScheduleInspectionButton);
-		Thread.sleep(5000);
+		Thread.sleep(15000);
 		AssociatedSubmission = WebDriverWaits.GetText(AssociatedSubmissionLink);
 	}
 

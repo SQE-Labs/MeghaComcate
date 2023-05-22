@@ -23,6 +23,7 @@ public class CSPInternalUtils extends SubmissionAssignmentUtils {
 	public static String nameField = "//input[@name='name']";
 	public static String emailField = "//input[@name='email']";
 	public static String workPhoneField = "//input[@name='workPhone']";
+	public static String cellPhoneField = "//input[@name='phoneNumber']";
 	public static String selectedAnonymousToggle = "//div[@class='post-anonymous-section']//button[@class='square-btn btn btn-primary']";
 	public static String yesToggleAnonymous = "//div[@class='post-anonymous-section']//button[2]";
 	public static String saveChangesButton = "//button[text()='Save Changes']";
@@ -59,6 +60,7 @@ public class CSPInternalUtils extends SubmissionAssignmentUtils {
 	public static By NameField = By.xpath(CSPInternalUtils.nameField);
 	public static By EmailField = By.xpath(CSPInternalUtils.emailField);
 	public static By WorkPhoneField = By.xpath(CSPInternalUtils.workPhoneField);
+	public static By CellPhoneField = By.xpath(CSPInternalUtils.cellPhoneField);
 	public static By SelectedAnonymousToggle = By.xpath(CSPInternalUtils.selectedAnonymousToggle);
 	public static By YesToggleAnonymous = By.xpath(CSPInternalUtils.yesToggleAnonymous);
 	public static By SaveChangesButton = By.xpath(CSPInternalUtils.saveChangesButton);

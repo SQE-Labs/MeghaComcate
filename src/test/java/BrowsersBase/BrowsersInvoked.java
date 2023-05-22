@@ -25,10 +25,21 @@ public class BrowsersInvoked {
 	public void SetProp() {
 		switch (FinalBrowser) {
 		case "CHROME": {
-			ChromeOptions chromeOptions = new ChromeOptions();
-			chromeOptions.addArguments("--remote-allow-origins=*");
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver(chromeOptions);
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--remote-allow-origins=*");
+			options.addArguments("--headless");
+			options.addArguments("--no-sandbox");
+			options.addArguments("--window-size=1552,832");
+			//options.addArguments("screenshot");
+			driver = new ChromeDriver(options);
+			driver.get(DataInterface.AgencyURL);
+			//driver.manage().window().maximize();
+			Dimension currentDimension = driver.manage().window().getSize();
+			int height = currentDimension.getHeight();
+			int width = currentDimension.getWidth();
+			System.out.println("Current height: "+ height);
+			System.out.println("Current width: "+width);
 			break;
 		}
 		case "FIREFOX": {
@@ -58,11 +69,7 @@ public class BrowsersInvoked {
 		}
 
 		driver.manage().window().maximize();
-//		System.out.println(DataInterface.AgencyURL);
-//		driver.get(DataInterface.AgencyURL);
-		
-		
-		//driver.manage().window().maximize();
+
 //		Dimension currentDimension = driver.manage().window().getSize();
 //		int height = currentDimension.getHeight();
 //		int width = currentDimension.getWidth();
@@ -70,7 +77,7 @@ public class BrowsersInvoked {
 //		System.out.println("Current width: "+width);
 //		
 //		// Set new size
-		//Dimension newDimension = new Dimension(1024, 768);
+//		Dimension newDimension = new Dimension(1024, 768);
 		//Dimension newDimension = new Dimension(768, 1024);
 		//driver.manage().window().setSize(newDimension);
 //		
