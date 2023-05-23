@@ -23,8 +23,6 @@ public class GMailHelper {
 	private static String imapPort = "993";
 	public static int SearchedMailCount;
 
-//    private String userName = "automationcomcate";
-//    private String password = "Test@123";
 	private String userName;
 	private String password;
 
@@ -51,10 +49,7 @@ public class GMailHelper {
 		return Session.getInstance(properties);
 	}
 
-	// * @param no of seconds to wait before checking for mails
-//     * @param folderName(e.g. INBOX)
-//     * @param keyword Search with this Keyword in subject line
-//     * @param Date
+
 
 	public List<Message> searchEmail(int noOfSecToWait, String folderName, final String keyword)
 			throws InterruptedException {

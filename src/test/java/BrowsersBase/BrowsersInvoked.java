@@ -31,10 +31,8 @@ public class BrowsersInvoked {
 			options.addArguments("--headless");
 			options.addArguments("--no-sandbox");
 			options.addArguments("--window-size=1552,832");
-			//options.addArguments("screenshot");
 			driver = new ChromeDriver(options);
 			driver.get(DataInterface.AgencyURL);
-			//driver.manage().window().maximize();
 			Dimension currentDimension = driver.manage().window().getSize();
 			int height = currentDimension.getHeight();
 			int width = currentDimension.getWidth();
@@ -69,40 +67,14 @@ public class BrowsersInvoked {
 		}
 
 		driver.manage().window().maximize();
-
-
-//		Dimension currentDimension = driver.manage().window().getSize();
-//		int height = currentDimension.getHeight();
-//		int width = currentDimension.getWidth();
-//		System.out.println("Current height: "+ height);
-//		System.out.println("Current width: "+width);
-
 		Dimension currentDimension = driver.manage().window().getSize();
 		int height = currentDimension.getHeight();
 		int width = currentDimension.getWidth();
 		System.out.println("Current height: "+ height);
 		System.out.println("Current width: "+width);
-
-//		
-//		// Set new size
-//		Dimension newDimension = new Dimension(1024, 768);
-		//Dimension newDimension = new Dimension(768, 1024);
-		//driver.manage().window().setSize(newDimension);
-//		
-//		// Getting 
-//		Dimension newSetDimension = driver.manage().window().getSize();
-//		int newHeight = newSetDimension.getHeight();
-//	    int newWidth = newSetDimension.getWidth();
-//	    System.out.println("New height: "+ newHeight);
-//		System.out.println("New width: "+newWidth);
-		
 		driver.get(DataInterface.AgencyURL);
 	}
 
-//	@AfterSuite
-//	public void toClose() {
-//		driver.quit();
-//	}
 
 	public static int AgencyID;
 	public static String Instance;

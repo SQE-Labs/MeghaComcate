@@ -31,7 +31,6 @@ public class CSPInternalUtils extends SubmissionAssignmentUtils {
 	public static String categoryDropdown = "//label[@for='selectedCategory']/following::span[1]";
 	public static String searchCategory = "//input[@name='query']";
 	public static String selectedCategory = "//label[@for='selectedCategory']/following::label[1]";
-	//public static String searchResultsCategory = "//ul[@class='dropdown__options--single']";
 	public static String searchResultsCategory = "//ul[@class='dropdown__options--single']//li//b";
 	public static String locationValidationMsg = "//div[@class='tile--error-msg']";
 	public static String locationField = "//div[@class='location-tile__inputs-container']//input";
@@ -104,7 +103,6 @@ public class CSPInternalUtils extends SubmissionAssignmentUtils {
 	public static String CreatedCategory3;
 
 	public static void CSPInternal_Prerequisites() throws InterruptedException {
-		//WebDriverWaits.closetabs();
 		driver.navigate().to(DataInterface.URLSubmissionSettings);
 		Thread.sleep(6000);	
 		String SelectedToggleForAnonymous = WebDriverWaits.GetText(SelectedAnonymousToggle);

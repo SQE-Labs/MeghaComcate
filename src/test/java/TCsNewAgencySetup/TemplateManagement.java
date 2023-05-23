@@ -45,8 +45,6 @@ public class TemplateManagement extends TemplateMangementUtils {
 		extentTest = extent.startTest(" TemplateMangement_CloseandOpenCreateTemplatePOpup ");
 		extentTest.setDescription(
 				"Verify that appropriate validation messages appears, on clicking the 'Save' button when no/ data exceeding the max limit is entered in fields, on 'Create Template' popup");
-//		Login.LoginAgencyStage();
-//		TemplateMangement_PreRequisite();
 		TemplateMangementUtils.TemplateMangement_VerifyValidationsOnCreateTemplatePOpup();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(ActualNameValidMsg, ExpectedNameValidMsg);
@@ -61,10 +59,6 @@ public class TemplateManagement extends TemplateMangementUtils {
 		extentTest = extent.startTest(" TemplateMangement_CloseandOpenCreateTemplatePOpup ");
 		extentTest.setDescription(
 				"Verify that user is able to add/remove a single as well as multiple documents, on 'Create Template' popup");
-//	    Login.LoginAgencyStage();
-//	    TemplateMangement_PreRequisite();
-//		TemplateMangement_VerifyValidationsOnCreateTemplatePOpup();
-		
 		TemplateMangementUtils.TemplateMangement_VerifyAdditionofMultipleDocTemplatePOpup();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(filesCountCheck, Boolean.TRUE);
@@ -77,12 +71,6 @@ public class TemplateManagement extends TemplateMangementUtils {
 	public static void TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated() throws InterruptedException, AWTException {
 		extentTest = extent.startTest(" TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated ");
 		extentTest.setDescription("Verify that 'Preview Email Template' popup opens up with appropriate data, when user clicks 'Preview' button, on 'Create Template' popup.");
-		
-//		Login.LoginAgencyStage();
-//		TemplateMangement_PreRequisite();
-//		TemplateMangement_VerifyValidationsOnCreateTemplatePOpup();
-//		TemplateMangement_VerifyAdditionofMultipleDocTemplatePOpup();
-		
 		TemplateMangementUtils.TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(ActualpreviewTempData, ExpectedpreviewTemplateData);
@@ -95,18 +83,10 @@ public class TemplateManagement extends TemplateMangementUtils {
 	public static void TemplateMangement_VerifyTemplateAdditionOfTemplate() throws InterruptedException, AWTException {
 		extentTest = extent.startTest(" TemplateMangement_VerifyTemplateAdditionAndEditTemplate ");
 		extentTest.setDescription("New template gets added under 'Email templates' tab, when user clicks on 'Save' button after entering data in mandatory fields, on 'Create Template' popup.");
-		
-//		Login.LoginAgencyStage();
-//		TemplateMangement_PreRequisite();
-//		TemplateMangement_VerifyValidationsOnCreateTemplatePOpup();
-//		TemplateMangement_VerifyAdditionofMultipleDocTemplatePOpup();
-//		TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated();
-		
 		TemplateMangementUtils.TemplateMangement_VerifyTemplateAdditionOfTemplate();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(TemplateGridNameLbl, templateName);
 		softAssert.assertEquals(TemplateGridSubLine.trim(), rndSubLine.trim());
-//		softAssert.assertEquals(TemplateGridSubLine, rndSubLine);
 		softAssert.assertEquals(TemplateGridRelatedDoc.contains((DocumentJellyFish.replace(".jpg",""))), true);
 		softAssert.assertEquals(TemplateGridRelatedDoc.contains((DocumentPanda.replace(".jpg",""))), true);
 		softAssert.assertEquals(TemplateGridLastUpdated.contains(LoggedUser), true);
@@ -118,13 +98,6 @@ public class TemplateManagement extends TemplateMangementUtils {
 	public static void TemplateMangement_VerifyEditTheTemplate() throws InterruptedException, AWTException {
 		extentTest = extent.startTest(" TemplateMangement_VerifyEditTheTemplate ");
 		extentTest.setDescription("Verify that respective 'Edit <Template Name>' popup opens up, when user clicks on 'Edit' icon of any template and able to edit template on 'Template Management' page.");
-		
-//		Login.LoginAgencyStage();
-//		TemplateMangement_PreRequisite();
-//		TemplateMangement_VerifyValidationsOnCreateTemplatePOpup();
-//		TemplateMangement_VerifyAdditionofMultipleDocTemplatePOpup();
-//		TemplateMangement_VerifyEmailPreviewPopDataAutoPopulated();
-		
 		TemplateMangementUtils.TemplateMangement_VerifyEditTheTemplate();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(TemplateGridSubLine.trim(), rndSubLine.trim());
@@ -138,24 +111,16 @@ public class TemplateManagement extends TemplateMangementUtils {
 	public static void TemplateMangement_VerifyErrorMessgeOnAdditionOfExistingTemplate() throws InterruptedException, AWTException {
 		extentTest = extent.startTest(" TemplateMangement_VerifyErrorMessgeOnAdditionOfExistingTemplate ");
 		extentTest.setDescription("Verify that an error message appears & Template does not get created, when user clicks on 'Save' button, after entering existing data in 'Name' field, on 'Create Template' popup.");
-		
-//		Login.LoginAgencyStage();
-//		TemplateMangement_PreRequisite();	
 		TemplateMangementUtils.TemplateMangement_VerifyErrorMessgeOnAdditionOfExistingTemplate();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(actualMsg, expectedMsg);
 		softAssert.assertAll();
 	} 
-	
-	
-	
+
 	@Test(priority = 9)
 	public static void TemplateMangement_VerifyActivateAndDeActivateTemplate() throws InterruptedException, AWTException {
 		extentTest = extent.startTest(" TemplateMangement_VerifyActivateAndDeActivateTemplate ");
 		extentTest.setDescription("Verify that user able to activate/deactivate the template on 'Email Template' Page");
-		
-//		Login.LoginAgencyStage();
-//		TemplateMangement_PreRequisite();	
 		TemplateMangementUtils.TemplateMangement_VerifyActivateAndDeActivateTemplate();
 		SoftAssert softAssert = new SoftAssert();
 	    softAssert.assertEquals(actualCount, expectedCount);
@@ -164,17 +129,6 @@ public class TemplateManagement extends TemplateMangementUtils {
 	    softAssert.assertEquals(actualCountActive, expectedCountActive);
 		softAssert.assertAll();
 	} 
-	
-	
-	
-	
-//	@Test(priority = )
-//	public static void AgencySetup_VerifyAllLinksForCEDashboard() throws InterruptedException {
-//		extentTest = extent.startTest(" AgencySetup_VerifyAllLinksForCEDashboard ");
-//	    extentTest.setDescription(" Verify that all links under 'Cases', 'Inspections' & 'Notices' section appear, on CE Dashboard. ");
-//	AppPreRequisitesUtils.AgencySetup_VerifyAllLinksForCEDashboard();
-//		SoftAssert softAssert = new SoftAssert();
-//		softAssert.assertAll();
-//	}
+
 
 }

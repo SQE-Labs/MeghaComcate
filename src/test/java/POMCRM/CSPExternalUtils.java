@@ -22,7 +22,7 @@ public class CSPExternalUtils extends CSPInternalUtils {
 	public static String nextButtonSec2 = "(//button[text()='Next'])[2]";
 	public static String nextButtonSec3 = "(//button[text()='Next'])[3]";
 	public static String selectedCategory = "//div[@class='chip__wrapper active clickable']";
-	//public static String otherCategories = "//div[@class='chip__wrapper clickable']";
+
 	
 	public static String otherCategories = "//div[@class='category-list-section']//div";
 	public static String showMoreLinktext = "//a[@class='show-more']";
@@ -307,19 +307,11 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		WebDriverWaits.ClickOn(NextButtonSec3);
 		ValidationMsgLocation = WebDriverWaits.GetText(LocationValidationMsg);
 		ExpectedMsgLoc = "The location is required.";
-<<<<<<< HEAD
 		WebDriverWaits.ClickOn(LocationSearchField);
 		Thread.sleep(2000);
 		WebDriverWaits.SendKeys(LocationSearchField, "Texas City Museum");
 		Thread.sleep(4000);
 		WebDriverWaits.ClickOn(LocationSearchResult);
-=======
-		
-//		WebDriverWaits.ClickOn(LocationSearchField);
-//		WebDriverWaits.SendKeys(LocationSearchField, "Texas City Museum");
-//		Thread.sleep(4000);
-//		WebDriverWaits.ClickOn(LocationSearchResult);
-		
 		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) ){
 			CRMCommonMethods.searchLocationExternalCS(DataInterface.searchLocationKey1O);
 		}
@@ -337,7 +329,6 @@ public class CSPExternalUtils extends CSPInternalUtils {
 			}
 		
 		WebDriverWaits.ClickOn(NextButtonSec3);
->>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(NextButtonSec3);
 		Thread.sleep(4000);
@@ -373,20 +364,9 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		WebDriverWaits.ClickOn(NextButtonSec2);
 		WebDriverWaits.ClickOn(ChangeLocButton);
 		WebDriverWaits.ClickOn(NextButtonSec3);
-		//WebDriverWaits.ClickOn(BackButton);
 		Thread.sleep(5000);
-//		JavascriptExecutor jse = (JavascriptExecutor) driver;
-//		   WebElement ele = driver.findElement(ChangeLoactionValue);
-//		   jse.executeScript("arguments[0].click();", ele); 
-//		//WebDriverWaits.ClickOn(ChangeLoactionValue);
 		Thread.sleep(3000);
 		SubmitPageTitle = WebDriverWaits.GetText(SubmitSubmissionPage);
-		/*
-		 * WebDriverWaits.ClickOn(LocationSearchField);
-		 * WebDriverWaits.SendKeys(LocationSearchField, "Texas City Museum");
-		 * Thread.sleep(3000); WebDriverWaits.ClickOn(LocationSearchResult);
-		 * WebDriverWaits.ClickOn(NextButtonSec3);
-		 */
 	}
 
 	public static void CSPExternal_VerifyMandatoryFieldsForNonAnonymous() throws InterruptedException {
@@ -443,28 +423,12 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		extentTest = extent.startTest(" CSPExternal_VerifyNonAnonymousSubmission ");
 		extentTest.setDescription(
 				" Verify that user is able to submit the issue after entering the Contact details, on 'Report an issue' page. ");
-//		String CRMURL = driver.getCurrentUrl();
-//		Robot robot = new Robot();
-//		Thread.sleep(2000);
-//		robot.keyPress(KeyEvent.VK_CONTROL);
-//		robot.keyPress(KeyEvent.VK_T);
-//		Thread.sleep(9000);
-//		ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-//		driver.switchTo().window((String) tabs.get(1));
-//		Thread.sleep(1000);
-//		driver.navigate().to(CRMURL);
 		driver.navigate().refresh();
 		Thread.sleep(7000);
-		//driver.navigate().to("https://admin-stage.comcate.com/agencies"); // stage  
 		driver.navigate().to(DataInterface.AdminURL);
 		Thread.sleep(4000);
-<<<<<<< HEAD
 		CRMCommonMethods.CRM_CreateExternalSubmission("Yes","Location Not Required","No","Yes");
-		//CRMCommonMethods.CRM_CreateExternalSubmissionWithoutLogin("Yes","Location Not Required","No","Yes");
-=======
-		//CRMCommonMethods.CRM_CreateExternalSubmission("Yes","Location Not Required","No","Yes");
 		CRMCommonMethods.CRM_CreateExternalSubmissionWithoutLogin("Yes","Location Not Required","No","Yes");
->>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		Thread.sleep(12000);
 		SubmissionSuccessMsgNA = WebDriverWaits.GetText(SuccessMessage);
 	}

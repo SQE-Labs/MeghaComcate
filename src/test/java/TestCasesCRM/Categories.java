@@ -22,8 +22,6 @@ public class Categories extends CategoriesUtils {
 		extentTest = extent.startTest(" Categories_VerifyDefaultCategory ");
 		extentTest.setDescription(
 				" Verify that by default 'Other' category appears under 'Active Category' section, on 'Categories' page. ");
-//		Login.LoginAgencyStage();
-//		Categories_PreRequisite();
 		CategoriesUtils.Categories_VerifyDefaultCategory();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(OtherTabTitle.equals("Other"));
@@ -38,7 +36,6 @@ public class Categories extends CategoriesUtils {
 		CategoriesUtils.Categories_UpdateDefaultResolutionTime();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(EditResolutionPopupTitle.equals("Edit Default Resolution Time"));
-//		softAssert.assertTrue(ResolutionTimeValidationMsg.equals("The Resolution Time is required."));
 		softAssert.assertTrue(ResoTextAfter[0].equals(NewResoTime));
 		softAssert.assertAll();
 	}

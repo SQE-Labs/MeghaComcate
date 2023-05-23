@@ -52,7 +52,6 @@ public class LoginAgencyUtils extends ExtentReportClass {
 	
 	public static void LoginAgencyStage() throws InterruptedException {
 		driver.navigate().to(DataInterface.AgencyURL);
-		//Thread.sleep(7000);
 		WebDriverWaits.VisibilityOfElementLocated(OKTAUsernameField, 2);
 		WebDriverWaits.SendKeys(OKTAUsernameField, DataInterface.AgencyUsername);
 		WebDriverWaits.ClickOn(NextButton); 
@@ -103,8 +102,7 @@ public class LoginAgencyUtils extends ExtentReportClass {
 		AgencyLoggedInUserName = WebDriverWaits.GetText(AgencyLoggedInUsername);
 		
 		Thread.sleep(5000); 
-		
-		//CRMCommonMethods.CreationOf50PlusSubmissions();
+
 	}
 
 	public static void LoginAdmin() throws InterruptedException {
@@ -115,14 +113,6 @@ public class LoginAgencyUtils extends ExtentReportClass {
 		WebDriverWaits.SendKeys(AdminPassword, DataInterface.AdminPassword);
 		WebDriverWaits.ClickOn(AdminButton);
 		Thread.sleep(10000);
-//		WebDriverWaits.SendKeys(SearchAgency, String.valueOf(DataInterface.AgencyID));
-//		Thread.sleep(2000);
-//		WebDriverWaits.ClickOn(EnterAgencyIcon);
-//		Thread.sleep(8000);
-//		ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-//		Thread.sleep(3000);
-//		driver.switchTo().window((String) tabs.get(1));
-//		Thread.sleep(1000);
 	}
 
 }

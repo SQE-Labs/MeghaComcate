@@ -55,13 +55,6 @@ public class ReportsCRMUtils extends DashboardCRMUtils {
 		Thread.sleep(2000);
 		WebDriverWaits.Clear(BackToUrLCitizenView);
 		WebDriverWaits.SendKeys(BackToUrLCitizenView, "https://app-stage.comcate.com/agencies/181/setup");
-		
-//		List<WebElement> QSReports = driver.findElements(QSReportsList);
-//		for (int i = 0; i < QSReports.size(); i++) {
-//			WebElement QSReport = QSReports.get(i);
-//			String QSReportText = QSReport.getText();
-//			ReportsListAdmin.add(QSReportText);
-//		}
 	}
 	public static void Reports_VerifyAdditionOfNewReports() throws InterruptedException {
 		WebDriverWaits.ClickOn(AddReportLinkText);
@@ -124,11 +117,9 @@ public class ReportsCRMUtils extends DashboardCRMUtils {
 		Thread.sleep(10000);
 	}
 	public static void Reports_VerifyEditedQSReport() throws InterruptedException {
-<<<<<<< HEAD
+
 		Thread.sleep(6000);
-=======
 		Thread.sleep(20000);
->>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		WebDriverWaits.ClickOn(EditAgencyIcon);
 		Thread.sleep(10000);
 		WebDriverWaits.WaitUntilVisible(CRMSectionEditIcon);
@@ -160,18 +151,13 @@ public class ReportsCRMUtils extends DashboardCRMUtils {
 		WebDriverWaits.ClickOn(SaveEditAgencyPopup);
 	}
 	public static void Reports_VerifyCRMToggleForReports() throws InterruptedException {
-		//LoginAgency();
-		//driver.navigate().to("https://app-stage.comcate.com/agencies/181/reports");
+
 		driver.navigate().to(DataInterface.URLReports);
-<<<<<<< HEAD
 		Thread.sleep(15000);
-=======
 		Thread.sleep(25000);
->>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		WebDriverWaits.WaitUntilVisible(ReportsTab);
 		WebDriverWaits.ClickOn(ReportsTab);
 		Thread.sleep(10000);
-		//driver.findElement(ReportsTab).click();
 		List<WebElement> CRMTogglePresence = driver.findElements(CRMToggle);
 		CheckCRMToggle = CRMTogglePresence.size()==1;
 	}

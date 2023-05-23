@@ -74,14 +74,7 @@ public class CSDP extends CSDPUtils {
 		softAssert.assertAll();
 	}
 
-//	@Test(priority = 8)
-//	public static void CSDP_VerifyAnonymousText() throws InterruptedException {
-//		extentTest = extent.startTest(" CSDP_VerifyAnonymousText ");
-//		extentTest.setDescription(" Verify that 'Anonymous' text appears under 'Customer Name' field, when user has created a Submission with 'Post Anonymously' checkbox checked. ");
-//		SoftAssert softAssert = new SoftAssert();
-//
-//		softAssert.assertAll();
-//	}
+
 
 	@Test(priority = 9)
 	public static void CSDP_VerifyDirectionToCoDP() throws InterruptedException {
@@ -105,14 +98,6 @@ public class CSDP extends CSDPUtils {
 		softAssert.assertAll();
 	}
 
-//	@Test(priority = 11)
-//	public static void CSDP_VerifyUpdatedLocation() throws InterruptedException {
-//		extentTest = extent.startTest(" CSDP_VerifyUpdatedLocation ");
-//		extentTest.setDescription(" Verify that user is able edit & save the Location under 'Location' tile, on CSDP. ");
-//		SoftAssert softAssert = new SoftAssert();
-//		
-//		softAssert.assertAll();
-//	}
 
 	@Test(priority = 12)
 	public static void CSDP_VerifyAddedAttachments() throws InterruptedException {

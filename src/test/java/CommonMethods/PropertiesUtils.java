@@ -11,7 +11,6 @@ public class PropertiesUtils {
 	    static Properties prop = new Properties();
 
 	    public static String getPropertyValue(String key) {
-	        //1. load data from properties file
 	        String propFilePath = System.getProperty("user.dir") + "config.properties";
 	        FileInputStream fis;
 	        try {
@@ -21,8 +20,6 @@ public class PropertiesUtils {
 	            e.printStackTrace();
 	        }
 
-
-	        //2. read data
 	        String value = prop.get(key).toString();
 
 	        if (StringUtils.isEmpty(value)) {

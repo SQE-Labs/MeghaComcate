@@ -65,7 +65,6 @@ public class CreateAndLinkCaseUtils extends CSDPUtils {
 
 	public static void CreateAndLinkCase_PreRequisite() throws InterruptedException {
 		WebDriverWaits.CloseOtherTabs();
-		//Login.LoginAgencyStage();
 		CRMCommonMethods.CRM_CreateSubmission("No", "Yes", "Yes", "No", "Yes", "Location Not Required");
 		Thread.sleep(10000);
 		driver.navigate().refresh();
@@ -101,11 +100,8 @@ public class CreateAndLinkCaseUtils extends CSDPUtils {
 		CreateCasePopupTitle = WebDriverWaits.GetText(CreateCasePopup);
 		Thread.sleep(5000);
 		WebDriverWaits.ClickOn(CreateScheduleInspectionButton);
-<<<<<<< HEAD
 		Thread.sleep(15000);
-=======
 		Thread.sleep(25000);
->>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		AssociatedSubmission = WebDriverWaits.GetText(AssociatedSubmissionLink);
 	}
 
@@ -129,19 +125,7 @@ public class CreateAndLinkCaseUtils extends CSDPUtils {
 		Thread.sleep(5000);
 		driver.switchTo().window((String) tabs.get(2));
 		Thread.sleep(7000);
-//		boolean checkcaseNmber = driver.findElement(LinkedCaseNumber).isDisplayed();
-//		while(!checkcaseNmber){
-//			String CaseNumberSplit[] = WebDriverWaits.GetText(LinkedCaseNumber).split("#");
-//			
-//		}
 		String CaseNumberSplit[] = WebDriverWaits.GetText(LinkedCaseNumber).split("#");
 		CaseNumberLinked = CaseNumberSplit[1];
 	}
-
-//	public static void CreateAndLinkCase_VerifyCaseUnlinked() throws InterruptedException {
-//		SoftAssert softAssert = new SoftAssert();
-//
-//		softAssert.assertAll();
-//	}
-
 }

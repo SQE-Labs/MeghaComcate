@@ -195,13 +195,10 @@ public class CSLP extends CSLPUtils {
 	public static void CSLP_VerifyCSVFile() throws InterruptedException {
 		extentTest = extent.startTest(" CSLP_VerifyCSVFile ");
 		extentTest.setDescription(" Verify that user is able to download the CSV file, after clicking on 'Download' button > 'CSV' option, on CSLP. ");
-//		LoginAgencyUtils.LoginAgencyStage();
-//		CSLP_VerifyCSLPOpensUP();
 		CSLPUtils.CSLP_VerifyCSVFile();
 		SoftAssert softAssert = new SoftAssert();
 		
 		softAssert.assertEquals(FileStatus,"File Present");
-		//softAssert.assertEquals(SuccessMsgCSV, ExpectedMsgCSV);
 		softAssert.assertAll();
 	}
 
@@ -211,7 +208,6 @@ public class CSLP extends CSLPUtils {
 		extentTest.setDescription(" Verify that user gets directed to the respective Submission, after clicking on any Submission link, on CSLP. ");
 		CSLPUtils.CSLP_VerifyDirectionToRespectiveSubmission();
 		SoftAssert softAssert = new SoftAssert();
-		//softAssert.assertEquals(FileStatus, "File Present");
 		softAssert.assertEquals(RecentSubmissionID, OpenedSubmissionID);
 		softAssert.assertAll();
 	}

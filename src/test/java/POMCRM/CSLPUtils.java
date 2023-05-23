@@ -133,7 +133,6 @@ public class CSLPUtils extends CSDPUtils {
 	public static boolean CompareMineResultsCount;
 
 	public static void CSLP_VerifyCSLPOpensUP() throws InterruptedException {
-		//WebDriverWaits.closetabs();
 		driver.navigate().to(DataInterface.URLDashboard);
 		Thread.sleep(4000);
 		WebDriverWaits.WaitForElementInteractable(CSLPTab, 2);
@@ -381,15 +380,6 @@ public class CSLPUtils extends CSDPUtils {
 	public static void CSLP_VerifySavedFilter() throws InterruptedException {
 		WebDriverWaits.ClickOn(FiltersDropdown);
 		Thread.sleep(3000);
-		//List<WebElement> DeleteFilters = WebDriverWaits.WaitUntilVisibleList(CrossIconFilters);
-		
-//		if (CountFiltersCross >= 5) {
-//			for (int d = 0; d < 2; d++) {
-//				WebElement CrossIcons = DeleteFilters.get(d);
-//				CrossIcons.click();
-//				WebDriverWaits.ClickOn(YesDelete);
-//			}
-//		}
 		int CountFiltersCross = driver.findElements(CrossIconFilters).size();
 		if (CountFiltersCross > 0) {
 			driver.findElement(CrossIconFilters).click();
@@ -408,7 +398,7 @@ public class CSLPUtils extends CSDPUtils {
 		Thread.sleep(5000);
 		WebDriverWaits.ClickOn(FiltersDropdown);
 		Thread.sleep(5000);
-		//
+
 	}
 
 	public static void CSLP_VerifyDeletedFilter() throws InterruptedException {
@@ -428,7 +418,6 @@ public class CSLPUtils extends CSDPUtils {
 		Thread.sleep(5000);
 		WebDriverWaits.ClickOn(CSVOption);
 		Thread.sleep(10000);
-		//SuccessMsgCSV = WebDriverWaits.GetText(CSVSuccessMessage);
 		ExpectedMsgCSV = "CSV file downloaded successfully";
 		Thread.sleep(12000);
 		
@@ -456,7 +445,6 @@ public class CSLPUtils extends CSDPUtils {
 		System.out.println("Agecncy Namee: " + agencyName);
 		String [] times = (timesdate[1].split(":"));
 		String file_Name = agencyName+"_"+timesdate[0]+"_"+times[0]+"-"+times[1]+"-"+timesdate1[2]+"_csv.csv" ;
-		//AlphaSquad_02-27-2023_11-37-pm_csv.csv
 		System.out.print(file_Name);
 		FileStatus = CheckDownloadedFile.isFileDownloaded(file_Name);
 	}

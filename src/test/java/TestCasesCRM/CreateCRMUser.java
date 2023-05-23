@@ -58,7 +58,6 @@ public class CreateCRMUser extends CreateCRMUserUtils {
 		extentTest = extent.startTest(" CreateCRMUser_VerifyNoCEAccessToCRMOnlyUser ");
 		extentTest.setDescription(
 				" Verify that user is not able to access CE product, after changing the permissions from CE only to CRM only, on the 'Edit User' page ");
-		//WebDriverWaits.CloseOtherTabs();
 		CreateCRMUserUtils.CreateCRMUser_VerifyNoCEAccessToCRMOnlyUser();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(CEAbsence, true);

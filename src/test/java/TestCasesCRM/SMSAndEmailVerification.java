@@ -14,7 +14,6 @@ public class SMSAndEmailVerification extends SMSAndEmailVerificationUtils{
 	@Test(priority = 1)
 	public static void ComposeMessage() throws InterruptedException {
 		extentTest = extent.startTest(" ComposeMessage ");
-//		Login.LoginAgency();
 		SMSAndEmailVerificationUtils.ComposeMessage();
 	}
 
@@ -36,10 +35,5 @@ public class SMSAndEmailVerification extends SMSAndEmailVerificationUtils{
 		SMSAndEmailVerificationUtils.VerifyMailReceivedByCollaborator();
 	}
 
-//	@Test(priority = )
-//	public static void SMSVerification() throws InterruptedException {
-//		extentTest = extent.startTest("  ");
-//		SMSAndEmailVerificationUtils.SMSVerification();
-//	}
 
 }

@@ -37,7 +37,6 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 	public static String applyButton = "//button[text()='Apply']";
 	public static String cancelButton = "//button[text()='Cancel']";
 	public static String saveButton = "//button[text()='Save']";
-	//public static String searchField = "//input[@placeholder='Filter by name or email']";
 	public static String searchField = "//input[@placeholder='Filter by name or email'][@type='TEXT']";
 	
 	public static String usersCount = "//div[@class='agency-setup-tab__section__header']/h2";
@@ -273,9 +272,6 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 	
 
 	public static void CreateCRMUser_UpdateCEOnlyUserToCRMOnly() throws InterruptedException {
-//		Login.LoginAgency();
-//		Thread.sleep(3000);
-//		driver.navigate().to(DataInterface.URLUserManagement);
 		Thread.sleep(4000);
 		WebDriverWaits.SendKeys(SearchField, "CE User");
 		Thread.sleep(7000);
@@ -304,8 +300,6 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 	}
 	
 	public static void CreateCRMUser_VerifyCRMProductAccessToCRMUser() throws InterruptedException, AWTException {
-		//Login.LoginAgencyStage();
-//		Thread.sleep(3000);
 		driver.navigate().to(DataInterface.URLUserManagement);
 		
 		Thread.sleep(6000);
@@ -313,7 +307,6 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 		SearchUserField.clear();
 		SearchUserField.sendKeys("CE To CRM");
 		Thread.sleep(10000);
-		//WebDriverWaits.VisibilityOfElementLocated(EditUserIcon,2);
 		int count = driver.findElements(By.xpath("//div[contains(text(),'No user found')]")).size();
 		if(count > 0) {
 			
@@ -333,14 +326,6 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 		
 		Robot robot = new Robot();
 		Thread.sleep(3000);
-//		robot.keyPress(KeyEvent.VK_CONTROL);
-//		robot.keyPress(KeyEvent.VK_T);
-//		Thread.sleep(20000);
-//		ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-//		if(tabs.size()> 1) {
-//			driver.switchTo().window((String) tabs.get(1));
-//			Thread.sleep(1000);
-//		}
 		((JavascriptExecutor) driver).executeScript("window.open()");
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
@@ -373,20 +358,14 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 			driver.findElement(By.xpath("//input[@id='input39']")).sendKeys("good");
 			driver.findElement(By.xpath("//input[@value='Reset Password']")).click();
 			Thread.sleep(3000);
-			
-			//driver.findElement(By.xpath("//input[@name='newPassword']")).sendKeys("Hello@123");   // QA
-			//driver.findElement(By.xpath("//input[@name='confirmPassword']")).sendKeys("Hello@123");  //QA
-			
-			driver.findElement(By.xpath("//input[@name='newPassword']")).sendKeys(RandomupdatedPassword);   // Stage
-			driver.findElement(By.xpath("//input[@name='confirmPassword']")).sendKeys(RandomupdatedPassword);  //Stage
+			driver.findElement(By.xpath("//input[@name='newPassword']")).sendKeys(RandomupdatedPassword);
+			driver.findElement(By.xpath("//input[@name='confirmPassword']")).sendKeys(RandomupdatedPassword);
 			
 			driver.findElement(By.xpath("//input[@value='Reset Password']")).click();
 			Thread.sleep(5000);
 		}
 		else if(driver.findElements(By.xpath("//h1[contains(text(),'Welcome to Comcate')]")).size()  > 0) {
 		Thread.sleep(4000);
-//		WebDriverWaits.SendKeys(NewPassword, "Hello@123");   //QA
-//		WebDriverWaits.SendKeys(VerifyPassword, "Hello@123");
 		System.out.print(RandomupdatedPassword);
 		WebDriverWaits.SendKeys(NewPassword, RandomupdatedPassword);
 		WebDriverWaits.SendKeys(VerifyPassword, RandomupdatedPassword);
@@ -405,46 +384,18 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 			WebDriverWaits.ClickOn(LogoutOption);
 			Thread.sleep(7000);
 		}
-		
-		//driver.quit();
-		//driver.manage().deleteAllCookies();
-//		ChromeOptions chromeOptions = new ChromeOptions();
-//		WebDriverManager.chromedriver().setup();
-//		driver = new ChromeDriver(chromeOptions);
-//		driver.manage().window().maximize();
-//		Thread.sleep(3000);
-		
-//		WebDriverWaits.SendKeys(LoginAgencyUtils.UsernameField, YopmailID);     // QA
-//		WebDriverWaits.SendKeys(PasswordField, DataInterface.AgencyPassword);
-//		WebDriverWaits.ClickOn(SubmitButton);                                   // QA
-		
-		
-		
 		driver.navigate().to(DataInterface.AgencyURL);
-//		Thread.sleep(10000);
-//		WebDriverWaits.SendKeys(OKTAUsernameField, YopmailID);
-//		WebDriverWaits.ClickOn(NextButton); 
-//		driver.findElement(OKTAUsernameField).sendKeys(YopmailID);
-//		WebDriverWaits.SendKeys(OKTAPasswordField, RandomupdatedPassword);
-//		WebDriverWaits.WaitUntilVisible(OKTASubmitButton);
-//		WebDriverWaits.ClickOn(OKTASubmitButton);
-//
 		Thread.sleep(10000);	
 		List<WebElement> CRMPresence = driver.findElements(SubmissionsTab);
 		CRMAccess = CRMPresence.size()==1;
 		}
 	
 	public static void CreateCRMUser_VerifyNoCEAccessToCRMOnlyUser() throws InterruptedException, AWTException {
-//		Login.LoginAgency();
-//		Thread.sleep(3000);
-		
 		driver.navigate().refresh();
 		driver.navigate().to(DataInterface.URLUserManagement);
 	    Thread.sleep(6000);
 		Thread.sleep(6000);
-		//WebElement SearchUserField = WebDriverWaits.WaitUntilVisibleWE(SearchField);
 		driver.findElement(SearchField).clear();
-		//SearchUserField.clear();
 		driver.findElement(SearchField).sendKeys("CE To CRM");
 		Thread.sleep(5000);
 		WebDriverWaits.VisibilityOfElementLocated(EditUserIcon, 2);
@@ -454,7 +405,6 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(RoleDropdown);	
 		Thread.sleep(5000);
-		//WebDriverWaits.VisibilityOfElementLocated(AgencyAdminCEM, 1);
 		WebDriverWaits.ScrollIntoView(AgencyAdminCRMOnly);
 		WebDriverWaits.ClickOn(AgencyAdminCRMOnly);
 		Thread.sleep(5000);
@@ -465,11 +415,8 @@ public class CreateCRMUserUtils extends LoginAgencyUtils {
 		Thread.sleep(1000);
 		WebDriverWaits.ClickOn(SaveButton);
 		Thread.sleep(10000);
-		//WebDriverWaits.WaitForElementInteractable(LogoutDropdownArrow, 2);
-		//WebDriverWaits.ClickOn(LogoutDropdownArrow);
 		WebDriverWaits.ClickByJsExecuter(LogoutDropdownArrow);
 		Thread.sleep(2000);
-		//WebDriverWaits.ClickOn(LogoutOption);
 		WebDriverWaits.ClickByJsExecuter(LogoutOption);
 		Thread.sleep(10000);
 		

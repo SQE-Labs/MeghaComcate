@@ -39,11 +39,6 @@ public class SMSAndEmailVerificationUtils extends CSDPUtils {
 	public static By SendButton = By.xpath("//button[text()='Send']");
 	public static By PrivateSubmissionHeader = By.xpath("//h2[@class='private-submission-details__number']");
 	public static By ReceivedMailHeader = By.xpath("//td[@align='center']/h2");
-//	public static By  = By.xpath("");
-//	public static By  = By.xpath("");
-//	public static By  = By.xpath("");
-//	public static By  = By.xpath("");
-//	public static By  = By.xpath("");
 	
 	public static String RandomSubject;
 
@@ -68,48 +63,31 @@ public class SMSAndEmailVerificationUtils extends CSDPUtils {
 		String[] FetchAllText = URLSubmissionInfo.split("https");
 		String FetchSMSURL = ("https" + FetchAllText[1]).split(" ")[0];
 		driver.navigate().to(FetchSMSURL);
-//		String FetchSMSSubmissionNumber[] = URLSubmissionInfo.split("submission ");
-//		String FinalSubmissionNumber[] = FetchSMSSubmissionNumber[1].split(" https");
-//		System.out.println(FinalSubmissionNumber[0]);
 		Thread.sleep(10000);
 		String OpenedSubmissionHeader[] = WebDriverWaits.GetText(PrivateSubmissionHeader).split("Submission #");
 		System.out.println(OpenedSubmissionHeader[1]);
 		System.out.println(SubmissionNumberCSDP);
-//		softAssert.assertTrue(FinalSubmissionNumber[0].equals(OpenedSubmissionHeader[1]+"\n\n\n"));
 		softAssert.assertEquals(SubmissionNumberCSDP,OpenedSubmissionHeader[1]);
 		softAssert.assertAll();
 	}
 
 
-//	public static final String ACCOUNT_SID = "AC98027249ebb226c5a5fac9eb11850e95";
-//	public static final String AUTH_TOKEN = "dfbfa613117596b5aab78f1e228143b3";
-	
-<<<<<<< HEAD
-	public static final String ACCOUNT_SID = "AC98027249ebb226c5a5fac9eb11850e95";
-	public static final String AUTH_TOKEN = "c6c334bf072ff393cf2e600789d8dc5d";
-=======
 	public static final String ACCOUNT_SID =PropertiesUtils.getPropertyValue("ACCOUNT_SID");
 	public static final String AUTH_TOKEN = PropertiesUtils.getPropertyValue("AUTH_TOKEN");
->>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 	
 	public static String URLSubmissionInfo;
 	public static String LatestSID;
 
 	public static void TwilioGetMessage() throws InterruptedException {
 		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-
-//		Call call = Call.fetcher("CA42ed11f93dc08b952027ffbc406d0868").fetch();
-//		System.out.println(call.getTo());
 		Thread.sleep(2000);
 		ResourceSet<Message> messages = Message.reader().limit(1).read();
-		//ResourceSet<Message> messages = Message.reader().read();
 		for (Message record : messages) {
 			Thread.sleep(2000);
 			LatestSID = record.getSid();
 			System.out.println(LatestSID);
 		}
 
-//		Message message = Message.fetcher("SM266b3c72cea3c143fa1040d10079923e").fetch();
 		Message message = Message.fetcher(LatestSID).fetch();
 		System.out.println(message.getTo());
 		URLSubmissionInfo = message.getBody();

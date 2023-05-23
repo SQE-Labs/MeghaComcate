@@ -15,7 +15,6 @@ public class CSPExternal extends CSPExternalUtils {
 		extentTest.setDescription(
 				" Verify that 'Report an issue' page opens up, when user clicks on the URL under CRM section, on 'Edit Agency' popup. ");
 		CSPExternalUtils.CSPExternal_PreRequisite_OpenReportAnIssuePage();
-		//CSPExternalUtils.CSPExternal_PreRequisite_OpenReportAnIssuePageNOLogin();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertEquals(RASPageTitle, "Report an issue");
 		softAssert.assertAll();
@@ -51,10 +50,6 @@ public class CSPExternal extends CSPExternalUtils {
 		extentTest = extent.startTest(" CSPExternal_VerifyCorrespondingCategoryToKeyword ");
 		extentTest.setDescription(
 				" Verify that corresponding Category with added keyword in 'Describe the issue' textbox, appears selected by default, under 'Select Category' section. ");
-//		//Login.LoginAgency();
-//		CSPExternal_PreRequisite_OpenReportAnIssuePage();
-//		 CSPExternal_VerifyIssueDescription();
-//		 CSPExternal_VerifyAddedAttachments();
 		CSPExternalUtils.CSPExternal_VerifyCorrespondingCategoryToKeyword();
 		SoftAssert softAssert = new SoftAssert();
 		softAssert.assertTrue(categoryContains);

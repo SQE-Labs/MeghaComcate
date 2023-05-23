@@ -61,9 +61,6 @@ public class CRMCommonMethods {
 		Thread.sleep(15000);
 
 		WebDriverWaits.ClickOn(CSPInternal.CategoryDropdown);
-		
-//		WebDriverWaits.SendKeys(CSPInternal.SearchCategory, Categories.RandomCategoryname);
-		
 		WebDriverWaits.SendKeys(CSPInternal.SearchCategory, CategoryName);
 		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(CSPInternal.SearchResultsCategory);
@@ -114,14 +111,6 @@ public class CRMCommonMethods {
 			}
 		}
 		if (Location == "Yes") {
-//			WebDriverWaits.SendKeys(CSPInternal.LocationField, "Texas ");
-//			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
-//			WebDriverWaits.SendKeys(CSPInternal.LocationField, "City Museum");
-//			Thread.sleep(3000);
-//			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
-//			Thread.sleep(3000);
-//			WebDriverWaits.ClickOn(CSPInternal.LocationSearchResult);
-//			Thread.sleep(4000);
 			
 			if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) ){
 				CRMCommonMethods.searchLocationCSP(DataInterface.searchLocationKey1O);
@@ -175,9 +164,7 @@ public class CRMCommonMethods {
 	
 	public static void CRM_CreateSubmissionPreRequisite(String Anonymous, String Customer, String Tags, String Location,
 			String Attachment, String CategoryName) throws InterruptedException {
-		
-		
-		//Thread.sleep(10000);
+
 		Thread.sleep(6000);
 		int CheckCancel = BrowsersInvoked.driver.findElements(CSPInternalUtils.CancelCreateCase).size();
 		if(CheckCancel > 0) {
@@ -202,10 +189,8 @@ public class CRMCommonMethods {
 		Thread.sleep(5000);
 		WebDriverWaits.ClickOn(CSPInternalUtils.CustomerSubmissionOption);
 		
-		Thread.sleep(13000);//CreateACasePopupTitle
+		Thread.sleep(13000);
 		WebDriverWaits.ClickOn(CSPInternal.CategoryDropdown);
-		
-//		WebDriverWaits.SendKeys(CSPInternal.SearchCategory, Categories.RandomCategoryname);
 		
 		WebDriverWaits.SendKeys(CSPInternal.SearchCategory, CategoryName);
 		Thread.sleep(2000);
@@ -235,14 +220,7 @@ public class CRMCommonMethods {
 			}
 		}
 		if (Location == "Yes") {
-//			WebDriverWaits.SendKeys(CSPInternal.LocationField, "Texas ");
-//			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
-//			WebDriverWaits.SendKeys(CSPInternal.LocationField, "City Museum");
-//			Thread.sleep(3000);
-//			WebDriverWaits.WaitUntilVisible(CSPInternal.LocationSearchResult);
-//			Thread.sleep(3000);
-//			WebDriverWaits.ClickOn(CSPInternal.LocationSearchResult);
-//			Thread.sleep(4000);
+
 			
 			if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) ){
 				CRMCommonMethods.searchLocationCSP(DataInterface.searchLocationKey1O);
@@ -296,7 +274,7 @@ public class CRMCommonMethods {
 
 	public static void CRM_CreateCategory(String Checkbox, String IncludeLoc, String Keywords, String CategoryName)
 			throws InterruptedException {
-		// Location Required YY, Location Not Included NN, Location Not Required NY
+
 		BrowsersInvoked.driver.navigate().to(DataInterface.URLCategories);
 		Thread.sleep(8000);
 		WebDriverWaits.scrollToRight();
@@ -329,8 +307,7 @@ public class CRMCommonMethods {
 	
 	public static void CRM_CreateCategoryAppPrerequisute(String Checkbox, String IncludeLoc, String Keywords, String CategoryName)
 			throws InterruptedException {
-		// Location Required YY, Location Not Included NN, Location Not Required NY
-		//BrowsersInvoked.driver.navigate().to(DataInterface.URLCategories);
+
 		Thread.sleep(8000);
 		WebDriverWaits.scrollToRight();
 		Thread.sleep(4000);
@@ -478,7 +455,7 @@ public class CRMCommonMethods {
 				}
 			}
 		} else if (Category == "Location Required") {
-			//WebDriverWaits.ClickOn(CSPExternalUtils.NextButton);
+
 			String CategorySelected = WebDriverWaits.GetText(CSPExternalUtils.SelectedCategory);
 			boolean CompareSelCategory = CategorySelected.equals("Location Required");
 			if (!CompareSelCategory) {
@@ -498,7 +475,7 @@ public class CRMCommonMethods {
 			Thread.sleep(3000);
 			WebDriverWaits.ClickOn(CSPExternalUtils.LocationSearchResult);
 		} else if (Category == "Location Not Required") {
-			//WebDriverWaits.ClickOn(CSPExternalUtils.NextButton);
+
 			String CategorySelected = WebDriverWaits.GetText(CSPExternalUtils.SelectedCategory);
 			boolean CompareSelCategory = CategorySelected.equals("Location Not Required");
 			if (!CompareSelCategory) {
@@ -527,7 +504,7 @@ public class CRMCommonMethods {
 			WebDriverWaits.ScrollIntoView(CSPExternalUtils.EmailPreferenceButton);
 			WebDriverWaits.ClickOn(CSPExternalUtils.EmailPreferenceButton);
 			Thread.sleep(2000);
-			//WebDriverWaits.ClickOn(CSPExternalUtils.TextMsgPreferenceButton);
+
 			String RandomFirstName = RandomStrings.RequiredCharacters(6);
 			String RandomLastName = RandomStrings.RequiredCharacters(6);
 			WebDriverWaits.SendKeys(CSPExternalUtils.FirstNameField, RandomFirstName);
@@ -585,7 +562,6 @@ public class CRMCommonMethods {
 		CE_AddLocation();
 		CE_AddViolation();
 		CE_AddContact();
-//		CE_AddAttachment();
 		WebDriverWaits.ClickOn(CreateCaseButton);
 		Thread.sleep(3000);
 		WebDriverWaits.ClickOn(AssignCaseTo);
@@ -622,13 +598,6 @@ public class CRMCommonMethods {
 	
 
 	public static void CE_AddLocation() throws InterruptedException {
-//		Thread.sleep(3000);
-//		WebDriverWaits.SendKeys(LocationSearchField, "Texas ");
-//		WebDriverWaits.WaitUntilVisible(LocationSearchResult);
-//		WebDriverWaits.SendKeys(LocationSearchField, "City Museum");
-//		Thread.sleep(5000);
-//		WebDriverWaits.ClickOn(LocationSearchResult);
-//		Thread.sleep(4000);
 		
 		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) ){
 			CRMCommonMethods.serachLocationCCP(DataInterface.searchLocationKey1O);
@@ -645,7 +614,6 @@ public class CRMCommonMethods {
 		WebDriverWaits.ClickOn(ViolationSearchBox);
 		Thread.sleep(4000);
 		WebDriverWaits.SendKeys(ViolationSearchBox, "Wa");
-//		WebDriverWaits.SendKeys(ViolationSearchBox, "Gen");
 		Thread.sleep(4000);
 		WebDriverWaits.ClickOn(ViolationsList);
 	}
@@ -747,12 +715,8 @@ public class CRMCommonMethods {
 		Thread.sleep(5000);
 
 		WebElement UploadFile4 = BrowsersInvoked.driver.findElement(By.xpath("//input[@type='file']"));
-		//String testtDataPath = System.getProperty("user.dir");
 		UploadFile4.sendKeys(filePath);
 		Thread.sleep(10000);
-		//RobotClass.RobotClassUploadMedia(filePath);
-		//WebDriverWaits.ActionUploadMedia(filePath);
-
 		RobotClass.RobotClassUploadMedia(filePath);
 
 		Thread.sleep(3000);

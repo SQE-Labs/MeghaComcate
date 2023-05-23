@@ -3,12 +3,9 @@ package BrowsersBase;
 public interface DataInterface{
 
 	public static String browserMain = "CHROME";
-    //public static String RunEnvironment = "QA";
     public static String RunEnvironment = "Stage";
-	//public static String RunEnvironment = "CI";	
     public static String AgencyName = "AlphaSquad";
-     String agencyConfig ="GisDirect2o" ; // "GisDirect1o" ,"GisDirect2o"// ;
-    
+     String agencyConfig ="GisDirect2o" ;
      String agencyConfigEnterprise = "Enterprise";
 	 String agencyConfigGisDirect1o = "GisDirect1o";
 	 String agencyConfigGisDirect2o = "GisDirect2o";
@@ -38,16 +35,6 @@ public interface DataInterface{
 	public static String URLViolations = Instance + (AgencyID) + "/setup/products/violations";
 	public static String URLReports = Instance + (AgencyID) + "/reports";
 
-//	public static String StreetAddress = "New Street";
-//	public static String City = "New Texas";
-//	public static String Zip = "77440";
-	
-	//GIS Lite
-//	public static String StreetAddress = "120 6th Street";
-//	public static String City = "Texas City";
-//	public static String Zip = "77590";
-	
-	
 	public static String StreetAddress = BrowsersInvoked.StreetAddress;
 	public static String City = BrowsersInvoked.City;
 	public static String Zip = BrowsersInvoked.Zip;

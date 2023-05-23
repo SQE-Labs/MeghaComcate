@@ -124,17 +124,7 @@ public class SubmissionAssignmentUtils extends CategoriesUtils {
 				}
 		}
 		}
-		
-//		List<WebElement> CrossIcon = driver.findElements(CrossIconRuleSet);
-//		int CountCrossIcons = CrossIcon.size();
-//		System.out.println(CountCrossIcons);
-//		if (CountCrossIcons > 0) {
-//			for (int i = 0; i < CountCrossIcons; i++) {
-//				WebElement CrossList = CrossIcon.get(i);
-//				Thread.sleep(4000);
-//				CrossList.click();
-//			}
-//		}
+
 		WebDriverWaits.ClickOn(SaveButton);
 		NoRuleValidationText = WebDriverWaits.GetText(ValidationNoRule);
 		ExpectedValidation = "At least one rule should be present.";

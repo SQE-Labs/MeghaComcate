@@ -75,13 +75,4 @@ public class CreateAndLinkCase extends CreateAndLinkCaseUtils {
 		softAssert.assertAll();
 	}
 
-//	@Test(priority = )
-//	public static void CreateAndLinkCase_() throws InterruptedException {
-//		extentTest = extent.startTest("  ");
-//		extentTest.setDescription(" Verify that user is able to Unlink the Associated Case, after clicking on the 'Remove' link on the Header of CSDP. ");
-//		SoftAssert softAssert = new SoftAssert();
-//
-//		softAssert.assertAll();
-//	}
-
 }

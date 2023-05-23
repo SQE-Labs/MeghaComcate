@@ -156,20 +156,6 @@ public class CategoriesUtils extends CreateCRMUserUtils {
 		Thread.sleep(2000);
 		ResolutionField.clear();
 		Thread.sleep(1000);
-//		String FetchResoValue = ResolutionField.getAttribute("value");
-//		
-//		System.out.println("Value is "+FetchResoValue);
-////		Thread.sleep(2000);
-////		for (int i=0; i<=3; i++) {
-////		ResolutionField.sendKeys(Keys.BACK_SPACE);
-////		}
-//		Thread.sleep(5000);
-//		//WebDriverWaits.ClickOn(ResolutionTimeField);	
-//		Thread.sleep(2000);
-//		WebDriverWaits.ClickOn(SaveButton);
-//		Thread.sleep(2000);
-//		ResolutionTimeValidationMsg = WebDriverWaits.GetText(ValidationMsgResolutionTime);
-//		System.out.println(ResolutionTimeValidationMsg);
 		NewResoTime = Integer.toString(ResoTimeBefore + 1);
 		Thread.sleep(5000);
 		ResolutionField.sendKeys(NewResoTime);

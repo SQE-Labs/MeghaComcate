@@ -188,13 +188,7 @@ public class CSDPUtils extends CSPExternalUtils {
 		EscalateToggleStatus = EscalateToggle.isEnabled();
 	}
 
-//	public static void CSDP_VerifyAnonymousText() throws InterruptedException {
-//		extentTest = extent.startTest(" CSDP_VerifyAnonymousText ");
-//		extentTest.setDescription(" Verify that 'Anonymous' text appears under 'Customer Name' field, when user has created a Submission with 'Post Anonymously' checkbox checked. ");
-//		SoftAssert softAssert = new SoftAssert();
-//
-//		softAssert.assertAll();
-//	}
+
 
 	public static void CSDP_VerifyDirectionToCoDP() throws InterruptedException {
 		CustomerName = WebDriverWaits.GetText(CustomerNameLink);
@@ -214,14 +208,6 @@ public class CSDPUtils extends CSPExternalUtils {
 		driver.navigate().back();
 		Thread.sleep(6000);
 	}
-
-//	public static void CSDP_VerifyUpdatedLocation() throws InterruptedException {
-//		extentTest = extent.startTest(" CSDP_VerifyUpdatedLocation ");
-//		extentTest.setDescription(" Verify that user is able edit & save the Location under 'Location' tile, on CSDP. ");
-//		SoftAssert softAssert = new SoftAssert();
-//		
-//		softAssert.assertAll();
-//	}
 
 	public static void CSDP_VerifyAddedAttachments() throws InterruptedException {
 		Thread.sleep(2000);
@@ -244,8 +230,6 @@ public class CSDPUtils extends CSPExternalUtils {
 		WebDriverWaits.SendKeys(InternalNoteField, AllChar5000);
 		WebDriverWaits.ClickOn(CreateNoteButton);
 		Thread.sleep(2000);
-//		String ValidationMsg1 = WebDriverWaits.GetText(InternalNoteValidation);
-//		softAssert.assertTrue(ValidationMsg1.equals("Min 1 and Max 5000 characters limit."));
 		WebElement InternalNoteFieldWE = WebDriverWaits.WaitUntilVisibleWE(InternalNoteField);
 		Thread.sleep(6000);
 		InternalNoteFieldWE.clear();
@@ -261,7 +245,6 @@ public class CSDPUtils extends CSPExternalUtils {
 		WebDriverWaits.VisibilityOfElementLocated(EditNoteIcon, 1);
 		WebDriverWaits.ClickOn(EditNoteIcon);
 		Thread.sleep(4000);
-		//WebDriverWaits.VisibilityOfElementLocated(EditInternalNotePopup, 2);
 		EditNotePopupTitle = WebDriverWaits.GetText(EditInternalNotePopup);
 		WebElement InternalNoteFieldWE = WebDriverWaits.WaitUntilVisibleWE(InternalNoteField);
 		InternalNoteFieldWE.clear();
@@ -269,10 +252,7 @@ public class CSDPUtils extends CSPExternalUtils {
 		RandomEditedNote = RandomNote;
 		WebDriverWaits.SendKeys(InternalNoteField, RandomNote);
 		WebDriverWaits.ClickOn(SaveButton);
-<<<<<<< HEAD
 		Thread.sleep(5000);
-=======
->>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		Thread.sleep(15000);
 		WebDriverWaits.ScrollIntoView(InternalNotesContent);
 		Thread.sleep(3000);

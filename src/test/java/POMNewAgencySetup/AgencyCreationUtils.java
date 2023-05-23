@@ -26,7 +26,6 @@ public class AgencyCreationUtils extends Login{
 	public static By CodeEnforcementLinkText = By.xpath("//div[text()='Code Enforcement']");
 	public static By CRMLinkText = By.xpath("//div[text()='CRM']");
 	public static By ProductNameField = By.xpath("//div[@class='product-form__info']//input");
-//	public static By WaterVioToggle = By.xpath("//span[text()='Water']");
 	public static By WaterVioToggle = By.xpath("//span[text()='General']");
 	public static By AnimalVioToggle = By.xpath("//span[text()='Animal']");
 	public static By AddCodeEnforcementButton = By.xpath("//button[text()='Add Code Enforcement']");
@@ -70,15 +69,12 @@ public class AgencyCreationUtils extends Login{
 	public static Boolean FineToggle ;
 	public static String FineTrackingStatus ;
 	
-	public static void AgencyCreation_OpenCreateAgencyPopup() throws InterruptedException {		
-		//LoginAgencyUtils.LoginAdmin();
+	public static void AgencyCreation_OpenCreateAgencyPopup() throws InterruptedException {
 		Thread.sleep(15000);
 		WebElement element = driver.findElement(CreateAgencyButton);
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", element);
-		//WebDriverWaits.ClickOn(CreateAgencyButton);
 		CreateAgencyPopupTitle = WebDriverWaits.GetText(CreateAgencyPopup);
-		//WebDriverWaits.ClickOn(SendFromTextMessageToggle);
 		WebDriverWaits.ClickOn(CreateAgencyButton2);
 		
 	}
@@ -106,7 +102,6 @@ public class AgencyCreationUtils extends Login{
 		Thread.sleep(2000);
 		WebDriverWaits.ClickOn(FinesTracking);
 		Thread.sleep(2000);
-		//boolean finebtn = driver.findElement(FinesTracking).isSelected();
 		WebDriverWaits.ClickOn(AddCodeEnforcementButton);
 		AddedCETitle = WebDriverWaits.GetText(AddedCEProduct);
 		Thread.sleep(4000);
@@ -130,7 +125,6 @@ public class AgencyCreationUtils extends Login{
 		WebElement ProdNameFieldCRM = WebDriverWaits.WaitUntilVisibleWE(ProductNameFieldCRM);
 		Thread.sleep(2000);
 		ProdNameFieldCRM.clear();
-		//		WebDriverWaits.WaitUntilVisibleWE(ProductNameFieldCRM).clear();
 		WebDriverWaits.SendKeys(ProductNameFieldCRM, "CRM");
 		WebDriverWaits.Clear(BackToUrLCitizenView);
 		WebDriverWaits.SendKeys(BackToUrLCitizenView, "https://app-stage.comcate.com/agencies/181/setup");
@@ -163,11 +157,8 @@ public class AgencyCreationUtils extends Login{
 		WebDriverWaits.ScrollIntoView(CreateAgencyButton2);
 		Thread.sleep(3000);
 		WebDriverWaits.ClickOn(CreateAgencyButton2);
-<<<<<<< HEAD
 		Thread.sleep(15000);
-=======
 		Thread.sleep(10000);
->>>>>>> 98c45ba02ff3722456e2b11b5387cfebfff18e80
 		WebDriverWaits.SendKeys(AgencySearchField, RandomAgencyName);
 		Thread.sleep(13000);
 		NewAgencyTitle = WebDriverWaits.GetText(NewAgencyCreated);
