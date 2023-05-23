@@ -1,5 +1,6 @@
 package BrowsersBase;
 
+import CommonMethods.PropertiesUtils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 import org.openqa.selenium.Dimension;
@@ -106,11 +107,8 @@ public class BrowsersInvoked {
 				AgencyID = 000;
 				Instance = "";
 				AgencyUsername = "";
-				AgencyPassword = "";   //Hello@123
-				AdminURL = "https://admin-qa-new.comcate.com";
-				AdminUsername = "support@comcate.com";
-				AdminPassword = "test@123";
-				
+				AgencyPassword = "";
+
 				StreetAddress = "";
 				City = "";
 				Zip = "";
@@ -125,26 +123,20 @@ public class BrowsersInvoked {
 			else if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o)) {
 				System.out.print(DataInterface.agencyConfigGisDirect1o); 
 				
-				AgencyID = 832;
-				Instance = "https://app-qa-new.comcate.com/agencies/";
-				AgencyUsername = "832qa1@yopmail.com";
-				AgencyPassword = "Hello@123";   //Test@123
-				AdminURL = "https://admin-qa-new.comcate.com";
-				AdminUsername = "support@comcate.com";
-				AdminPassword = "test@123";
-				
-				
-				StreetAddress = "1851 HILLPOINTE RD";
-				City = "HENDERSON";
-				Zip = "89074";
-				mailReset="";  
-				
-				
-				
-				CCPStreetAddress1 = "1851 HILLPOINTE RD" ;
-				CCPCity1 = "HENDERSON" ;
-				CCPZip1 = "89074";
-				CCPmailReset1 = "";
+				AgencyID = Integer.parseInt(PropertiesUtils.getPropertyValue("AgencyID_QAGisDirect1O"));
+				Instance = PropertiesUtils.getPropertyValue("InstanceQA");
+				AgencyUsername = PropertiesUtils.getPropertyValue("AgencyUsername_QaGisDirect1O");
+				AgencyPassword = PropertiesUtils.getPropertyValue("AgencyPassword_QAGisDirect1O");
+
+				StreetAddress = PropertiesUtils.getPropertyValue("StreetAddress_QAGISDirect1O");
+				City = PropertiesUtils.getPropertyValue("City_QAGISDirect1O");
+				Zip = PropertiesUtils.getPropertyValue("Zip_QAGISDirect1O");
+				mailReset=PropertiesUtils.getPropertyValue("mailReset_QAGISDirect1O");
+
+				CCPStreetAddress1 = PropertiesUtils.getPropertyValue("StreetAddressQAGISDirect1O");
+				CCPCity1 = PropertiesUtils.getPropertyValue("CityQAGISDirect1O");
+				CCPZip1 = PropertiesUtils.getPropertyValue("ZipQAGISDirect1O");
+				CCPmailReset1=PropertiesUtils.getPropertyValue("mailResetQAGISDirect1O");
 			}
 			else if(DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisLite)) {
 				System.out.print(DataInterface.agencyConfigGisLite);
@@ -152,36 +144,34 @@ public class BrowsersInvoked {
 				AgencyID = 000;
 				Instance = "";
 				AgencyUsername = "";
-				AgencyPassword = "";   //Hello@123
-				AdminURL = "https://admin-qa-new.comcate.com";
-				AdminUsername = "support@comcate.com";
-				AdminPassword = "test@123";
-				
+				AgencyPassword = "";
 				StreetAddress = "";
 				City = "";
 				Zip = "";
 				mailReset="";
 			}
-			
-			
+
 		else {
-			AgencyID = 659;
-			Instance = "https://app-qa-new.comcate.com/agencies/";
-			AgencyUsername = "659qa2@yopmail.com";
-			AgencyPassword = "Test@123";
-			AdminURL = "https://admin-qa-new.comcate.com";
-			AdminUsername = "support@comcate.com";
-			AdminPassword = "test@123"; 
-			
-			StreetAddress = "New Street";
-			City = "New Texas";
-			Zip = "77440";
-			mailReset="";  
-			
-			
-			
-			
-		}
+			AgencyID = Integer.parseInt(PropertiesUtils.getPropertyValue("AgencyIDQA"));
+			Instance = PropertiesUtils.getPropertyValue("InstanceQA");
+			AgencyUsername = PropertiesUtils.getPropertyValue("AgencyUsernameQA");
+			AgencyPassword = PropertiesUtils.getPropertyValue("AgencyPasswordQA");
+
+			StreetAddress = PropertiesUtils.getPropertyValue("StreetAddressQAEnterPrise");
+			City = PropertiesUtils.getPropertyValue("CityQAEnterPrise");
+			Zip = PropertiesUtils.getPropertyValue("ZipQAEnterPrise");
+			mailReset=PropertiesUtils.getPropertyValue("mailResetQAEnterPrise");
+
+			CCPStreetAddress1 = PropertiesUtils.getPropertyValue("StreetAddressQAEnterPrise");
+			CCPCity1 = PropertiesUtils.getPropertyValue("CityQAEnterPrise");
+			CCPZip1 = PropertiesUtils.getPropertyValue("ZipQAEnterPrise");
+			CCPmailReset1=PropertiesUtils.getPropertyValue("mailResetQAEnterPrise");
+
+
+			}
+			AdminURL = PropertiesUtils.getPropertyValue("AdminURL");
+			AdminUsername = PropertiesUtils.getPropertyValue("AdminUsername");
+			AdminPassword = PropertiesUtils.getPropertyValue("AdminPassword");
 			break;
 		}
 		
@@ -189,13 +179,13 @@ public class BrowsersInvoked {
 		
 		
 		case "CI": {
-			AgencyID = 1095;
-			Instance = "https://6141.comcateprime.com:4400/agencies/";
-			AgencyUsername = "1095ci2@yopmail.com";
-			AgencyPassword = "Hello@123";
-			AdminURL = "https://6141.comcateprime.com:4401/";
-			AdminUsername = "support@comcate.com";
-			AdminPassword = "test@123";
+			AgencyID = Integer.parseInt(PropertiesUtils.getPropertyValue("AgencyIDCI"));
+			Instance = PropertiesUtils.getPropertyValue("InstanceCI");
+			AgencyUsername = PropertiesUtils.getPropertyValue("AgencyUsernameCI");
+			AgencyPassword = PropertiesUtils.getPropertyValue("AgencyPasswordCI");
+			AdminURL = PropertiesUtils.getPropertyValue("AdminURLCI");
+			AdminUsername = PropertiesUtils.getPropertyValue("AdminUsernameCI");
+			AdminPassword = PropertiesUtils.getPropertyValue("AdminPasswordCI");
 			break;
 		} 
 		
@@ -209,89 +199,73 @@ public class BrowsersInvoked {
 			if(DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect2o)) {
                 System.out.print(DataInterface.agencyConfigGisDirect2o);
 				
-				AgencyID = 226;
-				Instance = "https://app-stage.comcate.com/agencies/";
-				AgencyUsername = "GISDirect20@yopmail.com";
-				AgencyPassword = "Hello@123";
-				AdminURL = "https://admin-stage.comcate.com/agencies";
-				AdminUsername = "support@comcate.com";
-				AdminPassword = "C0de#432!";
-				
-				
-				StreetAddress = "1851 HILLPOINTE RD";
-				City = "HENDERSON";
-				Zip = "89074";
-				mailReset="";  
-				
-				
-				
-				CCPStreetAddress1 = "1851 HILLPOINTE RD" ;
-				CCPCity1 = "HENDERSON" ;
-				CCPZip1 = "89074";
-				CCPmailReset1 = "";
+				AgencyID = Integer.parseInt(PropertiesUtils.getPropertyValue("AgencyID_StageGisDirect2O"));
+				Instance = PropertiesUtils.getPropertyValue("InstanceStage");
+				AgencyUsername = PropertiesUtils.getPropertyValue("AgencyUsername_StageGisDirect2O");
+				AgencyPassword = PropertiesUtils.getPropertyValue("AgencyPassword_StageGisDirect2O");
+
+				StreetAddress = PropertiesUtils.getPropertyValue("StreetAddress_QAGISDirect1O");
+				City = PropertiesUtils.getPropertyValue("City_QAGISDirect1O");
+				Zip = PropertiesUtils.getPropertyValue("Zip_QAGISDirect1O");
+				mailReset=PropertiesUtils.getPropertyValue("mailReset_QAGISDirect1O");
+
+				CCPStreetAddress1 = PropertiesUtils.getPropertyValue("StreetAddress_QAGISDirect1O");
+				CCPCity1 = PropertiesUtils.getPropertyValue("City_QAGISDirect1O");
+				CCPZip1 = PropertiesUtils.getPropertyValue("Zip_QAGISDirect1O");
+				CCPmailReset1=PropertiesUtils.getPropertyValue("mailReset_QAGISDirect1O");
 			}
 			else if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o)) {
 				System.out.print(DataInterface.agencyConfigGisDirect1o); 
 				
-				AgencyID = 220;
-				Instance = "https://app-stage.comcate.com/agencies/";
-				AgencyUsername = "GISStageo1@yopmail.com";
-				AgencyPassword = "Hello@123";
-				AdminURL = "https://admin-stage.comcate.com/agencies";
-				AdminUsername = "support@comcate.com";
-				AdminPassword = "C0de#432!";
-				
-				
-				StreetAddress = "1851 HILLPOINTE RD";
-				City = "HENDERSON";
-				Zip = "89074";
-				mailReset="";  
-				
-				
-				
-				CCPStreetAddress1 = "1851 HILLPOINTE RD" ;
-				CCPCity1 = "HENDERSON" ;
-				CCPZip1 = "89074";
-				CCPmailReset1 = "";
+				AgencyID = Integer.parseInt(PropertiesUtils.getPropertyValue("AgencyID_StageGisDirect1O"));
+				Instance = PropertiesUtils.getPropertyValue("InstanceStage");
+				AgencyUsername = PropertiesUtils.getPropertyValue("AgencyUsername_StageGisDirect1O");
+				AgencyPassword = PropertiesUtils.getPropertyValue("AgencyPassword_StageGisDirect1O");
+
+				StreetAddress = PropertiesUtils.getPropertyValue("StreetAddress_QAGISDirect1O");
+				City = PropertiesUtils.getPropertyValue("City_QAGISDirect1O");
+				Zip = PropertiesUtils.getPropertyValue("Zip_QAGISDirect1O");
+				mailReset=PropertiesUtils.getPropertyValue("mailReset_QAGISDirect1O");
+
+				CCPStreetAddress1 = PropertiesUtils.getPropertyValue("StreetAddress_QAGISDirect1O");
+				CCPCity1 = PropertiesUtils.getPropertyValue("City_QAGISDirect1O");
+				CCPZip1 = PropertiesUtils.getPropertyValue("Zip_QAGISDirect1O");
+				CCPmailReset1=PropertiesUtils.getPropertyValue("mailReset_QAGISDirect1O");
+
 			}
 			else if(DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisLite)) {
 				System.out.print(DataInterface.agencyConfigGisLite);
 				
 				AgencyID = 00;
-				Instance = "https://app-stage.comcate.com/agencies/";
+				Instance = PropertiesUtils.getPropertyValue("InstanceStage");
 				AgencyUsername = "";
 				AgencyPassword = "";
-				AdminURL = "https://admin-stage.comcate.com/agencies";
-				AdminUsername = "support@comcate.com";
-				AdminPassword = "C0de#432!";
-				
-				StreetAddress = "120 6th Street";
-				City = "Texas City";
-				Zip = "77590";
-				mailReset=""; 
+
 			}
 			
 			
 		else {
-			AgencyID = 181;
-            Instance = "https://app-stage.comcate.com/agencies/";
-            AgencyUsername = "MarkShane@yopmail.com";
-            AgencyPassword = "Hello@1234";
-            AdminURL = "https://admin-stage.comcate.com/agencies";
-            AdminUsername = "support@comcate.com";
-            AdminPassword = "C0de#432!";
-            
-            StreetAddress = "New Street";
-			City = "New Texas";
-			Zip = "77440";
-			mailReset="";  
-			
-			CCPStreetAddress1 = "New Street" ;
-			CCPCity1 = "New Texas" ;
-			CCPZip1 = "77440";
-			CCPmailReset1 = "";
-		} 
-            break;
+			AgencyID = Integer.parseInt(PropertiesUtils.getPropertyValue("AgencyIDStage"));
+            Instance = PropertiesUtils.getPropertyValue("InstanceStage");
+            AgencyUsername = PropertiesUtils.getPropertyValue("AgencyUsernameStage");
+            AgencyPassword = PropertiesUtils.getPropertyValue("AgencyPasswordStage");
+
+			StreetAddress = PropertiesUtils.getPropertyValue("StreetAddressQAEnterPrise");
+			City = PropertiesUtils.getPropertyValue("CityQAEnterPrise");
+			Zip = PropertiesUtils.getPropertyValue("ZipQAEnterPrise");
+			mailReset=PropertiesUtils.getPropertyValue("mailResetQAEnterPrise");
+
+			CCPStreetAddress1 = PropertiesUtils.getPropertyValue("StreetAddressQAEnterPrise");
+			CCPCity1 = PropertiesUtils.getPropertyValue("CityQAEnterPrise");
+			CCPZip1 = PropertiesUtils.getPropertyValue("ZipQAEnterPrise");
+			CCPmailReset1=PropertiesUtils.getPropertyValue("mailResetQAEnterPrise");
+		}
+
+			AdminURL = PropertiesUtils.getPropertyValue("AdminURLStage");
+			AdminUsername = PropertiesUtils.getPropertyValue("AdminUsernameStage");
+			AdminPassword = PropertiesUtils.getPropertyValue("AdminPasswordStage");
+
+			break;
             
             
 		}
