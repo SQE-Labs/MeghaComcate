@@ -2,13 +2,13 @@
 ExtentReports
 target
 test-output
-.classpath
+/classpath
 .idea/
 .metadata/
 .project      
 .settings/
 Comcate.iml
-config.properties
+/config.properties
 
       
        
