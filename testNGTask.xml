@@ -7,36 +7,17 @@
 				<class name="TestCasesCRM.Login">
                     <methods>
                       <include name="LoginAdmin" />
-                     <!--  <include name="LoginAgencyStage" /> -->
+
                     </methods>
                 </class>
-
-		<!--	<class name="TestCasesCRM.CSP_CSDP">
-                 <methods>
-                     <include name="CSP_CSDP_CreateSubmissionWithAnonymousUser" />
-                      <include name="CSP_CSDP_CreateSubmissionWithoutContact" />
-                     <include name="CSP_CSDP_CreateSubmissionWithoutLocation" />
-                     <include name="CSP_CSDP_CreateSubmissionWithoutTags" />
-                 </methods>
-             </class> -->
-
-			<!--<class name="TestCasesCRM.SMSAndEmailVerification">
-				<methods>
-					<include name="ComposeMessage" />
-					<include name="ComposeMail" />
-					<include name="VerifyMailReceivedByAssignee" />
-					<include name="VerifyMailReceivedByCollaborator" />
-				</methods>
-			</class> -->
-
-			<!--<class name="TCsNewAgencySetup.AgencyCreation">
+			<class name="TCsNewAgencySetup.AgencyCreation">
 				<methods>
 					<include name="AgencyCreation_OpenCreateAgencyPopup" />
 					<include name="AgencyCreation_ConfigureCE" />
 					<include name="AgencyCreation_ConfigureCRM" />
 					<include name="AgencyCreation_VerifyNewAgencyCreation" />
 				</methods>
-			</class>-->
+			</class>
 
 			<class name="TCsNewAgencySetup.AppPreRequisites">
 				<methods>
