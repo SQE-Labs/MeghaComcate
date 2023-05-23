@@ -5,10 +5,7 @@
 		<classes>
 			<class name="TestCasesCRM.Login">
 				<methods>
-					<include name="LoginAgency" /> 
-					<!--<include name="LoginAgencyStage"></include> -->
-					<!--<include name="LoginAgencyCI"></include> -->
-
+					<include name="LoginAgency" />
 				</methods>
 			</class>
 			
@@ -152,15 +149,7 @@
 				</methods>
 			</class>
 		
-			
-			
-			
-			
-			
-			<!--  //////////////////  Admin Part flows //////////////////// -->
-			
-			
-			
+
 			<class name="TestCasesCRM.CSPExternal">
 				<methods>
 					<include name="CSPExternal_PreRequisite_OpenReportAnIssuePage" />
@@ -188,10 +177,6 @@
 
 			</class>
 
-
-
-
-			
 			<class name="TestCasesCRM.SMSAndEmailVerification">
 				<methods>
 					<include name="ComposeMessage" />
