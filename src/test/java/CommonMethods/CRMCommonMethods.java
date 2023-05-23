@@ -57,8 +57,7 @@ public class CRMCommonMethods {
 		Thread.sleep(20000);
 		WebDriverWaits.ScrollIntoView(CSPInternal.CategoryDropdown);
 		Thread.sleep(3000);
-
-		Thread.sleep(15000);
+		Thread.sleep(10000);
 
 		WebDriverWaits.ClickOn(CSPInternal.CategoryDropdown);
 		WebDriverWaits.SendKeys(CSPInternal.SearchCategory, CategoryName);
@@ -96,13 +95,7 @@ public class CRMCommonMethods {
 				 WebDriverWaits.ClickOn(By.xpath("//button[text()='Text Message']"));
 				 Thread.sleep(3000);
 			 }
-			 
-			 
-			
-			 Thread.sleep(2000);
-			 Thread.sleep(2000);
-			 
-		      
+			 Thread.sleep(4000);
 		}
 		if (Tags == "Yes") {
 			for (int i = 0; i < 5; i++) {
@@ -139,10 +132,6 @@ public class CRMCommonMethods {
 			WebDriverWaits.ClickOn(CSPInternal.AddButton);
 			Thread.sleep(3000);
 		}
-		
-
-		WebDriverWaits.ClickOn(CSPInternal.CreateSubmissionButton);
-		Thread.sleep(15000);
 
 		WebDriverWaits.ScrollIntoView(CSPInternal.CreateSubmissionButton);
 		Thread.sleep(4000);
