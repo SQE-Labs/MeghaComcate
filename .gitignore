@@ -2,7 +2,7 @@
 ExtentReports
 target
 test-output
-classpath
+.classpath
 .idea/
 .metadata/
 .project      
