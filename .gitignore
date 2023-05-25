@@ -9,6 +9,7 @@ test-output
 .settings/
 Comcate.iml
 config.properties
+/TestData
 
       
        

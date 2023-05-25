@@ -29,9 +29,9 @@ public class BrowsersInvoked {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--remote-allow-origins=*");
-			/*options.addArguments("--headless");
+			options.addArguments("--headless");
 			options.addArguments("--no-sandbox");
-			options.addArguments("--window-size=1552,832");*/
+			options.addArguments("--window-size=1552,832");
 			driver = new ChromeDriver(options);
 			driver.get(DataInterface.AgencyURL);
 			Dimension currentDimension = driver.manage().window().getSize();
