@@ -5,7 +5,7 @@ public interface DataInterface {
     public static String browserMain = "CHROME";
     public static String RunEnvironment = "Stage";
     public static String AgencyName = "AlphaSquad";
-    String agencyConfig = "Enterprise";
+    String agencyConfig = "GisDirect2o";
     String agencyConfigEnterprise = "Enterprise";
     String agencyConfigGisDirect1o = "GisDirect1o";
     String agencyConfigGisDirect2o = "GisDirect2o";
@@ -44,6 +44,7 @@ public interface DataInterface {
     public static String CCPCity1 = BrowsersInvoked.CCPCity1;
     public static String CCPZip1 = BrowsersInvoked.CCPZip1;
     public static String CCPmailReset1 = BrowsersInvoked.CCPmailReset1;
+    public static String CCPStreetAddress2 = BrowsersInvoked.CCPStreetAddress2;
 
     public static String searchLocationKey = "Texas City Museum";
     public static String searchLocationKey1O = "1851 HILLPOINTE";
@@ -59,6 +60,5 @@ public interface DataInterface {
 
     public static String centerLongitudeGIS12O = "-115.0253000000000000000000000";
     public static String centerLatitudeGIS120 = "36.0292000000000000000000000";
-
 
 }

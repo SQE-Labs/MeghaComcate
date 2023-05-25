@@ -29,9 +29,9 @@ public class BrowsersInvoked {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--remote-allow-origins=*");
-			options.addArguments("--headless");
+			/*options.addArguments("--headless");
 			options.addArguments("--no-sandbox");
-			options.addArguments("--window-size=1552,832");
+			options.addArguments("--window-size=1552,832");*/
 			driver = new ChromeDriver(options);
 			driver.get(DataInterface.AgencyURL);
 			Dimension currentDimension = driver.manage().window().getSize();
@@ -83,18 +83,18 @@ public class BrowsersInvoked {
 	public static String AgencyPassword;
 	public static String AdminURL;
 	public static String AdminUsername;
-	public static String AdminPassword; 
-	
+	public static String AdminPassword;
+
 	public static String StreetAddress ;
 	public static String City;
 	public static String Zip;
-	public static String mailReset; 
-	
+	public static String mailReset;
+
 	public static String CCPStreetAddress1 ;
+	public static String CCPStreetAddress2;
 	public static String CCPCity1 ;
 	public static String CCPZip1;
 	public static String CCPmailReset1;
-	
 
 	@BeforeSuite
 	public void RunEnvironmentSetup() {
@@ -213,6 +213,7 @@ public class BrowsersInvoked {
 				CCPCity1 = PropertiesUtils.getPropertyValue("City_QAGISDirect1O");
 				CCPZip1 = PropertiesUtils.getPropertyValue("Zip_QAGISDirect1O");
 				CCPmailReset1=PropertiesUtils.getPropertyValue("mailReset_QAGISDirect1O");
+				CCPStreetAddress2 = PropertiesUtils.getPropertyValue("StreetAddress_QAGISDirect_1O");
 			}
 			else if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o)) {
 				System.out.print(DataInterface.agencyConfigGisDirect1o); 
