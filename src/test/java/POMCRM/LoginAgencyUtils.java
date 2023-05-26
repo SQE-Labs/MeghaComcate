@@ -101,7 +101,10 @@ public class LoginAgencyUtils extends ExtentReportClass {
             driver.navigate().to(DataInterface.AgencyURL);
             if (DataInterface.RunEnvironment.equalsIgnoreCase("STAGE")) {
                 LoginAgencyStage();
-            } else {
+            } else if(DataInterface.RunEnvironment.equalsIgnoreCase("CI")){
+                LoginAgencyCI();
+            }
+            else {
                 LoginAgencyQa();
             }
 
