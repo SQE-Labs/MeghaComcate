@@ -15,21 +15,16 @@ import TCsNewAgencySetup.AppPreRequisites;
 
 public class LoginAgencyUtils extends ExtentReportClass {
 
-    // Existing User Login Utils
+
     public static String Username = "okta-signin-username";
     public static String Password = "okta-signin-password";
     public static String Button = "okta-signin-submit";
     public static String agencyLoggedInUsername = "//div[@class='app-header__user-name']/label";
     public static String plusIconToCECRM = "//*[@class='app-header__new']";
-
-    //stage credentials
     public static By NextButton = By.id("idp-discovery-submit");
     public static By OKTAUsernameField = By.xpath("//input[@id='idp-discovery-username']");
     public static By OKTAPasswordField = By.id("okta-signin-password");
     public static By OKTASubmitButton = By.id("okta-signin-submit");
-
-
-    // Admin User Login Utils
     public static String adminUsername = "//input[@placeholder='Enter Email']";
     public static String adminPassword = "//input[@placeholder='Enter Password']";
     public static String adminButton = "//button[text()='Login']";
@@ -65,7 +60,7 @@ public class LoginAgencyUtils extends ExtentReportClass {
             Assert.assertEquals(false, true);
         }
         AgencyLoggedInUserName = WebDriverWaits.GetText(AgencyLoggedInUsername);
-        //CRMCommonMethods.CreationOf50PlusSubmissions();
+
     }
 
     public static void LoginAgencyCI() throws InterruptedException {
@@ -85,21 +80,20 @@ public class LoginAgencyUtils extends ExtentReportClass {
     }
 
     public static void LoginAgencyQa() throws InterruptedException {
-		Thread.sleep(7000);
-		WebDriverWaits.SendKeys(UsernameField, DataInterface.AgencyUsername);
-		//WebDriverWaits.ClickOn(NextButton); //stage
-		WebDriverWaits.SendKeys(PasswordField, DataInterface.AgencyPassword);
-		WebDriverWaits.WaitUntilVisible(SubmitButton);
-		WebDriverWaits.ClickOn(SubmitButton);
-		Thread.sleep(8000);
-		WebDriverWaits.WaitUntilVisible(PlusIconToCECRM);
-		WebElement CPPBtn = driver.findElement(PlusIconToCECRM);
-		if (CPPBtn.isDisplayed() == false) {
-			Assert.assertEquals(false, true);
-		}
-		AgencyLoggedInUserName = WebDriverWaits.GetText(AgencyLoggedInUsername);
+        Thread.sleep(7000);
+        WebDriverWaits.SendKeys(UsernameField, DataInterface.AgencyUsername);
+        WebDriverWaits.SendKeys(PasswordField, DataInterface.AgencyPassword);
+        WebDriverWaits.WaitUntilVisible(SubmitButton);
+        WebDriverWaits.ClickOn(SubmitButton);
+        Thread.sleep(8000);
+        WebDriverWaits.WaitUntilVisible(PlusIconToCECRM);
+        WebElement CPPBtn = driver.findElement(PlusIconToCECRM);
+        if (CPPBtn.isDisplayed() == false) {
+            Assert.assertEquals(false, true);
+        }
+        AgencyLoggedInUserName = WebDriverWaits.GetText(AgencyLoggedInUsername);
 
-		Thread.sleep(5000);
+        Thread.sleep(5000);
     }
 
     public static void LoginAgency() throws InterruptedException {
@@ -108,7 +102,7 @@ public class LoginAgencyUtils extends ExtentReportClass {
             if (DataInterface.RunEnvironment.equalsIgnoreCase("STAGE")) {
                 LoginAgencyStage();
             } else {
-				LoginAgencyQa();
+                LoginAgencyQa();
             }
 
             WebDriverWaits.WaitUntilVisible(PlusIconToCECRM);

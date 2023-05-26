@@ -11,5 +11,4 @@ public class MissingFlowUtils {
 	public static String imgTitleonCCP = "//a[@class='attachments-tile__photo-title']";
 	public static String imgDesconCCP = "//span[@class='clipped-text']";
 	public static String imgLoconCCP = "//label[@class='attachments-tile__photo-location']";
-
 }

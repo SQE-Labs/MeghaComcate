@@ -19,150 +19,137 @@ import javax.mail.search.SearchTerm;
 
 public class GMailHelper {
 
-	private static String imapHost = "imap.gmail.com";
-	private static String imapPort = "993";
-	public static int SearchedMailCount;
+    private static String imapHost = "imap.gmail.com";
+    private static String imapPort = "993";
+    public static int SearchedMailCount;
 
-	private String userName;
-	private String password;
+    private String userName;
+    private String password;
 
-	public GMailHelper(String userName, String password) {
+    public GMailHelper(String userName, String password) {
 
-		this.userName = userName;
-		this.password = password;
-	}
+        this.userName = userName;
+        this.password = password;
+    }
 
-	public Session setIMAPSession() {
-
-		// IMAP settings
-		Properties properties = new Properties();
-
-		// server setting
-		properties.put("mail.imap.host", imapHost);
-		properties.put("mail.imap.port", imapPort);
-
-		// SSL setting
-		properties.setProperty("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		properties.setProperty("mail.imap.socketFactory.fallback", "false");
-		properties.setProperty("mail.imap.socketFactory.port", String.valueOf(imapPort));
-
-		return Session.getInstance(properties);
-	}
+    public Session setIMAPSession() {
 
 
+        Properties properties = new Properties();
+        properties.put("mail.imap.host", imapHost);
+        properties.put("mail.imap.port", imapPort);
+        properties.setProperty("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        properties.setProperty("mail.imap.socketFactory.fallback", "false");
+        properties.setProperty("mail.imap.socketFactory.port", String.valueOf(imapPort));
 
-	public List<Message> searchEmail(int noOfSecToWait, String folderName, final String keyword)
-			throws InterruptedException {
+        return Session.getInstance(properties);
+    }
 
-		Session session = setIMAPSession();
 
-		List<Message> returnList = new ArrayList<>();
+    public List<Message> searchEmail(int noOfSecToWait, String folderName, final String keyword) throws InterruptedException {
 
-		try {
+        Session session = setIMAPSession();
 
-			Thread.sleep(noOfSecToWait * 1000);
+        List<Message> returnList = new ArrayList<>();
 
-			System.out.println("Connects to Message Store");
-			Store store = session.getStore("imap");
-			store.connect(userName, password);
+        try {
 
-			System.out.println("Opens folder : " + folderName);
-			Folder folderInbox = store.getFolder(folderName);
-			folderInbox.open(Folder.READ_ONLY);
+            Thread.sleep(noOfSecToWait * 1000);
 
-			System.out.println("Creates search condition for Folder : " + folderName
-					+ ". Searching message with Subject line : " + keyword);
-			SearchTerm searchCondition = new SearchTerm() {
+            System.out.println("Connects to Message Store");
+            Store store = session.getStore("imap");
+            store.connect(userName, password);
 
-				private static final long serialVersionUID = 1L;
+            System.out.println("Opens folder : " + folderName);
+            Folder folderInbox = store.getFolder(folderName);
+            folderInbox.open(Folder.READ_ONLY);
 
-				@Override
-				public boolean match(Message message) {
-					try {
-						if (message.getSubject().contains(SMSAndEmailVerificationUtils.RandomSubject))
-						// && (null == aDate || message.getSentDate().after(aDate)))
-						{
-							return true;
-						}
-					} catch (MessagingException ex) {
-						System.out.println(ex.getMessage());
-						ex.printStackTrace();
-					}
-					return false;
-				}
-			};
+            System.out.println("Creates search condition for Folder : " + folderName + ". Searching message with Subject line : " + keyword);
+            SearchTerm searchCondition = new SearchTerm() {
 
-			System.out.println("Performs search through the folder : " + folderName);
-			Message[] foundMessages = folderInbox.search(searchCondition);
+                private static final long serialVersionUID = 1L;
 
-			SearchedMailCount = foundMessages.length;
-			System.out.println("Number of messages found : " + foundMessages.length);
-			for (int i = 0; i < foundMessages.length; i++) {
+                @Override
+                public boolean match(Message message) {
+                    try {
+                        if (message.getSubject().contains(SMSAndEmailVerificationUtils.RandomSubject)) {
+                            return true;
+                        }
+                    } catch (MessagingException ex) {
+                        System.out.println(ex.getMessage());
+                        ex.printStackTrace();
+                    }
+                    return false;
+                }
+            };
 
-				Message message = foundMessages[i];
+            System.out.println("Performs search through the folder : " + folderName);
+            Message[] foundMessages = folderInbox.search(searchCondition);
 
-				/* assuming you retrieved 'message' from your folder object */
-				Message copyOfMessage = new MimeMessage((MimeMessage) message);
+            SearchedMailCount = foundMessages.length;
+            System.out.println("Number of messages found : " + foundMessages.length);
+            for (int i = 0; i < foundMessages.length; i++) {
 
-				returnList.add(copyOfMessage);
-			}
+                Message message = foundMessages[i];
 
-			System.out.println("Disconnecting...");
-			folderInbox.close(false);
-			store.close();
+                /* assuming you retrieved 'message' from your folder object */
+                Message copyOfMessage = new MimeMessage((MimeMessage) message);
 
-		} catch (NoSuchProviderException ex) {
-			System.out.println("No provider found.\n" + ex.getMessage());
-			ex.printStackTrace();
-		} catch (MessagingException ex) {
-			System.out.println("Could not connect to the message store.\n" + ex.getMessage());
-			ex.printStackTrace();
-		}
+                returnList.add(copyOfMessage);
+            }
 
-		return returnList;
-	}
+            System.out.println("Disconnecting...");
+            folderInbox.close(false);
+            store.close();
 
-	/**
-	 * Return the primary text content of the message part.
-	 */
-	public String getText(boolean textIsHtml, Part p) throws MessagingException, IOException {
+        } catch (NoSuchProviderException ex) {
+            System.out.println("No provider found.\n" + ex.getMessage());
+            ex.printStackTrace();
+        } catch (MessagingException ex) {
+            System.out.println("Could not connect to the message store.\n" + ex.getMessage());
+            ex.printStackTrace();
+        }
 
-		if (p.isMimeType("text/*")) {
-			String s = (String) p.getContent();
-			textIsHtml = p.isMimeType("text/html");
-			return s;
-		}
+        return returnList;
+    }
 
-		if (p.isMimeType("multipart/alternative")) {
+    /**
+     * Return the primary text content of the message part.
+     */
+    public String getText(boolean textIsHtml, Part p) throws MessagingException, IOException {
 
-			System.out.println("refer html text over plain text");
-			// prefer html text over plain text
-			Multipart mp = (Multipart) p.getContent();
-			String text = null;
-			for (int i = 0; i < mp.getCount(); i++) {
-				Part bp = mp.getBodyPart(i);
-				if (bp.isMimeType("text/plain")) {
-					if (text == null)
-						text = getText(textIsHtml, bp);
-					continue;
-				} else if (bp.isMimeType("text/html")) {
-					String s = getText(textIsHtml, bp);
-					if (s != null)
-						return s;
-				} else {
-					return getText(textIsHtml, bp);
-				}
-			}
-			return text;
-		} else if (p.isMimeType("multipart/*")) {
-			Multipart mp = (Multipart) p.getContent();
-			for (int i = 0; i < mp.getCount(); i++) {
-				String s = getText(textIsHtml, mp.getBodyPart(i));
-				if (s != null)
-					return s;
-			}
-		}
+        if (p.isMimeType("text/*")) {
+            String s = (String) p.getContent();
+            textIsHtml = p.isMimeType("text/html");
+            return s;
+        }
 
-		return null;
-	}
+        if (p.isMimeType("multipart/alternative")) {
+
+            System.out.println("refer html text over plain text");
+            Multipart mp = (Multipart) p.getContent();
+            String text = null;
+            for (int i = 0; i < mp.getCount(); i++) {
+                Part bp = mp.getBodyPart(i);
+                if (bp.isMimeType("text/plain")) {
+                    if (text == null) text = getText(textIsHtml, bp);
+                    continue;
+                } else if (bp.isMimeType("text/html")) {
+                    String s = getText(textIsHtml, bp);
+                    if (s != null) return s;
+                } else {
+                    return getText(textIsHtml, bp);
+                }
+            }
+            return text;
+        } else if (p.isMimeType("multipart/*")) {
+            Multipart mp = (Multipart) p.getContent();
+            for (int i = 0; i < mp.getCount(); i++) {
+                String s = getText(textIsHtml, mp.getBodyPart(i));
+                if (s != null) return s;
+            }
+        }
+
+        return null;
+    }
 }

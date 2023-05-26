@@ -22,12 +22,9 @@ public class CSPExternalUtils extends CSPInternalUtils {
 	public static String nextButtonSec2 = "(//button[text()='Next'])[2]";
 	public static String nextButtonSec3 = "(//button[text()='Next'])[3]";
 	public static String selectedCategory = "//div[@class='chip__wrapper active clickable']";
-
-	
 	public static String otherCategories = "//div[@class='category-list-section']//div";
 	public static String showMoreLinktext = "//a[@class='show-more']";
 	public static String showMoreOnlyLinktext = "//a[@class='show-more' and text()='More']";
-
 	public static String submissionUpdatesCheckbox = "//input[@name='hasSubscribed']";
 	public static String noButton = "//button[text()='No']";
 	public static String yesButton = "//button[text()='Yes']";
@@ -138,7 +135,6 @@ public class CSPExternalUtils extends CSPInternalUtils {
 
 	public static void CSPExternal_PreRequisite_OpenReportAnIssuePage() throws InterruptedException {
 		WebDriverWaits.CloseOtherTabs();
-		//LoginAdmin();
 		driver.navigate().to(DataInterface.AdminURL);
 		Thread.sleep(20000);
 		String AgencyID = Integer.toString(DataInterface.AgencyID);
@@ -159,7 +155,6 @@ public class CSPExternalUtils extends CSPInternalUtils {
 	
 	
 	public static void CSPExternal_PreRequisite_OpenReportAnIssuePageNOLogin() throws InterruptedException {
-		//LoginAdmin();
 		WebDriverWaits.CloseOtherTabs();
 		Thread.sleep(2000);
 		driver.navigate().refresh();

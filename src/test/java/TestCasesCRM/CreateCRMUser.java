@@ -38,7 +38,6 @@ public class CreateCRMUser extends CreateCRMUserUtils {
 				" Verify that user is able to update the permissions of a CE only user to CRM only, on the 'Edit User' page ");
 		CreateCRMUserUtils.CreateCRMUser_UpdateCEOnlyUserToCRMOnly();
 		SoftAssert softAssert = new SoftAssert();
-//		softAssert.assertEquals(, true);
 		softAssert.assertAll();
 	}
 

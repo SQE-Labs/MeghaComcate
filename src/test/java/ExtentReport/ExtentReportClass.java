@@ -21,58 +21,58 @@ import BrowsersBase.BrowsersInvoked;
 
 public class ExtentReportClass extends BrowsersInvoked {
 
-	public static ExtentReports extent;
-	public static ExtentTest extentTest;
+    public static ExtentReports extent;
+    public static ExtentTest extentTest;
 
-	@BeforeSuite
-	public void setExtent() throws InterruptedException, IOException {
-		extent = new ExtentReports(System.getProperty("user.dir") + "/test-output/ExtentReportResult.html", true);
-		extent.addSystemInfo("Environment", "QA");
-		extent.loadConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
-	}
+    @BeforeSuite
+    public void setExtent() throws InterruptedException, IOException {
+        extent = new ExtentReports(System.getProperty("user.dir") + "/test-output/ExtentReportResult.html", true);
+        extent.addSystemInfo("Environment", "QA");
+        extent.loadConfig(new File(System.getProperty("user.dir") + "/extent-config.xml"));
+    }
 
-	@AfterSuite
-	public void endReport() {
-		extent.flush();
-		extent.close();
-	}
+    @AfterSuite
+    public void endReport() {
+        extent.flush();
+        extent.close();
+    }
 
-	@AfterMethod
-	public void tearDown(ITestResult result) throws IOException {
+    @AfterMethod
+    public void tearDown(ITestResult result) throws IOException {
 
-		if (result.getStatus() == ITestResult.FAILURE) {
-			extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS " + result.getName());
-			extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS " + result.getThrowable());
-			System.out.println("*** Test execution " + result.getMethod().getMethodName() + " failed...");
+        if (result.getStatus() == ITestResult.FAILURE) {
+            extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS " + result.getName());
+            extentTest.log(LogStatus.FAIL, "TEST CASE FAILED IS " + result.getThrowable());
+            System.out.println("*** Test execution " + result.getMethod().getMethodName() + " failed...");
 
-			String screenshotPath = ExtentReportClass.getScreenshot(driver, result.getName());
-			extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath));
-			// extentTest.log(LogStatus.FAIL, extentTest.addScreencast(screenshotPath));
-		} else if (result.getStatus() == ITestResult.SKIP) {
-			extentTest.log(LogStatus.SKIP, "Test Case SKIPPED IS " + result.getName());
-			System.out.println("*** Test " + result.getMethod().getMethodName() + " skipped...");
-		} else if (result.getStatus() == ITestResult.SUCCESS) {
-			extentTest.log(LogStatus.PASS, "Test Case PASSED IS " + result.getName());
-			System.out.println("*** Executed " + result.getMethod().getMethodName() + " test successfully...");
-		}
-		extent.endTest(extentTest);
-		extent.flush();
-	}
+            String screenshotPath = ExtentReportClass.getScreenshot(driver, result.getName());
+            extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath));
+            // extentTest.log(LogStatus.FAIL, extentTest.addScreencast(screenshotPath));
+        } else if (result.getStatus() == ITestResult.SKIP) {
+            extentTest.log(LogStatus.SKIP, "Test Case SKIPPED IS " + result.getName());
+            System.out.println("*** Test " + result.getMethod().getMethodName() + " skipped...");
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
+            extentTest.log(LogStatus.PASS, "Test Case PASSED IS " + result.getName());
+            System.out.println("*** Executed " + result.getMethod().getMethodName() + " test successfully...");
+        }
+        extent.endTest(extentTest);
+        extent.flush();
+    }
 
-	public static String getScreenshot(WebDriver driver, String screenshotName) {
-		Long l = Calendar.getInstance().getTimeInMillis();
-		String screenshotId = l.toString();
-		String Path = System.getProperty("user.dir") + "/ExtentReports/";
-		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String imgPath = Path + screenshotId + ".png";
-		File dest = new File(imgPath);
-		try {
-			FileUtils.copyFile(screenshot, dest);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+    public static String getScreenshot(WebDriver driver, String screenshotName) {
+        Long l = Calendar.getInstance().getTimeInMillis();
+        String screenshotId = l.toString();
+        String Path = System.getProperty("user.dir") + "/ExtentReports/";
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String imgPath = Path + screenshotId + ".png";
+        File dest = new File(imgPath);
+        try {
+            FileUtils.copyFile(screenshot, dest);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-		String ImagePath = "../ExtentReports/" + screenshotId + ".png";
-		return ImagePath;
-	}
+        String ImagePath = "../ExtentReports/" + screenshotId + ".png";
+        return ImagePath;
+    }
 }

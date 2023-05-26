@@ -87,9 +87,7 @@ public class PerformInspectionUtils {
 	public static String caseNotesIcon = "(//button[@class='attach-btn btn btn-primary'])[2]";
 	public static String caseNotePopupValidate = "//div[text()='Add Case Note']";
 	public static String noticePopupCancel = "//button[text()='Cancel']";
-	//public static String validationMessage = "//span[text()='The Case note is required.']";
 	public static String validationMessage = "//label[@title='Add Case Note']/../../span";
-
 	public static String noteTextArea = "//textarea[@name='caseNote']";
 	public static String notes5000valMsg = "//span[text()='5000 character limit.']";
 	public static String createNoteButton = "//button[text()='Create Note']";

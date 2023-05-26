@@ -5,11 +5,9 @@ public class CLPUtils {
     public static String cLP = "//a[text()='Cases']";
     public static String cases = "//label[text()='Cases: ']";
     public static String violationTypeFilter = "//label[text()='Violation Type']";
-    
     public static String violationTypeCol = "//div[contains(text(),'Violation Type')]";
     public static String locationCol = "//div[contains(text(),'Location')]";
     public static String apnCol = "//div[contains(text(),'APN')]";
-    
     public static String assigneeCol = "//div[text()='Assignee']";
     public static String statusCol = "//div[text()='Status']";
     public static String createdCol = "//div[text()='Created']";
@@ -17,11 +15,6 @@ public class CLPUtils {
     public static String inspectionAssigneeCol = "//div[text()='Inspection Assignee']";
     public static String nextInsepectionAssingeeCol = "//div[text()='Next Scheduled Inspection']";
     public static String deleteCol = "//div[text()='Delete']";
-    
-    
-    
-    
-    
     public static String caseStatusFilter = "//label[text()='Case Status']";
     public static String createdFilter = "//label[text()='Created']";
     public static String inspectionAssigneeFilter = "//div[text()='Inspection Assignee']";

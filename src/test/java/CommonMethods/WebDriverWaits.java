@@ -40,7 +40,7 @@ public class WebDriverWaits extends BrowsersInvoked {
 
     public static void clearByJSE(By element) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
-        WebElement ele  = driver.findElement(element);
+        WebElement ele = driver.findElement(element);
         ((JavascriptExecutor) driver).executeScript("arguments[0].value ='';", ele);
 
     }
@@ -150,7 +150,6 @@ public class WebDriverWaits extends BrowsersInvoked {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         WebElement ele = driver.findElement(element);
         jse.executeScript("arguments[0].scrollIntoView(true);", ele);
-        //extentTest.log(LogStatus.PASS, "Scrolled for element : " + element);
 
 
     }

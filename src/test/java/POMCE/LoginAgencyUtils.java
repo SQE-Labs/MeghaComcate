@@ -6,7 +6,6 @@ public class LoginAgencyUtils {
 	public static String Password = "okta-signin-password";
 	public static String Button = "okta-signin-submit";
 	public static String agencyLoggedInUsername = "//div[@class='app-header__user-name']/label";
-
 	public static String adminUsername = "//input[@placeholder='Enter Email']";
 	public static String adminPassword = "//input[@placeholder='Enter Password']";
 	public static String adminButton = "//button[text()='Login']";

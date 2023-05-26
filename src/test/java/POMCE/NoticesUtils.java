@@ -2,7 +2,6 @@ package POMCE;
 
 public class NoticesUtils {
 	public static String activeTab = "//div[@class='tab-name tab-name--active']";
-
 	public static String createNonHtmlNoticeBtn = "//button[text()='Create Non-HTML Notice']";
 	public static String createNonHtmlNoticePopup = "//div[text()='Create Non-HTML Notice']";
 	public static String labelField = "//input[@name='label']";
