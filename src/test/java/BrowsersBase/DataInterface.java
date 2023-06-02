@@ -3,9 +3,9 @@ package BrowsersBase;
 public interface DataInterface {
 
     public static String browserMain = "CHROME";
-    public static String RunEnvironment = "Stage";
+    public static String RunEnvironment = "QA";
     public static String AgencyName = "AlphaSquad";
-    String agencyConfig = "GisDirect2o";
+    String agencyConfig = "Enterprise";
     String agencyConfigEnterprise = "Enterprise";
     String agencyConfigGisDirect1o = "GisDirect1o";
     String agencyConfigGisDirect2o = "GisDirect2o";

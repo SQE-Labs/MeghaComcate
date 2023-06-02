@@ -4,9 +4,11 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.text.MessageFormat;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -22,20 +24,68 @@ import BrowsersBase.DataInterface;
 
 public class WebDriverWaits extends BrowsersInvoked {
     @SuppressWarnings("deprecation")
-    static WebDriverWait wait = new WebDriverWait(driver, 10);
-    @SuppressWarnings("deprecation")
-    static WebDriverWait wait20 = new WebDriverWait(driver, 20);
+//    static WebDriverWait wait = new WebDriverWait(driver, 10);
+//    static WebDriverWait wait20 = new WebDriverWait(driver, 20);
+
+    static WebDriverWait wait= new WebDriverWait(driver , Duration.ofSeconds(15));
+    static WebDriverWait wait20 = new WebDriverWait(driver,Duration.ofSeconds(20));
 
     public static void WaitUntilPresent(By element) {
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
+    }
+
+
+    public static void WaitUntilElementPresent(By locator, int tries) {
+        try {
+            for (int i = 0; i < tries; i++) {
+                wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
+    public static void WaitforCustometime(long time){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
     }
 
     public static void WaitUntilVisible(By element) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
+
+    public static void WaitUntilElementVisible(By locator, int tries) {
+        try {
+            for (int i = 0; i < tries; i++) {
+                wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
     public static void WaitForElementInteractable(By element) {
+        WaitUntilVisible(element);
         wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static void WaitUntilInvisible(By element) {
+        wait.until(ExpectedConditions.invisibilityOf((WebElement) element));
+    }
+
+    public static void WaitForElementInvisiblilty(WebElement ele){
+        wait.until(ExpectedConditions.invisibilityOf(ele));
+    }
+
+    public static void WaitForCurserRunning(int time){
+        WebDriverWait wait1 = new WebDriverWait(driver,Duration.ofSeconds(time));
+        WebElement ele = driver.findElement(By.xpath("img[@src='/assets/loading.gif']"));
+        wait1.until(ExpectedConditions.invisibilityOf(ele));
+    }
+
+    public static void WaitForPageLoadTime(int time){
+//        driver.manage().timeouts().pageLoadTimeout(time, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(time));
     }
 
     public static void clearByJSE(By element) {
@@ -54,11 +104,6 @@ public class WebDriverWaits extends BrowsersInvoked {
         }
     }
 
-
-    public static void WaitUntilInvisible(By element) {
-        wait.until(ExpectedConditions.invisibilityOf((WebElement) element));
-    }
-
     public static WebElement WaitUntilVisibleWE(By element) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
@@ -72,8 +117,8 @@ public class WebDriverWaits extends BrowsersInvoked {
     }
 
     public static void ClickOn(By element) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        wait20.until(ExpectedConditions.visibilityOfElementLocated(element));
+        wait20.until(ExpectedConditions.elementToBeClickable(element));
         WebElement ele = driver.findElement(element);
         ele.click();
     }
@@ -191,33 +236,45 @@ public class WebDriverWaits extends BrowsersInvoked {
         return ele;
     }
 
-    public static WebElement FindElementByCssSelector(String selector) {
+    public static List<WebElement> findElementsByXPath(By element){
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        List<WebElement> ele = driver.findElements(element);
+        return ele;
+    }
+
+    public static WebElement findElementByCssSelector(String selector) {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(selector)));
         WebElement ele = driver.findElement(By.cssSelector(selector));
         return ele;
     }
 
-    public static WebElement FindElementById(String selector) {
+    public static List<WebElement> findElementsByCssSelector(String selector) {
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(selector)));
+        List<WebElement> ele = driver.findElements(By.cssSelector(selector));
+        return ele;
+    }
+
+    public static WebElement findElementById(String selector) {
         wait.until(ExpectedConditions.elementToBeClickable(By.id(selector)));
         WebElement ele = driver.findElement(By.id(selector));
         return ele;
     }
 
 
-    public static WebElement FindElementByPartialLinkTxt(String selector) {
+    public static WebElement findElementByPartialLinkTxt(String selector) {
         wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText(selector)));
         WebElement ele = driver.findElement(By.partialLinkText(selector));
         return ele;
     }
 
 
-    public static WebElement FindElementByName(String selector) {
+    public static WebElement findElementByName(String selector) {
         wait.until(ExpectedConditions.elementToBeClickable(By.name(selector)));
         WebElement ele = driver.findElement(By.name(selector));
         return ele;
     }
 
-    public static String ActionUploadMedia(String Path) throws AWTException {
+    public static String actionUploadMedia(String Path) throws AWTException {
         Actions act = new Actions(driver);
         StringSelection str = new StringSelection(Path);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);

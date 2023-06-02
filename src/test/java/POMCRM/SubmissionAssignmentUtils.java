@@ -210,7 +210,8 @@ public class SubmissionAssignmentUtils extends CategoriesUtils {
         Thread.sleep(2000);
         WebDriverWaits.ClickOn(InactiveToggle);
         WebDriverWaits.ClickOn(SaveButton);
-        Thread.sleep(8000);
+        Thread.sleep(12000);
+        WebDriverWaits.WaitForElementInteractable(EditAssignmentIcon);
         WebDriverWaits.ClickOn(EditAssignmentIcon);
         Thread.sleep(5000);
         WebDriverWaits.ClickOn(ActiveToggle);

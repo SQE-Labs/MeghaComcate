@@ -40,10 +40,6 @@
                     <include name="AgencySetup_VerifyCreationOf50PlusCases"/>
                     <include name="AgencySetup_VerifyCreationOf50PlusSubmissions"/>
                     <include name="AgencySetup_VerifyCaseCreationWithEntityViolation"/>
-                    <include name="AgencySetup_VerifySuccessfulDirectionToCCP"/>
-                    <include name="AgencySetup_VerifyCreationOf50PlusCases"/>
-                    <include name="AgencySetup_VerifyCreationOf50PlusSubmissions"/>
-                    <include name="AgencySetup_VerifyCaseCreationWithEntityViolation"/>
                     <include name="AgencySetup_VerifyCreateFinePopup"></include>
                     <include name="AgencySetup_VerifyFlatFineCreationDoNotAttachedNotices"></include>
                     <include name="AgencySetup_VerifyFlatFineCreationAttachedNotices"></include>

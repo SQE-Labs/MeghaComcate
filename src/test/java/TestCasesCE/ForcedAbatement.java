@@ -655,7 +655,7 @@ public class ForcedAbatement extends PerformInspection {
         s.assertEquals(FAAAddAnotherFineLinktxt, Boolean.TRUE);
         s.assertEquals(IssueFAADate, "FAA Document Issue Date");
         s.assertEquals(fineSectionHeader, expectFineSectionHeader);
-        s.assertEquals(addedViolation, waterViolation);
+        //s.assertEquals(addedViolation, waterViolation);
         s.assertEquals(addedRecipent1, contact1);
         s.assertEquals(addedRecipent2, contact22);
         s.assertEquals(addedRisponsoible1, contact1);

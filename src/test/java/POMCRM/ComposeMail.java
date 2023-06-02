@@ -28,6 +28,7 @@ public class ComposeMail extends CSPInternalUtils {
     public static void ComposeMessage() throws InterruptedException, MessagingException, IOException {
         SoftAssert softAssert = new SoftAssert();
         CustomerReceivedMail(SMSAndEmailVerificationUtils.RandomSubject);
+        System.out.println(GMailHelper.SearchedMailCount);
         boolean ExpectedCount = GMailHelper.SearchedMailCount == 1;
         softAssert.assertTrue(ExpectedCount);
         softAssert.assertAll();
@@ -36,11 +37,11 @@ public class ComposeMail extends CSPInternalUtils {
 
     public static void CustomerReceivedMail(String SearchBySubject) throws InterruptedException, MessagingException, IOException {
 
-        String userName = PropertiesUtils.getPropertyValue("userNameMail");
-        String password = PropertiesUtils.getPropertyValue("passwordMail");
-
+        String userName = PropertiesUtils.getPropertyValue("userNameMail").trim();
+        String password = PropertiesUtils.getPropertyValue("passwordMail").trim();
         GMailHelper gmailHelper = new GMailHelper(userName, password);
-        List<javax.mail.Message> inboxMessageList = gmailHelper.searchEmail(2, "Inbox", SearchBySubject);
+        List<javax.mail.Message> inboxMessageList = gmailHelper.searchEmail(5, "Inbox", SearchBySubject);
+        System.out.println(inboxMessageList);
         Thread.sleep(2000);
 
     }

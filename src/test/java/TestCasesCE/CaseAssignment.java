@@ -52,7 +52,8 @@ public class CaseAssignment extends Dashboard {
         extentTest = extent.startTest(" CaseAssignment_OpenEditAssignmentPopup ");
         extentTest.setDescription(" Verify that 'Edit Assignment' popup opens up after clicking the 'Edit' icon next to 'Case Assignment' rule on the 'Assignment Rules' page. ");
         driver.navigate().to(DataInterface.URLAssignmentRules);
-        Thread.sleep(4000);
+//        Thread.sleep(4000);
+        WebDriverWaits.WaitForElementInteractable(EditAssignmentIcon);
         WebDriverWaits.ClickOn(EditAssignmentIcon);
         String PopupTitle = WebDriverWaits.GetText(EditAssignmentPopup);
         Assert.assertEquals(PopupTitle, "Edit Assignment");
@@ -77,14 +78,16 @@ public class CaseAssignment extends Dashboard {
         extentTest = extent.startTest(" CaseAssignment_NotAbleToUpdateWithoutRule ");
         extentTest.setDescription(" Verify that user is not able to save the changes, when no Rule is added under 'Rules Set' tile, on 'Edit Assignment' popup. ");
         WebDriverWaits.ScrollIntoView(CrossIconRuleSet);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitforCustometime(2);
         List<WebElement> CrossIcon = driver.findElements(CrossIconRuleSet);
 
         int CountCrossIcons = CrossIcon.size();
         while (CountCrossIcons > 0) {
             WebDriverWaits.WaitForElementInteractable(CrossIconRuleSet);
             driver.findElement(CrossIconRuleSet).click();
-            Thread.sleep(2000);
+//            Thread.sleep(2000);
+            WebDriverWaits.WaitforCustometime(2);
             CountCrossIcons--;
         }
 
@@ -108,38 +111,45 @@ public class CaseAssignment extends Dashboard {
     public static void CaseAssignment_CreateRuleWithMultipleCriterias() throws InterruptedException {
         extentTest = extent.startTest(" CaseAssignment_CreateRuleWithMultipleCriterias ");
         extentTest.setDescription(" Verify that the created rule with one or multiple criterias, gets added under 'Rules Set' tile, on 'Edit Assignment' popup. ");
-        try {
-            WebDriverWaits.ClickOn(CriteriaFields);
-            Thread.sleep(2000);
-            WebDriverWaits.ClickOn(ZipOption);
-            WebDriverWaits.ClickOn(CriteriaFields);
-            Thread.sleep(2000);
-            WebDriverWaits.ClickOn(EqualsOption);
-            Thread.sleep(2000);
-            WebDriverWaits.SendKeys(ValueField, "77590");
-            WebDriverWaits.ClickOn(AddCriteriaLink);
-            WebDriverWaits.ClickOn(CriteriaFields);
-            Thread.sleep(2000);
-            WebDriverWaits.ClickOn(BlockOption);
-            WebDriverWaits.ClickOn(CriteriaFields);
-            Thread.sleep(2000);
-            WebDriverWaits.ClickOn(EqualsOption2);
-            Thread.sleep(2000);
-            WebDriverWaits.SendKeys(ValueField2, "1");
-            WebDriverWaits.ClickOn(CaseAssigneeField);
-            Thread.sleep(2000);
-            WebDriverWaits.ClickOn(UserOptionCA);
-            WebDriverWaits.ClickOn(InspectionAssigneeField);
-            Thread.sleep(2000);
-            WebDriverWaits.ClickOn(UserOptionIA);
-            WebDriverWaits.ClickOn(CreateRulebutton);
-            Thread.sleep(2000);
-            List<WebElement> RulesCount = driver.findElements(AddedRule);
-            boolean SizeAfter = RulesCount.size() >= 1;
-            Assert.assertEquals(SizeAfter, true);
-        } catch (Exception e) {
 
-        }
+        WebDriverWaits.ClickOn(CriteriaFields);
+//            Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(ZipOption);
+        WebDriverWaits.ClickOn(ZipOption);
+        WebDriverWaits.ClickOn(CriteriaFields);
+        // Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(EqualsOption);
+        WebDriverWaits.ClickOn(EqualsOption);
+//            Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(ValueField);
+        WebDriverWaits.SendKeys(ValueField, "77590");
+        WebDriverWaits.ClickOn(AddCriteriaLink);
+        WebDriverWaits.ClickOn(CriteriaFields);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(BlockOption);
+        WebDriverWaits.ClickOn(BlockOption);
+        WebDriverWaits.ClickOn(CriteriaFields);
+        // Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(EqualsOption2);
+        WebDriverWaits.ClickOn(EqualsOption2);
+        // Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(ValueField2);
+        WebDriverWaits.SendKeys(ValueField2, "1");
+        WebDriverWaits.ClickOn(CaseAssigneeField);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(UserOptionCA);
+        WebDriverWaits.ClickOn(UserOptionCA);
+        WebDriverWaits.ClickOn(InspectionAssigneeField);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(UserOptionIA);
+        WebDriverWaits.ClickOn(UserOptionIA);
+        WebDriverWaits.ClickOn(CreateRulebutton);
+//            Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(AddedRule);
+        List<WebElement> RulesCount = driver.findElements(AddedRule);
+        boolean SizeAfter = RulesCount.size() >= 1;
+        Assert.assertEquals(SizeAfter, true);
+
     }
 
     @Test(priority = 6)
@@ -147,27 +157,26 @@ public class CaseAssignment extends Dashboard {
         extentTest = extent.startTest(" CaseAssignment_EditAddedRule ");
         extentTest.setDescription(" Verify that user is able to edit the added Rules under 'Rules Set' tile, on 'Edit Assignment' popup. ");
 
-        try {
             String AssigneeBefore = WebDriverWaits.GetText(AssignCaseToColumn);
             WebDriverWaits.ClickOn(EditRuleIcon);
             WebDriverWaits.ClickOn(CaseAssigneeField);
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
+            WebDriverWaits.WaitForElementInteractable(UserOptionCA2);
             WebDriverWaits.ClickOn(UserOptionCA2);
-            Thread.sleep(4000);
+            //Thread.sleep(4000);
+            WebDriverWaits.WaitForElementInteractable(SaveButtonEditRule);
             WebDriverWaits.ClickOn(SaveButtonEditRule);
             String AssigneeAfter = WebDriverWaits.GetText(AssignCaseToColumn);
             boolean CompareStr = AssigneeBefore.equals(AssigneeAfter);
             Assert.assertEquals(CompareStr, false);
-        } catch (Exception e) {
 
-        }
     }
 
     @Test(priority = 7)
     public static void CaseAssignment_DeleteAddedRule() {
         extentTest = extent.startTest(" CaseAssignment_DeleteAddedRule ");
         extentTest.setDescription(" Verify that user is able to delete that added Rules under 'Rules Set' tile, on 'Edit Assignment' popup. ");
-        try {
+
             List<WebElement> RulesCountBefore = driver.findElements(AddedRule);
             int BeforeDeleting = RulesCountBefore.size();
             WebDriverWaits.ClickOn(DeleteRuleIcon);
@@ -175,43 +184,47 @@ public class CaseAssignment extends Dashboard {
             int AfterDeleting = RulesCountAfter.size();
             boolean CompareCount = (AfterDeleting == BeforeDeleting - 1);
             Assert.assertEquals(CompareCount, true);
-        } catch (Exception e) {
 
-        }
     }
 
     @Test(priority = 8)
     public static void CaseAssignment_AssignmentRuleUnderInactiveSection() throws InterruptedException {
         extentTest = extent.startTest(" CaseAssignment_AssignmentRuleUnderInactiveSection ");
         extentTest.setDescription(" Verify that Assignment Rule appears under 'Inactive' section, when user sets 'Status' toggle button as Inactive, on 'Edit Assignment' popup. ");
-        try {
+
             WebDriverWaits.ClickOn(AddRuleButton);
             WebDriverWaits.ClickOn(CriteriaFields);
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
+            WebDriverWaits.WaitForElementInteractable(ZipOption);
             WebDriverWaits.ClickOn(ZipOption);
             WebDriverWaits.ClickOn(CriteriaFields);
-            Thread.sleep(2000);
+            // Thread.sleep(2000);
+            WebDriverWaits.WaitForElementInteractable(EqualsOption);
             WebDriverWaits.ClickOn(EqualsOption);
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
+            WebDriverWaits.WaitForElementInteractable(ValueField);
             WebDriverWaits.SendKeys(ValueField, "77590");
             WebDriverWaits.ClickOn(CaseAssigneeField);
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
+            WebDriverWaits.WaitForElementInteractable(UserOptionCA);
             WebDriverWaits.ClickOn(UserOptionCA);
             WebDriverWaits.ClickOn(InspectionAssigneeField);
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
+            WebDriverWaits.WaitForElementInteractable(UserOptionIA);
             WebDriverWaits.ClickOn(UserOptionIA);
             WebDriverWaits.ClickOn(CreateRulebutton);
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
+            WebDriverWaits.WaitForElementInteractable(InactiveToggle);
             WebDriverWaits.ClickOn(InactiveToggle);
             WebDriverWaits.ClickOn(SaveButton);
             Thread.sleep(4000);
+            WebDriverWaits.WaitForElementInteractable(EditAssignmentIcon);
             WebDriverWaits.ClickOn(EditAssignmentIcon);
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
+            WebDriverWaits.WaitForElementInteractable(ActiveToggle);
             WebDriverWaits.ClickOn(ActiveToggle);
             WebDriverWaits.ClickOn(SaveButton);
-        } catch (Exception e) {
 
-        }
     }
 
 }

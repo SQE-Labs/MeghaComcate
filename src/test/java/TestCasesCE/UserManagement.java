@@ -78,6 +78,7 @@ public class UserManagement extends CaseAssignment {
         WebDriverWaits.ClickOn(CreateUserbtn);
         String PopupTitle = WebDriverWaits.GetText(CreateUserPopupTitle);
         Assert.assertEquals(PopupTitle, "Create User");
+        softAssert.assertAll();
     }
 
     public static String RandomFirstName = RandomStrings.RequiredCharacters(6);
@@ -113,6 +114,7 @@ public class UserManagement extends CaseAssignment {
         int TotalUsersAfter = Integer.parseInt(UsersAfter);
         boolean CompareCount = (TotalUsersAfter == (TotalUsersBefore + 1));
         Assert.assertEquals(CompareCount, true);
+        softAssert.assertAll();
     }
 
     @Test(priority = 3)
@@ -136,6 +138,7 @@ public class UserManagement extends CaseAssignment {
         String ResultNameExpected = "CE User " + RandomFirstName + " " + RandomLastName;
         System.out.println(ResultNameExpected);
         Assert.assertEquals(ResultName, ResultNameExpected);
+        softAssert.assertAll();
     }
 
     @Test(priority = 4, enabled = true)
@@ -147,6 +150,7 @@ public class UserManagement extends CaseAssignment {
         WebDriverWaits.ClickOn(EditUserIcon);
         String PopupTitle = WebDriverWaits.GetText(EditUserpopupTitle);
         Assert.assertEquals(PopupTitle, "Edit User");
+        softAssert.assertAll();
     }
 
     @Test(priority = 5, enabled = true)
@@ -180,6 +184,7 @@ public class UserManagement extends CaseAssignment {
         String ResultName = WebDriverWaits.GetText(SearchResultName);
         String ResultNameExpected = "Edited User" + " " + RandomStr01;
         Assert.assertEquals(ResultName, ResultNameExpected);
+        softAssert.assertAll();
     }
 
     @Test(priority = 6)
@@ -208,7 +213,7 @@ public class UserManagement extends CaseAssignment {
             Assert.assertEquals(AOB.trim(), "Activate Okta Account");
         else
             Assert.assertEquals(AOB.trim(), "Activate Comcate Account");
-
+        softAssert.assertAll();
     }
 
     @Test(priority = 7)
@@ -231,6 +236,7 @@ public class UserManagement extends CaseAssignment {
         WebDriverWaits.ClickOn(ResetPasswordBtn);
         Thread.sleep(3000);
         driver.switchTo().window((String) tabs2.get(0));
+
     }
 
     @Test(priority = 8)
@@ -257,6 +263,7 @@ public class UserManagement extends CaseAssignment {
         int SizeOfUsers = countLastUsersElements.size();
         int FinalCountUsers = UsersCount1 + SizeOfUsers;
         Assert.assertEquals(FinalCountUsers, TotalUsers);
+        softAssert.assertAll();
     }
 
     @Test(priority = 9)
@@ -272,6 +279,7 @@ public class UserManagement extends CaseAssignment {
         WebDriverWaits.ClickOn(CreateRoleButton);
         String PopupTitle = WebDriverWaits.GetText(CreateRolePopupTitle);
         Assert.assertEquals(PopupTitle, "Create Role");
+        softAssert.assertAll();
     }
 
     @Test(priority = 10)
@@ -288,6 +296,7 @@ public class UserManagement extends CaseAssignment {
         WebDriverWaits.ClickOn(CreateRolePopupBtn);
         String SuccessMsg = WebDriverWaits.GetText(RoleCreatedSuccessMsg);
         Assert.assertEquals(SuccessMsg, "Role created");
+        softAssert.assertAll();
     }
 
     @Test(priority = 11)
@@ -310,6 +319,7 @@ public class UserManagement extends CaseAssignment {
         Thread.sleep(500);
         String SuccessMsg = WebDriverWaits.GetText(RoleCreatedSuccessMsg);
         Assert.assertEquals(SuccessMsg, "Role created");
+        softAssert.assertAll();
     }
 
     @Test(priority = 12)
@@ -325,6 +335,7 @@ public class UserManagement extends CaseAssignment {
 
         String PopupTitle = WebDriverWaits.GetText(CreateGroupPopupTitle);
         Assert.assertEquals(PopupTitle, "Create Group");
+        softAssert.assertAll();
     }
 
     @Test(priority = 13)
@@ -342,6 +353,7 @@ public class UserManagement extends CaseAssignment {
         WebDriverWaits.ClickOn(CreateGroupPopupBtn);
         String SuccessMsg = WebDriverWaits.GetText(GroupCreatedSuccessMsg);
         Assert.assertEquals(SuccessMsg, "Group created");
+        softAssert.assertAll();
     }
 
 }

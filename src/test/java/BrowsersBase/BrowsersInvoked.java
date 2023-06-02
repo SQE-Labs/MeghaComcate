@@ -16,6 +16,7 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
 import org.testng.annotations.*;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class BrowsersInvoked {
     public static WebDriver driver;
@@ -29,16 +30,10 @@ public class BrowsersInvoked {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--remote-allow-origins=*");
-                options.addArguments("--headless");
-                options.addArguments("--no-sandbox");
-                options.addArguments("--window-size=1552,832");
+//                options.addArguments("--headless");
+//                options.addArguments("--window-size=1552,832");
                 driver = new ChromeDriver(options);
-                driver.get(DataInterface.AgencyURL);
-                Dimension currentDimension = driver.manage().window().getSize();
-                int height = currentDimension.getHeight();
-                int width = currentDimension.getWidth();
-                System.out.println("Current height: " + height);
-                System.out.println("Current width: " + width);
+                System.out.println(DataInterface.AgencyURL);
                 break;
             }
             case "FIREFOX": {
@@ -158,9 +153,9 @@ public class BrowsersInvoked {
                     Zip = PropertiesUtils.getPropertyValue("ZipQAEnterPrise");
                     mailReset = PropertiesUtils.getPropertyValue("mailResetQAEnterPrise");
 
-                    CCPStreetAddress1 = PropertiesUtils.getPropertyValue("StreetAddressQAEnterPrise");
-                    CCPCity1 = PropertiesUtils.getPropertyValue("CityQAEnterPrise");
-                    CCPZip1 = PropertiesUtils.getPropertyValue("ZipQAEnterPrise");
+                    CCPStreetAddress1 = PropertiesUtils.getPropertyValue("CCPStreetAddress1");
+                    CCPCity1 = PropertiesUtils.getPropertyValue("CCPCity1");
+                    CCPZip1 = PropertiesUtils.getPropertyValue("CCPZip1");
                     CCPmailReset1 = PropertiesUtils.getPropertyValue("mailResetQAEnterPrise");
 
 

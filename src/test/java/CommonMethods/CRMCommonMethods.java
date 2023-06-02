@@ -104,10 +104,10 @@ public class CRMCommonMethods {
         }
         if (Location == "Yes") {
 
-            if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o)) {
-                CRMCommonMethods.searchLocationCSP(DataInterface.searchLocationKey1O);
+            if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) || DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect2o)) {
+                CECommonMethods.serachLocationCCP(DataInterface.searchLocationKey1O);
             } else {
-                CRMCommonMethods.searchLocationCSP(DataInterface.searchLocationKey);
+                CECommonMethods.serachLocationCCP(DataInterface.searchLocationKey);
             }
 
 
@@ -190,11 +190,14 @@ public class CRMCommonMethods {
             Thread.sleep(2000);
         }
         if (Customer == "Yes") {
-            WebDriverWaits.SendKeys(CSPInternal.AddExistingCustomerField, "a");
-            Thread.sleep(4000);
-            WebDriverWaits.ClickOn(CSPInternal.ContactSearchResults);
-            if (WebDriverWaits.GetValueAttribute(WorkPhoneField).isEmpty())
-                WebDriverWaits.SendKeys(CSPInternal.WorkPhoneField, "12057547399");
+            WebDriverWaits.SendKeys(CSPInternal.AddExistingCustomerField,PropertiesUtils.getPropertyValue("crmCustomerName"));
+            //Thread.sleep(4000);
+            WebDriverWaits.WaitForElementInteractable(By.xpath("(//div[@class='list-label']//b)[2]"));
+            WebDriverWaits.ClickOn(By.xpath("(//div[@class='list-label']//b)[2]"));
+            //WebDriverWaits.WaitforCustometime(2);
+            //WebDriverWaits.ClickOn(CSPInternal.ContactSearchResults);
+            if (WebDriverWaits.GetValueAttribute(CellPhoneField).isEmpty())
+                WebDriverWaits.SendKeys(CSPInternal.CellPhoneField, "12057547399");
 
         }
         if (Tags == "Yes") {
@@ -327,6 +330,7 @@ public class CRMCommonMethods {
             UploadFile.sendKeys(System.getProperty("user.dir") + "/TestData/Panda_11zon.jpg");
             Thread.sleep(2000);
         }
+        WebDriverWaits.ClickOn(CSPExternalUtils.NextButton);
         if (Category == "Location Not Included") {
             String CategorySelected = WebDriverWaits.GetText(CSPExternalUtils.SelectedCategory);
             boolean CompareSelCategory = CategorySelected.equals("Location Not Included");
@@ -387,6 +391,7 @@ public class CRMCommonMethods {
         }
 
         if (Contact == "Yes") {
+            WebDriverWaits.WaitUntilVisible(CSPExternalUtils.EmailPreferenceButton);
             WebDriverWaits.ClickOn(CSPExternalUtils.EmailPreferenceButton);
             WebDriverWaits.ClickOn(CSPExternalUtils.TextMsgPreferenceButton);
             String RandomFirstName = RandomStrings.RequiredCharacters(6);
@@ -574,10 +579,10 @@ public class CRMCommonMethods {
 
     public static void CE_AddLocation() throws InterruptedException {
 
-        if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o)) {
-            CRMCommonMethods.serachLocationCCP(DataInterface.searchLocationKey1O);
+        if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) || DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect2o)) {
+            CECommonMethods.serachLocationCCP(DataInterface.searchLocationKey1O);
         } else {
-            CRMCommonMethods.serachLocationCCP(DataInterface.searchLocationKey);
+            CECommonMethods.serachLocationCCP(DataInterface.searchLocationKey);
         }
 
     }
@@ -690,7 +695,7 @@ public class CRMCommonMethods {
         WebElement UploadFile4 = BrowsersInvoked.driver.findElement(By.xpath("//input[@type='file']"));
         UploadFile4.sendKeys(filePath);
         Thread.sleep(10000);
-        RobotClass.RobotClassUploadMedia(filePath);
+        //RobotClass.RobotClassUploadMedia(filePath);
 
         Thread.sleep(3000);
 

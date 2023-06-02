@@ -154,9 +154,9 @@ public class ReportsCRMUtils extends DashboardCRMUtils {
 
     public static void Reports_VerifyCRMToggleForReports() throws InterruptedException {
 
-        driver.navigate().to(DataInterface.URLReports);
+
+        driver.navigate().to(DataInterface.URLDashboard);
         Thread.sleep(15000);
-        Thread.sleep(25000);
         WebDriverWaits.WaitUntilVisible(ReportsTab);
         WebDriverWaits.ClickOn(ReportsTab);
         Thread.sleep(10000);

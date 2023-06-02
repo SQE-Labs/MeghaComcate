@@ -44,7 +44,8 @@ public class SMSAndEmailVerificationUtils extends CSDPUtils {
 
     public static void ComposeMessage() throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
-        CRMCommonMethods.CRM_CreateSubmission("No", "Yes", "Yes", "No", "Yes", "Location Not Required");
+        CRMCommonMethods.CRM_CreateSubmissionPreRequisite("No","Yes","Yes","No","Yes","Location Not Required");
+        //CRMCommonMethods.CRM_CreateSubmission("No", "Yes", "Yes", "No", "Yes", "Location Not Required");
         Thread.sleep(20000);
         String SubmissionNumberSplit[] = WebDriverWaits.GetText(CreateAndLinkCaseUtils.SubmissionNumber).split("#");
         String SubmissionNumberCSDP = SubmissionNumberSplit[1];

@@ -517,7 +517,8 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
         jser.executeScript("window.scrollBy(0,-450)", "");
         Thread.sleep(2000);
         WebDriverWaits.ClickOn(ViolationsTab);
-        Thread.sleep(5000);
+        Thread.sleep(10000);
+        WebDriverWaits.WaitForElementInteractable(CreateViolationButton);
         WebDriverWaits.ClickOn(CreateViolationButton);
         Thread.sleep(2000);
         CreateViolationTitle = WebDriverWaits.GetText(CreateViolationPopup);
@@ -786,7 +787,6 @@ public class AppPreRequisitesUtils extends AgencyCreationUtils {
         if (CreateCaseCheck > 0) {
             WebDriverWaits.ScrollIntoView(CSPInternalUtils.PlusIconToCRM);
             Thread.sleep(2000);
-            ;
             WebDriverWaits.ClickOn(CSPInternalUtils.PlusIconToCRM);
             Thread.sleep(5000);
             WebDriverWaits.ClickOn(CodeEnforcementOption);

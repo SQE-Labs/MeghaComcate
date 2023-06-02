@@ -32,33 +32,43 @@ public class CloseCase extends ForcedAbatement {
         extentTest = extent.startTest(" CloseCase_PreRequisite ");
         extentTest.setDescription(" Verify that 'Close Case' option appears, when user clicks on 'More' button, on CDP. ");
         driver.navigate().to(DataInterface.URLDashboard);
-        Thread.sleep(10000);
+       // Thread.sleep(10000);
+        WebDriverWaits.WaitForPageLoadTime(5);
+        WebDriverWaits.WaitForElementInteractable(CLP);
         WebDriverWaits.ClickByJsExecuter(CLP);
-        Thread.sleep(15000);
+       // Thread.sleep(15000);
         WebDriverWaits.WaitUntilPresent(StatusColumnSort);
-        Thread.sleep(4000);
+        //Thread.sleep(4000);
         WebDriverWaits.ScrollIntoView(StatusColumnSort);
+        WebDriverWaits.WaitForElementInteractable(StatusColumnSort);
         int checkOpen = driver.findElements(ReopenCase.ReOpenCaseGrid).size();
         if (checkOpen > 0) {
             WebDriverWaits.ScrollIntoView(ReopenCase.ReOpenCaseGrid);
-            Thread.sleep(4000);
+            //Thread.sleep(4000);
+            WebDriverWaits.WaitForElementInteractable(ReopenCase.ReOpenCaseGrid);
             WebDriverWaits.ClickByJsExecuter(ReopenCase.ReOpenCaseGrid);
-            Thread.sleep(8000);
+            //Thread.sleep(8000);
         } else {
             WebDriverWaits.ClickOn(StatusColumnSort);
-            Thread.sleep(8000);
+            //Thread.sleep(8000);
+            WebDriverWaits.WaitUntilVisible(ReopenCase.ReOpenCaseGrid);
             int checktOpen = driver.findElements(ReopenCase.ReOpenCaseGrid).size();
             if (checktOpen > 0) {
                 WebDriverWaits.ScrollIntoView(ReopenCase.ReOpenCaseGrid);
-                Thread.sleep(4000);
+                WebDriverWaits.WaitForElementInteractable(ReopenCase.ReOpenCaseGrid);
+                //Thread.sleep(4000);
                 WebDriverWaits.ClickByJsExecuter(ReopenCase.ReOpenCaseGrid);
-                Thread.sleep(8000);
+                //Thread.sleep(8000);
             }
         }
 
-        Thread.sleep(20000);
+        //Thread.sleep(20000);
+        WebDriverWaits.WaitForPageLoadTime(10);
+        WebDriverWaits.WaitUntilVisible(MoreBtn);
+        WebDriverWaits.WaitForElementInteractable(MoreBtn);
         WebDriverWaits.ClickByJsExecuter(MoreBtn);
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
+        WebDriverWaits.WaitUntilVisible(CloseCaseBtn);
         String CloseCaseText = WebDriverWaits.GetText(CloseCaseBtn);
 
         SoftAssert s134 = new SoftAssert();
@@ -341,6 +351,9 @@ public class CloseCase extends ForcedAbatement {
         try {
             CreateCasePreRequisites();
             Thread.sleep(25000);
+            WebDriverWaits.WaitUntilVisible(PerformInsButton);
+            WebDriverWaits.ScrollIntoView(PerformInsButton);
+            Thread.sleep(2000);
             WebDriverWaits.ClickOn(PerformInsButton);
             Thread.sleep(5000);
             WebDriverWaits.ClickOn(ValidBtnList);

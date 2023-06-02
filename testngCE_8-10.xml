@@ -1,80 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Comcate">
-	<test thread-count="1" name="Test">
-		<classes>
-			<class name="TestCasesCE.Login">
-				<methods>
-					<include name="LoginAgency" />
-				</methods>
-			</class> 
-			<class name="TestCasesCE.UserManagement">
-				<methods>
-					<include name="UserManagement_OpenCreateUserPopup" />
-					<include name="UserManagement_VerifyUserGetsCreated" />
-					<include name="UserManagement_VerifySearchUser" />
-					<include name="UserManagement_OpenEditUserPopup" />
-					<include name="UserManagement_VerifyUpdatedUserDetails" />
-					<include name="UserManagement_VerifyResetMailReceived" />
-					<include name="UserManagement_ResetPasswordForUser" />
-					<include name="UserManagement_VerifyCountOfUsers" />
-					<include name="UserManagement_OpenCreateRolePopup" />
-					<include name="UserManagement_VerifyRoleCreationWithoutProdSettings" />
-					<include name="UserManagement_VerifyRoleCreationWithProdSettings" />
-					<include name="UserManagement_OpenCreateGroupPopup" />
-					<include name="UserManagement_VerifyGroupCreationWithoutProdSettings" />
+    <test thread-count="1" name="Test">
+        <classes>
+            <class name="TestCasesCE.Login">
+                <methods>
+                    <include name="LoginAgency"/>
+                </methods>
+            </class>
+            <class name="TestCasesCE.UserManagement">
+                <methods>
+                    <include name="UserManagement_OpenCreateUserPopup"/>
+                    <include name="UserManagement_VerifyUserGetsCreated"/>
+                    <include name="UserManagement_VerifySearchUser"/>
+                    <include name="UserManagement_OpenEditUserPopup"/>
+                    <include name="UserManagement_VerifyUpdatedUserDetails"/>
+                    <include name="UserManagement_VerifyResetMailReceived"/>
+                    <include name="UserManagement_ResetPasswordForUser"/>
+                    <include name="UserManagement_VerifyCountOfUsers"/>
+                    <include name="UserManagement_OpenCreateRolePopup"/>
+                    <include name="UserManagement_VerifyRoleCreationWithoutProdSettings"/>
+                    <include name="UserManagement_VerifyRoleCreationWithProdSettings"/>
+                    <include name="UserManagement_OpenCreateGroupPopup"/>
+                    <include name="UserManagement_VerifyGroupCreationWithoutProdSettings"/>
 
-				</methods>
-			</class>
-		<class name="TestCasesCE.CLP">
-				<methods>
-					<include name="CLP_VerifyCLPOpensUp" />
-					<include name="CLP_VerifyDefaultColumns" />
-					<include name="CLP_VerifyNavigationToNextPage" />
-					<include name="CLP_VerifynavigationToSpecificPage" />
-					<include name="CLP_VerifyDescendingOrderOfCases" />
-					<include name="CLP_VerifyAscendingOrderOfCases" />
-					<include name="CLP_OpenDeleteCasePopup" />
-					<include name="CLP_ValidationMsgForDeleteCase" />
-					<include name="CLP_VerifyDeletedcase" />
-					<include name="CLP_VerifyCasesForDoNotDeleteOption" />
-					<include name="CLP_VerifyTotalCountOfCases" />
-					<include name="CLP_VerifyPrimaryFilters" />
-					<include name="CLP_VerifyApplicationOfPrimaryFilters" />
-					<include name="CLP_VerifyClearAllFiltersLinkText" />
-					<include name="CLP_VerifyClearAllFiltersLinkNotPresent" />
-					<include name="CLP_VerifySelectionOfSecondaryFilters" />
-					<include name="CLP_VerifyPresenceOfSecondaryFiltersUnderPrimaryFilters" />
-					<include name="CLP_VerifyApplicationOfsecondaryFilters" />
-					<include name="CLP_VerifyRemovalOfSecondaryFilters" />
-					<include name="CLP_VerifySearchField" />
-					<include name="CLP_VerifyInfoMsgForNoSearchResults" />
-					<include name="CLP_VerifyAdditionOfColumns" />
-					<include name="CLP_VerifyRestorationOfCheckedBoxes" />
-					<include name="CLP_VerifyAddedColumnsAfterRestoreDefaultsLink" />
-					<include name="CLP_OpenSaveAsPopup" />
-					<include name="CLP_VerifyValidationMessageForSaveBtn" />
-					<include name="CLP_VerifySavedFilter" />
-					<include name="CLP_VerifyDeletionOfSavedFilter" />
-					<include name="CLP_OpenCCPFromCreateCaseBtn" />
-					<include name="CLP_VerifyCSVFileDownloaded" />
-					<include name="CLP_VerifyDirectionToCDP" />
-					<include name="CLP_VerifyDirectionToCLPPreview" />
-					<include name="CLP_VerifyMineButtonApplication" />
-				</methods>
-			</class>
-			<class name="TestCasesCE.CaseAssignment">
-				<methods>
-					<include name="CaseAssignment_OpenEditAssignmentPopup" />
-					<include name="CaseAssignment_EditFieldsOnEditAssignmentPopup" />
-					<include name="CaseAssignment_NotAbleToUpdateWithoutRule" />
-					<include name="CaseAssignment_OpenCreateRulepopup" />
-					<include name="CaseAssignment_CreateRuleWithMultipleCriterias" />
-					<include name="CaseAssignment_EditAddedRule" />
-					<include name="CaseAssignment_DeleteAddedRule" />
-					<include name="CaseAssignment_AssignmentRuleUnderInactiveSection" />
-				</methods>
-			</class>
-		</classes>
-	</test>
+                </methods>
+            </class>
+            <class name="TestCasesCE.CLP">
+                <methods>
+                    <include name="CLP_VerifyCLPOpensUp"/>
+                    <include name="CLP_VerifyDefaultColumns"/>
+                    <include name="CLP_VerifyNavigationToNextPage"/>
+                    <include name="CLP_VerifynavigationToSpecificPage"/>
+                    <include name="CLP_VerifyDescendingOrderOfCases"/>
+                    <include name="CLP_VerifyAscendingOrderOfCases"/>
+                    <include name="CLP_OpenDeleteCasePopup"/>
+                    <include name="CLP_ValidationMsgForDeleteCase"/>
+                    <include name="CLP_VerifyDeletedcase"/>
+                    <include name="CLP_VerifyCasesForDoNotDeleteOption"/>
+                    <include name="CLP_VerifyTotalCountOfCases"/>
+                    <include name="CLP_VerifyPrimaryFilters"/>
+                    <include name="CLP_VerifyApplicationOfPrimaryFilters"/>
+                    <include name="CLP_VerifyClearAllFiltersLinkText"/>
+                    <include name="CLP_VerifyClearAllFiltersLinkNotPresent"/>
+                    <include name="CLP_VerifySelectionOfSecondaryFilters"/>
+                    <include name="CLP_VerifyPresenceOfSecondaryFiltersUnderPrimaryFilters"/>
+                    <include name="CLP_VerifyApplicationOfsecondaryFilters"/>
+                    <include name="CLP_VerifyRemovalOfSecondaryFilters"/>
+                    <include name="CLP_VerifySearchField"/>
+                    <include name="CLP_VerifyInfoMsgForNoSearchResults"/>
+                    <include name="CLP_VerifyAdditionOfColumns"/>
+                    <include name="CLP_VerifyRestorationOfCheckedBoxes"/>
+                    <include name="CLP_VerifyAddedColumnsAfterRestoreDefaultsLink"/>
+                    <include name="CLP_OpenSaveAsPopup"/>
+                    <include name="CLP_VerifyValidationMessageForSaveBtn"/>
+                    <include name="CLP_VerifySavedFilter"/>
+                    <include name="CLP_VerifyDeletionOfSavedFilter"/>
+                    <include name="CLP_OpenCCPFromCreateCaseBtn"/>
+                    <include name="CLP_VerifyCSVFileDownloaded"/>
+                    <include name="CLP_VerifyDirectionToCDP"/>
+                    <include name="CLP_VerifyDirectionToCLPPreview"/>
+                    <include name="CLP_VerifyMineButtonApplication"/>
+                </methods>
+            </class>
+            <class name="TestCasesCE.CaseAssignment">
+                <methods>
+                    <include name="CaseAssignment_OpenEditAssignmentPopup"/>
+                    <include name="CaseAssignment_EditFieldsOnEditAssignmentPopup"/>
+                    <include name="CaseAssignment_NotAbleToUpdateWithoutRule"/>
+                    <include name="CaseAssignment_OpenCreateRulepopup"/>
+                    <include name="CaseAssignment_CreateRuleWithMultipleCriterias"/>
+                    <include name="CaseAssignment_EditAddedRule"/>
+                    <include name="CaseAssignment_DeleteAddedRule"/>
+                    <include name="CaseAssignment_AssignmentRuleUnderInactiveSection"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>

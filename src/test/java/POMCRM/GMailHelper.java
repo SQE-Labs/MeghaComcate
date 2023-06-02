@@ -58,7 +58,8 @@ public class GMailHelper {
 
             System.out.println("Connects to Message Store");
             Store store = session.getStore("imap");
-            store.connect(userName, password);
+           // store.connect(userName,password);
+            store.connect(this.userName, this.password);
 
             System.out.println("Opens folder : " + folderName);
             Folder folderInbox = store.getFolder(folderName);

@@ -3,6 +3,8 @@ package POMCRM;
 import java.awt.AWTException;
 import java.util.ArrayList;
 import java.util.List;
+
+import CommonMethods.CECommonMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -266,6 +268,7 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		NoLocationSection = LocationSec.size() == 0;
 		PageTitleSubmitSubmission = WebDriverWaits.GetText(SubmitSubmissionPage);
 		ExpectedTitleSubmitSubmission = "Stay Updated on the Progress of your Submission";
+		WebDriverWaits.WaitForElementInteractable(BackButton);
 		WebDriverWaits.ClickOn(BackButton);
 	}
 
@@ -274,7 +277,20 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		extentTest.setDescription(
 				" Verify that validation message appears under 'Location' section, when user clicks on 'Next' button, after selecting a Location Required 'Category'. ");
 		try{
-		    WebDriverWaits.ClickOn(ShowMoreOnlyLinktext);
+			WebDriverWaits.WaitUntilVisible(ShowMoreOnlyLinktext);
+			int showmore = driver.findElements(ShowMoreOnlyLinktext).size();
+			if (showmore > 0) {
+				WebDriverWaits.WaitForElementInteractable(ShowMoreOnlyLinktext);
+				WebDriverWaits.ClickOn(ShowMoreOnlyLinktext);
+			}
+			else{
+				WebDriverWaits.ScrollIntoView(By.xpath("//h2[text()='Select Category']"));
+				WebDriverWaits.WaitForElementInteractable(By.xpath("//h2[text()='Select Category']"));
+				WebDriverWaits.ClickOn(By.xpath("//h2[text()='Select Category']"));
+				WebDriverWaits.WaitForElementInteractable(ShowMoreOnlyLinktext);
+				WebDriverWaits.ClickOn(ShowMoreOnlyLinktext);
+			}
+
 		}
 			catch(Exception e)
 		{
@@ -304,18 +320,17 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		ExpectedMsgLoc = "The location is required.";
 		WebDriverWaits.ClickOn(LocationSearchField);
 		Thread.sleep(2000);
-		WebDriverWaits.SendKeys(LocationSearchField, "Texas City Museum");
-		Thread.sleep(4000);
-		WebDriverWaits.ClickOn(LocationSearchResult);
-		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) ){
+//		WebDriverWaits.SendKeys(LocationSearchField, "Texas City Museum");
+//		Thread.sleep(4000);
+		//WebDriverWaits.ClickOn(LocationSearchResult);
+		if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect1o) || DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect2o)){
 			CRMCommonMethods.searchLocationExternalCS(DataInterface.searchLocationKey1O);
 		}
-		
+
 		else {
 			CRMCommonMethods.searchLocationExternalCS(DataInterface.searchLocationKey);
 		}
-		
-		
+
 		if( WebDriverWaits.ElementIsDisplayed(CSPInternal.ToggleChecked)) {
 			   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
 			   WebDriverWaits.ClickOn(CSPInternal.FlagToggle);
@@ -325,8 +340,6 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		
 		WebDriverWaits.ClickOn(NextButtonSec3);
 		Thread.sleep(2000);
-		WebDriverWaits.ClickOn(NextButtonSec3);
-		Thread.sleep(4000);
 		SubmitPageTitle = WebDriverWaits.GetText(SubmitSubmissionPage);
 		WebDriverWaits.ClickOn(BackButton);
 		Thread.sleep(2000);
@@ -423,7 +436,7 @@ public class CSPExternalUtils extends CSPInternalUtils {
 		driver.navigate().to(DataInterface.AdminURL);
 		Thread.sleep(4000);
 		CRMCommonMethods.CRM_CreateExternalSubmission("Yes","Location Not Required","No","Yes");
-		CRMCommonMethods.CRM_CreateExternalSubmissionWithoutLogin("Yes","Location Not Required","No","Yes");
+		//CRMCommonMethods.CRM_CreateExternalSubmissionWithoutLogin("Yes","Location Not Required","No","Yes");
 		Thread.sleep(12000);
 		SubmissionSuccessMsgNA = WebDriverWaits.GetText(SuccessMessage);
 	}

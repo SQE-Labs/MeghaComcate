@@ -1,22 +1,21 @@
 package TestCasesCE;
 
-import java.util.List;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.*;
-import org.testng.asserts.SoftAssert;
-
+import BrowsersBase.DataInterface;
 import CommonMethods.CECommonMethods;
 import CommonMethods.RandomStrings;
 import CommonMethods.WebDriverWaits;
 import ExtentReport.ExtentReportClass;
 import POMCE.CCPUtils;
-import BrowsersBase.DataInterface;
 import junit.framework.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import java.util.List;
 
 public class CCP extends ExtentReportClass {
 
@@ -179,9 +178,11 @@ public class CCP extends ExtentReportClass {
     public void CCP_PreRequisite() throws InterruptedException {
         extentTest = extent.startTest(" PreRequisite (CCP)");
         extentTest.setDescription(" Verify that CCP opens up, when user clicks on the 'Plus' icon, on Dashboard. ");
-        Thread.sleep(10000);
+        //Thread.sleep(10000);
         driver.get(DataInterface.URLCreateCase);
-        Thread.sleep(25000);
+        //Thread.sleep(25000);
+        WebDriverWaits.WaitForPageLoadTime(5);
+        WebDriverWaits.WaitUntilVisible(CCPTitle);
         String CCPTitleActual = WebDriverWaits.GetText(CCPTitle);
         SoftAssert s1 = new SoftAssert();
 
@@ -194,9 +195,11 @@ public class CCP extends ExtentReportClass {
     public static void CCP_GlobalValidationMsgForNoData() throws InterruptedException {
         extentTest = extent.startTest(" CCP_GlobalValidationMsgForNoData ");
         extentTest.setDescription("Verify that appropriate validation message appears when user clicks on 'Create Case' button without entering any data in mandatory fields, on 'Create Case' page. ");
-        Thread.sleep(6000);
+       // Thread.sleep(6000);
+        WebDriverWaits.WaitForElementInteractable(CCButton);
         WebDriverWaits.ClickOn(CCButton);
-        Thread.sleep(2000);
+       // Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(GlobalValidMsg);
         String CCValidationActual = WebDriverWaits.GetText(GlobalValidMsg);
         String ValidationMsgExpected = "Please complete all fields marked in red below to continue.";
         SoftAssert s2 = new SoftAssert();
@@ -231,9 +234,11 @@ public class CCP extends ExtentReportClass {
             Thread.sleep(5000);
         } else {
             WebDriverWaits.SendKeys(LocationFld, "Turkey");
-            Thread.sleep(7000);
+            Thread.sleep(2000);
+            WebDriverWaits.WaitForElementInteractable(Map3);
             WebDriverWaits.ClickOn(Map3);
-            Thread.sleep(15000);
+            Thread.sleep(5000);
+            WebDriverWaits.WaitUntilVisible(OutAgencyMsg);
             String OutsideAgencyMsg = WebDriverWaits.GetText(OutAgencyMsg);
             String ValidMsg7 = "The location you have entered falls outside of the\n" + "agency boundary. Please select a location within\n" + "the city limits to continue";
             SoftAssert s4 = new SoftAssert();
@@ -260,7 +265,7 @@ public class CCP extends ExtentReportClass {
         } else if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect2o)) {
             CECommonMethods.serachLocationCCP(DataInterface.searchLocationKey1O);
 
-            Thread.sleep(2000);
+            //Thread.sleep(2000);
             WebDriverWaits.WaitUntilVisible(EditLocIcon);
             String ValidateStreetAdd = WebDriverWaits.GetText(StreetLabel);
             SoftAssert s5b = new SoftAssert();
@@ -271,6 +276,7 @@ public class CCP extends ExtentReportClass {
             s5b.assertAll();
         } else {
             CECommonMethods.serachLocationCCP(DataInterface.searchLocationKey);
+           // Thread.sleep(3000);
             WebDriverWaits.WaitUntilVisible(EditLocIcon);
             String ValidateStreetAdd = WebDriverWaits.GetText(StreetLabel);
             SoftAssert s5b = new SoftAssert();
@@ -289,6 +295,7 @@ public class CCP extends ExtentReportClass {
         extentTest.setDescription(" Verify that 'Add Address Manually' popup opens up, after clicking on 'Add Address Manually' link, on 'Create Case' page. ");
 
         Thread.sleep(1000);
+        //WebDriverWaits.WaitUntilVisible(OutAgencyMsg);
         List<WebElement> OutsideAgency = driver.findElements(OutAgencyMsg);
         if ((OutsideAgency.size() > 0) == true) {
             driver.navigate().refresh();
@@ -313,9 +320,11 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_CloseAddAddressManuallyPopup ");
         extentTest.setDescription(" Verify that 'Add Address Manually' popup gets closed, when user clicks on 'Cross' icon or 'Cancel' button, on 'Create Case' page. ");
 
+        WebDriverWaits.WaitForElementInteractable(CancelBtnLoc);
         WebDriverWaits.ClickOn(CancelBtnLoc);
         Thread.sleep(2000);
-        List<WebElement> ModalHeaders1 = WebDriverWaits.WaitUntilVisibleList(ModalHeaders);
+        WebDriverWaits.WaitUntilVisible(ModalHeaders);
+        List<WebElement> ModalHeaders1 = WebDriverWaits.findElementsByXPath(ModalHeaders);
         if ((ModalHeaders1.size() <= 1) == false) {
 
             SoftAssert s8 = new SoftAssert();
@@ -329,10 +338,12 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_ValidationMsgForNoAddressDetails ");
         extentTest.setDescription(" Verify that validation messages appear when user clicks on 'Add Address' button without entering data in mandatory fields, on 'Create Case' popup.  ");
 
+        WebDriverWaits.WaitForElementInteractable(LocationFld);
         WebDriverWaits.ClickOn(LocationFld);
         WebDriverWaits.ClickOn(AddLocManually);
         WebDriverWaits.ClickOn(SaveButton2);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(ValidationMsg3);
         String ValidationMsgActual = WebDriverWaits.GetText(ValidationMsg3);
         String ValidMsgExpected = "The Address is required.";
 
@@ -346,17 +357,23 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_AddTheAddressManually ");
         extentTest.setDescription(" Verify that the address gets added under 'Select Location' tile, after entering address details manually & clicking on 'Add Address' button, on 'Add Address Manually' popup. ");
 
-        Thread.sleep(4000);
+//        Thread.sleep(4000);
+        WebDriverWaits.WaitForElementInteractable(StreetAdd);
         WebDriverWaits.SendKeys(StreetAdd, "Manual Street");
-        Thread.sleep(1000);
+       // Thread.sleep(1000);
+        WebDriverWaits.WaitForElementInteractable(CityAdd);
         WebDriverWaits.SendKeys(CityAdd, "Manual City");
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
+        WebDriverWaits.WaitForElementInteractable(ZipAdd);
         WebDriverWaits.SendKeys(ZipAdd, "77590");
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
+        WebDriverWaits.WaitForElementInteractable(ApnAdd);
         WebDriverWaits.SendKeys(ApnAdd, "7030-0122-0011-000");
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
+        WebDriverWaits.WaitForElementInteractable(SaveButton2);
         WebDriverWaits.ClickOn(SaveButton2);
         Thread.sleep(3000);
+        WebDriverWaits.WaitForElementInteractable(StreetLabel);
         String ValidateStreetAdd = WebDriverWaits.GetText(StreetLabel);
 
         SoftAssert s10 = new SoftAssert();
@@ -370,9 +387,10 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_EditAddedAddress ");
         extentTest.setDescription(" Verify that user is able to edit the location details, after clicking on the 'Edit' icon, on 'Create Case' page. ");
 
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
         WebDriverWaits.WaitUntilVisible(EditLocIcon);
-        Thread.sleep(1000);
+        WebDriverWaits.WaitForElementInteractable(EditLocIcon);
+        //Thread.sleep(1000);
         WebDriverWaits.ClickOn(EditLocIcon);
         WebElement EditStreet = WebDriverWaits.WaitUntilVisibleWE(EditStreetAdd);
         EditStreet.clear();
@@ -398,9 +416,11 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_UpdateAddressOnSaveButton ");
         extentTest.setDescription(" Verify that address gets updated, when user edits data and clicks on 'Save' button under 'Select Location' tile, on 'Create Case' page. ");
 
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
+        WebDriverWaits.WaitForElementInteractable(SaveButton);
         WebDriverWaits.ClickOn(SaveButton);
-        Thread.sleep(3000);
+        Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(StreetLabel);
         String NameLabel1 = WebDriverWaits.GetText(StreetLabel);
         Assert.assertEquals(DataInterface.StreetAddress, NameLabel1);
         String CityLabel1 = WebDriverWaits.GetText(CityLabel);
@@ -420,7 +440,9 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_AddressShouldntGetUpdatedOnCancelButton ");
         extentTest.setDescription(" Verify that address does not get updated, when user edits data and clicks on 'Cancel' button under 'Select Location' tile, on 'Create Case' page. ");
 
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(EditLocIcon);
+        WebDriverWaits.WaitForElementInteractable(EditLocIcon);
         WebDriverWaits.ClickOn(EditLocIcon);
         WebDriverWaits.ClickOn(CancelButton);
         String NameLabel1 = WebDriverWaits.GetText(StreetLabel);
@@ -445,12 +467,14 @@ public class CCP extends ExtentReportClass {
 
         if (WebDriverWaits.ElementIsDisplayed(toggleChecked)) {
             WebDriverWaits.ClickOn(FlagToggle);
-            Thread.sleep(2000);
+//            Thread.sleep(2000);
+            WebDriverWaits.WaitForElementInteractable(FlagToggle);
             WebDriverWaits.ClickOn(FlagToggle);
             System.out.println("clicked toggle twice");
 
         } else WebDriverWaits.ClickOn(FlagToggle);
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(PopupTitle);
         String[] FlagPopup = WebDriverWaits.GetText(PopupTitle).split("-");
         String FlagPopupTitle = FlagPopup[0];
 
@@ -464,10 +488,13 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_CloseFlagAddressPopup ");
         extentTest.setDescription(" Verify that 'Flag Address' popup gets closed, when user clicks on 'Cross' icon or 'Cancel' button, on 'Flag Address' popup. ");
 
-        Thread.sleep(5000);
+       // Thread.sleep(5000);
+        WebDriverWaits.WaitForPageLoadTime(5);
+        WebDriverWaits.WaitForElementInteractable(CrossIconFlag);
         WebDriverWaits.ClickOn(CrossIconFlag);
-        Thread.sleep(6000);
-        List<WebElement> ModalHeaders3 = WebDriverWaits.WaitUntilVisibleList(ModalHeaders);
+        Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(ModalHeaders);
+        List<WebElement> ModalHeaders3 = WebDriverWaits.findElementsByXPath(ModalHeaders);
         if ((ModalHeaders3.size() <= 1) == false) {
 
             SoftAssert s15 = new SoftAssert();
@@ -482,7 +509,8 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_VerifyFlagAddressButtonState ");
         extentTest.setDescription(" Verify that 'Flag address' button gets enabled, when user enters data in 'Reason to Flag the address' field, on 'Flag Address' popup. ");
 
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
+        WebDriverWaits.WaitForElementInteractable(FlagToggle);
         WebDriverWaits.ClickOn(FlagToggle);
 
         boolean Status = driver.findElement(FlagAddressBtn).isEnabled();
@@ -491,7 +519,8 @@ public class CCP extends ExtentReportClass {
         s16a.assertEquals(Status, false);
         String RandomReason = RandomStrings.RequiredString(20);
         WebDriverWaits.SendKeys(ReasonToFlag, RandomReason);
-        Thread.sleep(4000);
+       // Thread.sleep(4000);
+        WebDriverWaits.WaitUntilVisible(FlagAddressBtn);
         boolean Status1 = driver.findElement(FlagAddressBtn).isEnabled();
 
         SoftAssert s16b = new SoftAssert();
@@ -505,9 +534,11 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_VerifyFlaggedButtonState ");
         extentTest.setDescription(" Verify that 'Flagged?' toggle button gets enabled, when user clicks on 'Flag Address' button after entering data in the mandatory field, on 'Create Case' popup. ");
 
-        Thread.sleep(4000);
+        //Thread.sleep(4000);
+        WebDriverWaits.WaitForElementInteractable(FlagAddressBtn);
         WebDriverWaits.ClickOn(FlagAddressBtn);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(FlaggedLabel);
         String FlaggedLabel1 = WebDriverWaits.GetText(FlaggedLabel);
 
         SoftAssert s17 = new SoftAssert();
@@ -602,11 +633,13 @@ public class CCP extends ExtentReportClass {
 
         WebDriverWaits.ClickOn(CustomIssueDlt);
         WebDriverWaits.ClickOn(ViolationSearchBox);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(ViolationSearchBox);
         WebDriverWaits.SendKeys(ViolationSearchBox, "Wa");
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
 
         if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect2o)) {
+            WebDriverWaits.WaitForElementInteractable(violationList20);
             WebDriverWaits.ClickOn(violationList20);
             WebElement WaterVio = WebDriverWaits.WaitUntilVisibleWE(WaterViolation);
             if ((WaterVio.isDisplayed()) == false) {
@@ -616,6 +649,7 @@ public class CCP extends ExtentReportClass {
                 s23.assertAll();
             }
         } else {
+            WebDriverWaits.WaitForElementInteractable(ViolationList);
             WebDriverWaits.ClickOn(ViolationList);
             WebElement WaterVio = WebDriverWaits.WaitUntilVisibleWE(WaterViolation);
             if ((WaterVio.isDisplayed()) == false) {
@@ -634,9 +668,10 @@ public class CCP extends ExtentReportClass {
         extentTest.setDescription(" Verify that '<Violation>' popup opens up for violations with entity, via search results of 'Find a violation, article number or describe the issue' combo box, on 'Create Case' page. ");
         WebDriverWaits.ClickOn(ViolationSearchBox);
         WebDriverWaits.SendKeys(ViolationSearchBox, "An");
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
 
         if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect2o)) {
+            WebDriverWaits.WaitForElementInteractable(violationList20);
             WebDriverWaits.ClickOn(violationList20);
             List<WebElement> ModalHeaders4 = WebDriverWaits.WaitUntilVisibleList(ModalHeaders);
             if ((ModalHeaders4.size() > 1) == false) {
@@ -646,7 +681,7 @@ public class CCP extends ExtentReportClass {
                 s24.assertAll();
             }
         } else {
-
+            WebDriverWaits.WaitForElementInteractable(ViolationList);
             WebDriverWaits.ClickOn(ViolationList);
             List<WebElement> ModalHeaders4 = WebDriverWaits.WaitUntilVisibleList(ModalHeaders);
             if ((ModalHeaders4.size() > 1) == false) {
@@ -681,13 +716,14 @@ public class CCP extends ExtentReportClass {
         int BeforeAdd = countVio1.size();
         WebDriverWaits.ClickOn(ViolationSearchBox);
         WebDriverWaits.clearByJSE(ViolationSearchBox);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect2o)) {
-
+            WebDriverWaits.WaitForElementInteractable(ViolationSearchBox);
             WebDriverWaits.SendKeys(ViolationSearchBox, "An");
             WebDriverWaits.ClickOn(violationList20);
-            Thread.sleep(3000);
+            //Thread.sleep(3000);
+            WebDriverWaits.WaitForElementInteractable(EntityField1);
             WebDriverWaits.SendKeys(EntityField1, "Black");
             WebDriverWaits.ClickOn(AddButton);
             List<WebElement> countVio2 = driver.findElements(AddedVioList);
@@ -703,7 +739,8 @@ public class CCP extends ExtentReportClass {
         } else {
             WebDriverWaits.SendKeys(ViolationSearchBox, "An");
             WebDriverWaits.ClickOn(ViolationList);
-            Thread.sleep(3000);
+//            Thread.sleep(3000);
+            WebDriverWaits.WaitForElementInteractable(EntityField1);
             WebDriverWaits.SendKeys(EntityField1, "Black");
             WebDriverWaits.ClickOn(AddButton);
             List<WebElement> countVio2 = driver.findElements(AddedVioList);
@@ -724,20 +761,24 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_SearchAndAddViolation ");
         extentTest.setDescription(" Verify that user is able to add a violation after selecting an option from 'Find and add existing Entity' combo box, on Violation popup. ");
 
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
+        WebDriverWaits.WaitForElementInteractable(ViolationSearchBox);
         WebDriverWaits.ClickOn(ViolationSearchBox);
         if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect2o)) {
             WebDriverWaits.SendKeys(ViolationSearchBox, "An");
             WebDriverWaits.ClickOn(violationList20);
-            Thread.sleep(4000);
+            //Thread.sleep(4000);
+            WebDriverWaits.WaitForElementInteractable(EntitySearchBox);
             WebDriverWaits.SendKeys(EntitySearchBox, "Wh");
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             WebDriverWaits.WaitForElementInteractable(By.xpath("//li[@role='option']//div[@class='list-label']//b[text()='Wh']"));
             WebDriverWaits.ClickOn(By.xpath("//li[@role='option']//div[@class='list-label']//b[text()='Wh']"));
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
+            WebDriverWaits.WaitForElementInteractable(AddButton);
             WebDriverWaits.ClickOn(AddButton);
-            Thread.sleep(3000);
-            WebElement VioList = WebDriverWaits.WaitUntilVisibleWE(AddedVioList);
+//            Thread.sleep(3000);
+            WebDriverWaits.WaitForElementInteractable(AddedVioList);
+            WebElement VioList = WebDriverWaits.findElement(AddedVioList);
             if ((VioList.isDisplayed()) == false) {
 
                 SoftAssert s27 = new SoftAssert();
@@ -753,7 +794,8 @@ public class CCP extends ExtentReportClass {
             WebDriverWaits.SendKeys(EntitySearchBox, "Wh");
             WebDriverWaits.WaitForElementInteractable(By.xpath("//li[@role='option']//div[@class='list-label']//b[text()='Wh']"));
             WebDriverWaits.ClickOn(By.xpath("//li[@role='option']//div[@class='list-label']//b[text()='Wh']"));
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
+            WebDriverWaits.WaitForElementInteractable(AddButton);
             WebDriverWaits.ClickOn(AddButton);
             WebElement VioList = WebDriverWaits.WaitUntilVisibleWE(AddedVioList);
             if ((VioList.isDisplayed()) == false) {
@@ -797,9 +839,12 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_OpenEditViolationPopup ");
         extentTest.setDescription(" Verify that 'Edit <Violation>' popup opens up, when user clicks on 'Edit' icon under 'Add Violations' tile, on 'Create Case' page. ");
 
-        Thread.sleep(4000);
+//        Thread.sleep(4000);
+        WebDriverWaits.WaitUntilVisible(EditIconVio);
+        WebDriverWaits.WaitForElementInteractable(EditIconVio);
         WebDriverWaits.ClickOn(EditIconVio);
-        Thread.sleep(4000);
+//        Thread.sleep(4000);
+        WebDriverWaits.WaitForElementInteractable(ViolationPopup);
         String[] PopupTitle = driver.findElement(ViolationPopup).getText().split(" ");
 
         SoftAssert s30 = new SoftAssert();
@@ -817,7 +862,8 @@ public class CCP extends ExtentReportClass {
         Thread.sleep(3000);
         UploadFile.sendKeys(System.getProperty("user.dir") + "/TestData/Jellyfish_11zon.jpg");
         Thread.sleep(4000);
-        WebElement ImgWait = WebDriverWaits.WaitUntilVisibleWE(EntityAddBtn);
+        WebDriverWaits.WaitUntilVisible(EntityAddBtn);
+        WebElement ImgWait = WebDriverWaits.findElement(EntityAddBtn);
         if ((ImgWait.isEnabled()) == false) {
             for (int w = 0; w < 10; w++) {
                 Thread.sleep(3000);
@@ -827,8 +873,9 @@ public class CCP extends ExtentReportClass {
                 }
             }
         }
-        WebDriverWaits.WaitUntilVisible(EntityAddBtn);
-        Thread.sleep(4000);
+
+
+        WebDriverWaits.WaitForElementInteractable(EntityAddBtn);
         WebDriverWaits.ClickOn(EntityAddBtn);
         WebElement ImageThumb = WebDriverWaits.WaitUntilVisibleWE(UploadedImgThumb);
         if ((ImageThumb.isDisplayed()) == false) {
@@ -844,9 +891,12 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_VerifyReplaceButtonPresence ");
         extentTest.setDescription(" Verify that the 'Upload' button converts into 'Replace' button, when user uploads a photo, on 'Edit <Violation>' popup. ");
 
-        Thread.sleep(3000);
+        Thread.sleep(2000);
+        //WebDriverWaits.WaitUntilVisible(EditIconVio);
+        WebDriverWaits.WaitForElementInteractable(EditIconVio);
         WebDriverWaits.ClickOn(EditIconVio);
-        Thread.sleep(5000);
+        Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(UploadLink2);
         String ReplaceBtn = WebDriverWaits.GetText(UploadLink2);
 
         SoftAssert s32 = new SoftAssert();
@@ -859,7 +909,8 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_DeleteAddedPhoto ");
         extentTest.setDescription(" Verify that the added photo gets deleted, when user clicks on the 'Delete' icon, on 'Edit <Violation>' popup. ");
 
-        Thread.sleep(3000);
+//        Thread.sleep(3000);
+        WebDriverWaits.WaitForElementInteractable(DltUploadedImg);
         WebDriverWaits.ClickOn(DltUploadedImg);
         Boolean ImgThumb4 = driver.findElements(AddedImgThumb).size() > 0;
         if (ImgThumb4 == true) {
@@ -868,9 +919,10 @@ public class CCP extends ExtentReportClass {
             s33.assertEquals(false, true);
             s33.assertAll();
         }
-        Thread.sleep(3000);
+//        Thread.sleep(3000);
+        WebDriverWaits.WaitForElementInteractable(EntityCancelBtn);
         WebDriverWaits.ClickOn(EntityCancelBtn);
-        ;
+
     }
 
     public static int TotalVioCountCCP;
@@ -880,7 +932,8 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_VerifyTotalViolationsCount ");
         extentTest.setDescription(" Verify that total count along with '<Violation with entity>' count of added violations appear beside 'Add Violations' tile's header, on 'Create Case' page. ");
 
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(CountViolations);
         String CountVio = WebDriverWaits.GetText(CountViolations);
         List<WebElement> countVio3 = WebDriverWaits.WaitUntilVisibleList(CrossIconVio);
         TotalVioCountCCP = countVio3.size();
@@ -903,7 +956,8 @@ public class CCP extends ExtentReportClass {
         String FinalIndiVio = FirstVio[1];
         Thread.sleep(1000);
         WebDriverWaits.ClickOn(CountEachVio);
-        Thread.sleep(3000);
+       // Thread.sleep(3000);
+        WebDriverWaits.WaitUntilVisible(PopupTitle);
         String[] popupVio = WebDriverWaits.GetText(PopupTitle).split(" ");
         String FinalPopupVio = popupVio[0] + "s";
 
@@ -919,7 +973,9 @@ public class CCP extends ExtentReportClass {
         extentTest.setDescription(" Verify that '<Violation> Listing' popup gets closed, when user clicks on 'Cancel' button or 'Cross' icon, on 'Create Case' page. ");
         WebDriverWaits.ClickOn(EntityCancelBtn);
         Thread.sleep(2000);
-        List<WebElement> ModalHeaders5 = WebDriverWaits.WaitUntilVisibleList(ModalHeaders);
+        //WebDriverWaits.WaitForPageLoadTime(5);
+        WebDriverWaits.WaitUntilVisible(ModalHeaders);
+        List<WebElement> ModalHeaders5 = WebDriverWaits.findElementsByXPath(ModalHeaders);
         if ((ModalHeaders5.size() <= 1) == false) {
 
             SoftAssert s37 = new SoftAssert();
@@ -935,7 +991,8 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_OpenCreateAContactPopup ");
         extentTest.setDescription(" Verify that 'Create a Contact' popup opens up, when user clicks on 'Add Contact' field > 'Create a new contact' link, on 'Create Case' popup. ");
 
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(AddContactFld);
         WebDriverWaits.ClickOn(AddContactFld);
         WebDriverWaits.ClickOn(CrtNewContact);
         String ContactTitle = WebDriverWaits.GetText(ContactPopup);
@@ -968,10 +1025,13 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_CloseCreateAContactPopup ");
         extentTest.setDescription(" Verify that 'Create a Contact' popup gets closed , when user clicks on 'Cancel' button, on 'Create Case' popup. ");
 
-        Thread.sleep(1000);
+       // Thread.sleep(1000);
+        WebDriverWaits.WaitForElementInteractable(CancelContactBtn);
         WebDriverWaits.ClickOn(CancelContactBtn);
         Thread.sleep(1000);
-        List<WebElement> ModalHeaders4 = WebDriverWaits.WaitUntilVisibleList(ModalHeaders);
+        //WebDriverWaits.WaitForPageLoadTime(5);
+        WebDriverWaits.WaitUntilVisible(ModalHeaders);
+        List<WebElement> ModalHeaders4 = WebDriverWaits.findElementsByXPath(ModalHeaders);
         if ((ModalHeaders4.size() <= 1) == false) {
 
             SoftAssert s40 = new SoftAssert();
@@ -986,6 +1046,7 @@ public class CCP extends ExtentReportClass {
         extentTest.setDescription(" Verify that new contact gets added under 'Add Contact' combo box, when user clicks on 'Create Contact' button after entering data in 'Name' field, on 'Create a Contact' popup. ");
 
         Thread.sleep(2000);
+        //WebDriverWaits.WaitUntilVisibleList(CountContact);
         List<WebElement> BeforeAdding = driver.findElements(CountContact);
         int a = BeforeAdding.size();
         for (int z = 0; z < 3; z++) {
@@ -998,9 +1059,11 @@ public class CCP extends ExtentReportClass {
             WebDriverWaits.SendKeys(NameField, RandomName);
             WebDriverWaits.SendKeys(EmailField, RandomMail);
             WebDriverWaits.SendKeys(WorkPhoneField, RandomContact);
-            Thread.sleep(2000);
+//            Thread.sleep(2000);
+            WebDriverWaits.WaitForElementInteractable(CrtContactBtn);
             WebDriverWaits.ClickOn(CrtContactBtn);
-            Thread.sleep(3000);
+//            Thread.sleep(3000);
+            WebDriverWaits.WaitForElementInteractable(PropertyOwnerOption);
             WebDriverWaits.ClickOn(PropertyOwnerOption);
             WebDriverWaits.ClickOn(ApplyButton);
         }
@@ -1021,8 +1084,8 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_OpenEditContactPopup ");
         extentTest.setDescription(" Verify that 'Edit Contact' popup opens up for newly created contact, when user clicks on 'Edit' icon, on 'Create Case' page. ");
 
-        WebDriverWaits.WaitUntilVisible(EditContact);
         Thread.sleep(1000);
+        WebDriverWaits.WaitForElementInteractable(EditContact);
         WebDriverWaits.ClickOn(EditContact);
         String ContactEditPopup = WebDriverWaits.GetText(EditContactPopup);
 
@@ -1030,7 +1093,8 @@ public class CCP extends ExtentReportClass {
         s43.assertEquals(ContactEditPopup, "Edit Contact");
         s43.assertAll();
 
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(CancelEditPopup);
         WebDriverWaits.ClickOn(CancelEditPopup);
     }
 
@@ -1039,9 +1103,11 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_DeleteAddedContact ");
         extentTest.setDescription(" Verify that previously added contact gets deleted, when user clicks on the 'Delete' icon, on 'Create Case' page. ");
 
-        List<WebElement> BeforeDeleting = WebDriverWaits.WaitUntilVisibleList(CountContact);
+        WebDriverWaits.WaitUntilVisible(CountContact);
+        List<WebElement> BeforeDeleting = WebDriverWaits.findElementsByXPath(CountContact);
         int a1 = BeforeDeleting.size();
         Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(DeleteContact);
         WebDriverWaits.ClickOn(DeleteContact);
         Thread.sleep(1000);
         List<WebElement> AfterDeleting = WebDriverWaits.WaitUntilVisibleList(CountContact);
@@ -1063,8 +1129,10 @@ public class CCP extends ExtentReportClass {
         extentTest.setDescription(" Verify that accurate count of added contacts appear beside 'Contacts' tile's header, on 'Create Case' popup. ");
 
         String ContactTile = WebDriverWaits.GetText(CountContactTile);
-        Thread.sleep(3000);
-        List<WebElement> CountContacts = WebDriverWaits.WaitUntilVisibleList(CountContact);
+        //Thread.sleep(3000);
+        WebDriverWaits.WaitUntilVisible(CountContact);
+        WebDriverWaits.WaitUntilVisible(CountContact);
+        List<WebElement> CountContacts = WebDriverWaits.findElementsByXPath(CountContact);
         TotalContactsCountCCP = CountContacts.size();
         System.out.println("TotalContactsCountCCP" + TotalContactsCountCCP);
         String FinalCountContacts = "Contacts (" + (TotalContactsCountCCP) + ")";
@@ -1081,8 +1149,9 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_VerifyViolationAttachmentsPresence ");
         extentTest.setDescription(" Verify that attachments added to the 'Add Violations' tile also appear on the 'Attachments' tile, on 'Create Case' page. ");
 
-        Thread.sleep(3000);
-        List<WebElement> VioImages = WebDriverWaits.WaitUntilVisibleList(UploadedImgThumb);
+//        Thread.sleep(3000);
+        WebDriverWaits.WaitUntilVisible(UploadedImgThumb);
+        List<WebElement> VioImages = WebDriverWaits.findElementsByXPath(UploadedImgThumb);
         int count1 = VioImages.size();
         List<WebElement> AttachImages = WebDriverWaits.WaitUntilVisibleList(AddedImage);
         int count2 = AttachImages.size();
@@ -1137,9 +1206,12 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_OpenCloseAddAttachmentsPopup ");
         extentTest.setDescription(" Verify that 'Close Add Attachments' confirmation popup opens up, when user clicks on 'Cross' icon or 'Cancel' button after selecting an attachment, on 'Add Attachments' popup. ");
 
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
+        WebDriverWaits.WaitUntilVisible(YesCloseBtn);
+        WebDriverWaits.WaitForElementInteractable(YesCloseBtn);
         WebDriverWaits.ClickOn(YesCloseBtn);
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
+        WebDriverWaits.WaitUntilVisible(CloseAttachmentTitle);
         String PopupTitle2 = WebDriverWaits.GetText(CloseAttachmentTitle);
         String PopupTitle3 = "Close Add Attachments";
 
@@ -1153,10 +1225,13 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_CloseAddAttachmentsPopup ");
         extentTest.setDescription(" Verify that 'Add Attachments' popup gets closed, when user clicks on 'Yes, Close' button, on 'Close Add Attachment' confirmation popup. ");
 
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
+        WebDriverWaits.WaitForElementInteractable(YesCloseBtn);
         WebDriverWaits.ClickOn(YesCloseBtn);
-        Thread.sleep(5000);
-        List<WebElement> ModalHeaders2 = WebDriverWaits.WaitUntilVisibleList(ModalHeaders);
+        //Thread.sleep(5000);
+        WebDriverWaits.WaitUntilVisible(ModalHeaders);
+        WebDriverWaits.WaitUntilVisible(ModalHeaders);
+        List<WebElement> ModalHeaders2 = WebDriverWaits.findElementsByXPath(ModalHeaders);
         if ((ModalHeaders2.size() <= 1) == false) {
 
             SoftAssert s50 = new SoftAssert();
@@ -1173,16 +1248,19 @@ public class CCP extends ExtentReportClass {
         JavascriptExecutor jser = (JavascriptExecutor) driver;
         Thread.sleep(3000);
         WebElement AttachmentIcon = (WebElement) jser.executeScript("return document.querySelector('div.tile-header-container > div > h2 > button')");
-        Thread.sleep(6000);
+//        Thread.sleep(6000);
         AttachmentIcon.click();
         Thread.sleep(2000);
         WebElement UploadFile3 = driver.findElement(By.xpath("//input[@type='file']"));
         UploadFile3.sendKeys(System.getProperty("user.dir") + "/TestData/Cat_11zon.jpg");
-        Thread.sleep(3000);
+        WebDriverWaits.WaitforCustometime(4);
+        WebDriverWaits.WaitForElementInteractable(YesCloseBtn);
         WebDriverWaits.ClickOn(YesCloseBtn);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(DontCloseBtn);
         WebDriverWaits.ClickOn(DontCloseBtn);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(AttachmentTitle);
         String Title4 = WebDriverWaits.GetText(AttachmentTitle);
         String AttachTitle = "Add Attachments";
 
@@ -1232,8 +1310,10 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_OpenAttachmentsDetailsPopup ");
         extentTest.setDescription(" Verify that 'Attachments Details' popup opens up, when user clicks on the added attachment, on 'Create Case' popup. ");
 
-        Thread.sleep(3000);
+       // Thread.sleep(3000);
+        WebDriverWaits.WaitForElementInteractable(AddedImage);
         WebDriverWaits.ClickOn(AddedImage);
+        WebDriverWaits.WaitUntilVisible(AttachmentDetailsTitle);
         String AttachTitle1 = WebDriverWaits.GetText(AttachmentDetailsTitle);
         String AttachTitle2 = "Attachments Details";
 
@@ -1250,7 +1330,8 @@ public class CCP extends ExtentReportClass {
 
         String RandomReason2 = RandomStrings.RequiredString(15);
         WebDriverWaits.SendKeys(Description, RandomReason2);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(UpdateBtn);
         WebDriverWaits.ClickOn(UpdateBtn);
     }
 
@@ -1263,13 +1344,16 @@ public class CCP extends ExtentReportClass {
         if ((AttachmentDet.size()) > 0) {
             WebDriverWaits.ClickOn(CancelBtnAttachDet);
         }
-        Thread.sleep(2000);
-        List<WebElement> countAttach0 = WebDriverWaits.WaitUntilVisibleList(AddedImage);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(AddedImage);
+        List<WebElement> countAttach0 = WebDriverWaits.findElementsByXPath(AddedImage);
         int i = countAttach0.size();
         WebDriverWaits.ClickOn(AddedImage);
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(DeleteAttach);
         WebDriverWaits.ClickOn(DeleteAttach);
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
+        WebDriverWaits.WaitForElementInteractable(YesDelete);
         WebDriverWaits.ClickOn(YesDelete);
         WebDriverWaits.ClickOn(UpdateBtn);
         List<WebElement> countAttach1 = WebDriverWaits.WaitUntilVisibleList(AddedImage);
@@ -1289,13 +1373,17 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_VerifyTotalAttachmentsCount ");
         extentTest.setDescription(" Verify that accurate count of added attachments appear beside 'Attachments' tile's header, on 'Create Case' popup. ");
         Thread.sleep(2000);
+        WebDriverWaits.WaitUntilElementPresent(AttachmentDetailsTitle,2);
         List<WebElement> AttachmentDet = driver.findElements(AttachmentDetailsTitle);
         if ((AttachmentDet.size()) > 0) {
+            WebDriverWaits.WaitForElementInteractable(CancelBtnAttachDet);
             WebDriverWaits.ClickOn(CancelBtnAttachDet);
         }
-        Thread.sleep(2000);
+       // Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(CountAttachment);
         String AttachCount = WebDriverWaits.GetText(CountAttachment);
-        Thread.sleep(3000);
+       // Thread.sleep(3000);
+        WebDriverWaits.WaitUntilVisible(AddedImage);
         List<WebElement> countAttach = driver.findElements(AddedImage);
         TotalAttachmentsCountCCP = countAttach.size();
         System.out.println("TotalAttachmentsCountCCP" + TotalAttachmentsCountCCP);
@@ -1311,7 +1399,8 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_OpenCreateCasePopup ");
         extentTest.setDescription(" Verify that 'Create Case' popup opens up, when user clicks on 'Create Case' button, on 'Create Case' page. ");
 
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(CCButton);
         WebDriverWaits.ClickOn(CCButton);
         String CreateCaseTitle = WebDriverWaits.GetText(CreateCasePop);
 
@@ -1325,7 +1414,8 @@ public class CCP extends ExtentReportClass {
         extentTest = extent.startTest(" CCP_VerifyCreateAndScheduleInspectionButton ");
         extentTest.setDescription(" Verify that 'Create & Perform Inspection' button converts into 'Create & Schedule Inspection' button, when user selects 'Schedule Verification Inspection' checkbox, on 'Create Case' popup.  ");
 
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitUntilVisible(CrtSchInsButton);
         String ButtonText = WebDriverWaits.GetText(CrtSchInsButton);
 
         SoftAssert s60 = new SoftAssert();
@@ -1352,11 +1442,15 @@ public class CCP extends ExtentReportClass {
     public static void CCP_VerifyCaseCreation() throws InterruptedException {
         extentTest = extent.startTest(" CCP_VerifyCaseCreation ");
         extentTest.setDescription(" Verify that a case gets created, when user clicks on 'Create & Schedule Inspection' button after selecting the Assignees, 'Create Case' page.  ");
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
+        WebDriverWaits.WaitforCustometime(7);
+        WebDriverWaits.WaitForElementInteractable(CrtSchInsButton);
         WebDriverWaits.ClickOn(CrtSchInsButton);
         Thread.sleep(20000);
-        Thread.sleep(5000);
-        WebElement Case = WebDriverWaits.WaitUntilVisibleWE(CaseStatus);
+//        Thread.sleep(5000);
+        WebDriverWaits.WaitForPageLoadTime(10);
+        WebDriverWaits.WaitUntilVisible(CaseStatus);
+        WebElement Case = WebDriverWaits.findElement(CaseStatus);
         if ((Case.isDisplayed()) == false) {
 
             SoftAssert s62 = new SoftAssert();
@@ -1375,15 +1469,19 @@ public class CCP extends ExtentReportClass {
         System.out.println("ContactsCountCCP" + ContactsCountCCP);
         int AttachmentsCountCCP = TotalAttachmentsCountCCP;
         System.out.println("AttachmentsCountCCP" + AttachmentsCountCCP);
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
+        WebDriverWaits.WaitforCustometime(3);
+        WebDriverWaits.WaitUntilVisible(TotalViolationsCDP);
         List<WebElement> CountViolations = driver.findElements(TotalViolationsCDP);
         int ViolationsCountCDP = CountViolations.size();
         System.out.println("ViolationsCountCDP" + ViolationsCountCDP);
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
+        WebDriverWaits.WaitUntilVisible(TotalContactsCDP);
+        WebDriverWaits.ScrollIntoView(TotalContactsCDP);
         List<WebElement> CountContacts = driver.findElements(TotalContactsCDP);
         int ContactsCountCDP = CountContacts.size();
         System.out.println("ContactsCountCDP" + ContactsCountCDP);
-        Thread.sleep(3000);
+        WebDriverWaits.WaitUntilVisibleList(TotalAttachmentsCDP);
         List<WebElement> CountAttachments = driver.findElements(TotalAttachmentsCDP);
         int AttachmentsCountCDP = CountAttachments.size();
         System.out.println("AttachmentsCountCDP" + AttachmentsCountCDP);

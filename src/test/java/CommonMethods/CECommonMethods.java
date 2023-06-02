@@ -9,9 +9,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class CECommonMethods extends BrowsersInvoked {
-    static WebDriverWait wait = new WebDriverWait(driver, 10);
-    static WebDriverWait wait20 = new WebDriverWait(driver, 20);
+    static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    static WebDriverWait wait20 = new WebDriverWait(driver,Duration.ofSeconds(10));
 
 
     public static void CE_CreateACase() throws InterruptedException {
@@ -151,7 +153,7 @@ public class CECommonMethods extends BrowsersInvoked {
 
     public static void serachLocationCCP(String Address) throws InterruptedException {
         WebDriverWaits.SendKeys(CCP.LocationFld, Address);
-        Thread.sleep(4000);
+        Thread.sleep(5000);
 
         if (DataInterface.agencyConfig.equalsIgnoreCase(DataInterface.agencyConfigGisDirect2o)) {
             WebDriverWaits.WaitUntilVisible(CCP.MapGis2);

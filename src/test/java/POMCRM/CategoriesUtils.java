@@ -9,7 +9,7 @@ import org.testng.asserts.SoftAssert;
 import BrowsersBase.DataInterface;
 import CommonMethods.RandomStrings;
 import CommonMethods.WebDriverWaits;
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class CategoriesUtils extends CreateCRMUserUtils {
 
