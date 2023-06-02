@@ -32,11 +32,11 @@ public class CloseCase extends ForcedAbatement {
         extentTest = extent.startTest(" CloseCase_PreRequisite ");
         extentTest.setDescription(" Verify that 'Close Case' option appears, when user clicks on 'More' button, on CDP. ");
         driver.navigate().to(DataInterface.URLDashboard);
-       // Thread.sleep(10000);
+        // Thread.sleep(10000);
         WebDriverWaits.WaitForPageLoadTime(5);
         WebDriverWaits.WaitForElementInteractable(CLP);
         WebDriverWaits.ClickByJsExecuter(CLP);
-       // Thread.sleep(15000);
+        // Thread.sleep(15000);
         WebDriverWaits.WaitUntilPresent(StatusColumnSort);
         //Thread.sleep(4000);
         WebDriverWaits.ScrollIntoView(StatusColumnSort);
@@ -83,7 +83,8 @@ public class CloseCase extends ForcedAbatement {
         extentTest.setDescription(" Verify that 'Close Case' popup opens up, when user selects 'Close Case' option, after clicking on 'More' button, on CDP. ");
 
         WebDriverWaits.ClickOn(CloseCaseBtn);
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
+        WebDriverWaits.WaitUntilPresent(CloseCasePopup);
         String CCPopupText = WebDriverWaits.GetText(CloseCasePopup);
 
         SoftAssert s135 = new SoftAssert();
@@ -97,9 +98,13 @@ public class CloseCase extends ForcedAbatement {
         extentTest = extent.startTest(" CloseCase_CloseCloseCasePopup ");
         extentTest.setDescription(" Verify that 'Close Case' popup gets closed, when user clicks on 'Cross' icon or 'Cancel' button, on 'Verify Violations' section. ");
 
+
         WebDriverWaits.ClickOn(CancelBtnCCPopup);
-        Thread.sleep(2000);
-        List<WebElement> modalCount = WebDriverWaits.WaitUntilVisibleList(ModalHeaders);
+//      Thread.sleep(2000);
+        //WebDriverWaits.WaitForPageLoadTime(5);
+        WebDriverWaits.WaitUntilPresent(ModalHeaders);
+        WebDriverWaits.WaitUntilVisibleList(ModalHeaders);
+        List<WebElement> modalCount = WebDriverWaits.findElementsByXPath(ModalHeaders);
         if (((modalCount.size()) <= 1) == false) {
 
             SoftAssert s136 = new SoftAssert();
@@ -113,61 +118,58 @@ public class CloseCase extends ForcedAbatement {
     public static void CloseCase_VerifyVoluntaryToggleBtnState() {
         extentTest = extent.startTest(" CloseCase_VerifyVoluntaryToggleBtnState ");
         extentTest.setDescription(" Verify that 'Voluntary' toggle button appears selected by default, on 'Close Case' popup. ");
-        try {
-            Thread.sleep(10000);
-            WebDriverWaits.ScrollIntoView(MoreBtn);
-            Thread.sleep(2000);
-            WebDriverWaits.ClickByJsExecuter(MoreBtn);
-            WebDriverWaits.WaitUntilPresent(CloseCaseBtn);
-            WebDriverWaits.ClickOn(CloseCaseBtn);
-            WebElement VoluntaryBtnState = WebDriverWaits.WaitUntilVisibleWE(VoluntaryBtn);
-            if ((VoluntaryBtnState.isEnabled()) == false) {
 
-                SoftAssert s137 = new SoftAssert();
-                s137.assertEquals(false, true);
-                s137.assertAll();
-            }
-        } catch (InterruptedException e) {
+//            Thread.sleep(10000);
+        WebDriverWaits.WaitUntilElementPresent(MoreBtn, 2);
+        WebDriverWaits.ScrollIntoView(MoreBtn);
+        //Thread.sleep(2000);
+        WebDriverWaits.WaitForElementInteractable(MoreBtn);
+        WebDriverWaits.ClickByJsExecuter(MoreBtn);
+        WebDriverWaits.WaitUntilPresent(CloseCaseBtn);
+        WebDriverWaits.ClickOn(CloseCaseBtn);
+        WebElement VoluntaryBtnState = WebDriverWaits.WaitUntilVisibleWE(VoluntaryBtn);
+        if ((VoluntaryBtnState.isEnabled()) == false) {
 
+            SoftAssert s137 = new SoftAssert();
+            s137.assertEquals(false, true);
+            s137.assertAll();
         }
+
     }
 
     @Test(priority = 138)
     public static void CloseCase_SelectForcedToggleBtn() {
         extentTest = extent.startTest(" CloseCase_SelectForcedToggleBtn ");
         extentTest.setDescription(" Verify that user is able to select 'Forced' toggle button, on 'Close Case' popup. ");
-        try {
-            Thread.sleep(4000);
-            WebElement ForcedBtnState = WebDriverWaits.WaitUntilVisibleWE(ForcedToggle);
-            if ((ForcedBtnState.isEnabled()) == false) {
 
-                SoftAssert s138 = new SoftAssert();
-                s138.assertEquals(false, true);
-                s138.assertAll();
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+//            Thread.sleep(4000);
+        WebDriverWaits.WaitForPageLoadTime(3);
+        WebElement ForcedBtnState = WebDriverWaits.WaitUntilVisibleWE(ForcedToggle);
+        if ((ForcedBtnState.isEnabled()) == false) {
 
+            SoftAssert s138 = new SoftAssert();
+            s138.assertEquals(false, true);
+            s138.assertAll();
         }
+
     }
 
     @Test(priority = 139)
-    public static void CloseCase_VerifyClosedStatus() {
+    public static void CloseCase_VerifyClosedStatus() throws InterruptedException {
         extentTest = extent.startTest(" CloseCase_VerifyClosedStatus ");
         extentTest.setDescription(" Verify that 'Closed' status appears after Case gets closed, when user clicks on 'Close Case' button, on 'Close Case' popup. ");
-        try {
-            WebDriverWaits.ClickByJsExecuter(CloseCaseBtnCCPopup);
-            Thread.sleep(20000);
+
+        WebDriverWaits.ClickByJsExecuter(CloseCaseBtnCCPopup);
+//            Thread.sleep(20000);
             Thread.sleep(5000);
-            String ClosedStatus = WebDriverWaits.GetText(CaseStatus);
+        WebDriverWaits.WaitUntilVisible(CaseStatus);
+        WebDriverWaits.WaitUntilPresent(CaseStatus);
+        String ClosedStatus = WebDriverWaits.GetText(CaseStatus);
 
-            SoftAssert s139 = new SoftAssert();
-            s139.assertEquals(ClosedStatus, "Closed");
-            s139.assertAll();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        SoftAssert s139 = new SoftAssert();
+        s139.assertEquals(ClosedStatus, "Closed");
+        s139.assertAll();
 
-        }
     }
 
     public static void AddAddress() throws InterruptedException {
@@ -195,38 +197,35 @@ public class CloseCase extends ForcedAbatement {
     }
 
     @Test(priority = 140)
-    public static void CloseCase_PreRequisiteCaseCreationForCloseCase() {
+    public static void CloseCase_PreRequisiteCaseCreationForCloseCase() throws InterruptedException {
         extentTest = extent.startTest(" CloseCase_ConfirmationPopupForCloseCaseValidViolations ");
         extentTest.setDescription("  ");
-        try {
-            driver.navigate().to(DataInterface.URLCreateCase);
-            Thread.sleep(4000);
-            AddAddress();
-            AddVio();
-            Thread.sleep(2000);
-            WebDriverWaits.ClickOn(CCButton);
-            Thread.sleep(5000);
-            WebDriverWaits.ClickOn(CrtSchInsButton);
-            Thread.sleep(20000);
-            WebElement Case = WebDriverWaits.WaitUntilVisibleWE(CaseStatus);
-            if ((Case.isDisplayed()) == false) {
 
-                SoftAssert s140 = new SoftAssert();
-                s140.assertEquals(false, true);
-                s140.assertAll();
+        driver.navigate().to(DataInterface.URLCreateCase);
+        Thread.sleep(4000);
+        AddAddress();
+        AddVio();
+        Thread.sleep(2000);
+        WebDriverWaits.ClickOn(CCButton);
+        Thread.sleep(5000);
+        WebDriverWaits.ClickOn(CrtSchInsButton);
+        Thread.sleep(20000);
+        WebElement Case = WebDriverWaits.WaitUntilVisibleWE(CaseStatus);
+        if ((Case.isDisplayed()) == false) {
 
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            SoftAssert s140 = new SoftAssert();
+            s140.assertEquals(false, true);
+            s140.assertAll();
 
         }
+
     }
 
     @Test(priority = 141)
-    public static void CloseCase_ConfirmationPopupForCloseCaseInvalidViolations() {
+    public static void CloseCase_ConfirmationPopupForCloseCaseInvalidViolations() throws InterruptedException {
         extentTest = extent.startTest(" CloseCase_ConfirmationPopupForCloseCaseInvalidViolations ");
         extentTest.setDescription(" Verify that confirmation popup opens up, when user clicks on 'Complete Inspection & Close Case' button for invalid violations, under 'Verify Violations' section. ");
-        try {
+
             Thread.sleep(4000);
             WebDriverWaits.ClickOn(AddContactsPIP);
             Thread.sleep(2000);
@@ -262,16 +261,14 @@ public class CloseCase extends ForcedAbatement {
                 s141.assertAll();
 
             }
-        } catch (Exception e) {
 
-        }
     }
 
     @Test(priority = 142)
-    public static void CloseCase_CloseConfirmationPopupForCloseCase() {
+    public static void CloseCase_CloseConfirmationPopupForCloseCase() throws InterruptedException{
         extentTest = extent.startTest(" CloseCase_ConfirmationPopupForCloseCaseInvalidViolations ");
         extentTest.setDescription(" Verify that confirmation popup gets closed, when user clicks on 'Cancel' button, under 'Verify Violations' section. ");
-        try {
+
             Thread.sleep(4000);
             WebDriverWaits.ScrollIntoView(CancelConfirmation);
             WebDriverWaits.ClickOn(CancelConfirmation);
@@ -284,17 +281,14 @@ public class CloseCase extends ForcedAbatement {
                 s142.assertAll();
 
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
 
-        }
     }
 
     @Test(priority = 143)
-    public static void CloseCase_VerifyClosedStatusViaPerformInspection() {
+    public static void CloseCase_VerifyClosedStatusViaPerformInspection() throws InterruptedException {
         extentTest = extent.startTest(" CloseCase_VerifyClosedStatusViaPerformInspection ");
         extentTest.setDescription(" Verify that 'Closed' status appears after Case gets closed, when user clicks on 'Yes' button, on 'Close Case' popup. ");
-        try {
+
             Thread.sleep(3000);
             WebDriverWaits.ClickOn(FooterButtons);
             Thread.sleep(4000);
@@ -306,10 +300,7 @@ public class CloseCase extends ForcedAbatement {
             s143.assertEquals(ClosedStatus2, "Closed");
             s143.assertAll();
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
 
-        }
     }
 
     public static void Create_New_Contact() throws InterruptedException {
@@ -345,10 +336,10 @@ public class CloseCase extends ForcedAbatement {
     }
 
     @Test(priority = 144)
-    public static void CloseCase_CloseCasewithValidViolations() {
+    public static void CloseCase_CloseCasewithValidViolations() throws InterruptedException {
         extentTest = extent.startTest(" CloseCase_CloseCasewithValidViolations ");
         extentTest.setDescription(" Verify that user is able to close the case for valid violations, after clicking on 'Complete Inspection & Close Case' button > 'Close Case' button, on 'Close Case' popup. ");
-        try {
+
             CreateCasePreRequisites();
             Thread.sleep(25000);
             WebDriverWaits.WaitUntilVisible(PerformInsButton);
@@ -375,10 +366,7 @@ public class CloseCase extends ForcedAbatement {
             s144b.assertEquals(ClosedStatus, "Closed");
             s144b.assertAll();
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
 
-        }
     }
 
 }

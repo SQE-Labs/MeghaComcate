@@ -9,7 +9,7 @@
                 </methods>
             </class>
 
-            <class name="TestCasesCE.CCP">
+           <class name="TestCasesCE.CCP">
                 <methods>
                     <include name="CCP_PreRequisite"/>
                     <include name="CCP_GlobalValidationMsgForNoData"/>
@@ -184,7 +184,7 @@
                 </methods>
             </class>
 
-            <class name="TestCasesCE.Dashboard">
+           <class name="TestCasesCE.Dashboard">
                 <methods>
                     <include name="TC_Dashboard_ViewAllStaffDashboard"/>
                     <include name="TC_Dashboard_ViewMeDashboard"/>
