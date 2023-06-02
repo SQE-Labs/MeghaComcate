@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Comcate">
+    <test thread-count="1" name="Test">
+        <classes>
+            <class name="TestCasesCE.Login">
+                <methods>
+                    <include name="LoginAgency"/>
+                </methods>
+            </class>
+
+           <class name="TestCasesCE.CCP">
+                <methods>
+                    <include name="CCP_PreRequisite"/>
+                    <include name="CCP_GlobalValidationMsgForNoData"/>
+                    <include name="CCP_DefaultInfoMsgOnLOcationTile"/>
+                    <include name="CCP_ValidationMsgOutsideAgencyBoundary"/>
+                    <include name="CCP_SearchAndAddAddress"/>
+                    <include name="CCP_OpenAddAddressManuallyPopup"/>
+                    <include name="CCP_CloseAddAddressManuallyPopup"/>
+                    <include name="CCP_ValidationMsgForNoAddressDetails"/>
+                    <include name="CCP_AddTheAddressManually"/>
+                    <include name="CCP_EditAddedAddress"/>
+                    <include name="CCP_UpdateAddressOnSaveButton"/>
+                    <include name="CCP_AddressShouldntGetUpdatedOnCancelButton"/>
+                    <include name="CCP_OpenFlagAddressPopup"/>
+                    <include name="CCP_CloseFlagAddressPopup"/>
+                    <include name="CCP_VerifyFlagAddressButtonState"/>
+                    <include name="CCP_VerifyFlaggedButtonState"/>
+                    <include name="CCP_InfoMsgForNoViolation"/>
+                    <include name="CCP_ValidationMsgForNoViolation"/>
+                    <include name="CCP_InfoMsgForNonExistingData"/>
+                    <include name="CCP_AddCustomIssueDescriptionField"/>
+                    <include name="CCP_validationMsgForEmptyCustomIssueDescriptionField"/>
+                    <include name="CCP_AddViolationWithoutEntity"/>
+                    <include name="CCP_OpenViolationWithEntityPopup"/>
+                    <include name="CCP_ValidationMsgForNoViolationData"/>
+                    <include name="CCP_AddViolationWithEntity"/>
+                    <include name="CCP_SearchAndAddViolation"/>
+                    <include name="CCP_VerifyAddAnotherViolationLink"/>
+                    <include name="CCP_DeleteAddedViolation"/>
+                    <include name="CCP_OpenEditViolationPopup"/>
+                    <include name="CCP_UploadPhotoForViolation"/>
+                    <include name="CCP_VerifyReplaceButtonPresence"/>
+                    <include name="CCP_DeleteAddedPhoto"/>
+                    <include name="CCP_VerifyTotalViolationsCount"/>
+                    <include name="CCP_OpenViolationListingPopup"/>
+                    <include name="CCP_CloseViolationListingPopup"/>
+                    <include name="CCP_OpenCreateAContactPopup"/>
+                    <include name="CCP_ValidationMsgForNodataInNameField"/>
+                    <include name="CCP_CloseCreateAContactPopup"/>
+                    <include name="CCP_AddNewContact"/>
+                    <include name="CCP_OpenEditContactPopup"/>
+                    <include name="CCP_DeleteAddedContact"/>
+                    <include name="CCP_VerifyTotalContactCount"/>
+                    <include name="CCP_VerifyViolationAttachmentsPresence"/>
+                    <include name="CCP_OpenAddAttachmentsPopup"/>
+                    <include name="CCP_VerifyAttachmentsPreview"/>
+                    <include name="CCP_OpenCloseAddAttachmentsPopup"/>
+                    <include name="CCP_CloseAddAttachmentsPopup"/>
+                    <include name="CCP_ReopenAddAttachmentsPopup"/>
+                    <include name="CCP_AddAnAttachment"/>
+                    <include name="CCP_AddMultipleAttachments"/>
+                    <include name="CCP_OpenAttachmentsDetailsPopup"/>
+                    <include name="CCP_UpdateAttachmentDetails"/>
+                    <include name="CCP_DeleteAnAttachment"/>
+                    <include name="CCP_VerifyTotalAttachmentsCount"/>
+                    <include name="CCP_OpenCreateCasePopup"/>
+                    <include name="CCP_VerifyPerformVerificationInspectionCheckboxState"/>
+                    <include name="CCP_VerifyCreateAndScheduleInspectionButton"/>
+                    <include name="CCP_VerifyNextInspectionSectionState"/>
+                    <include name="CCP_VerifyCaseCreation"/>
+                    <include name="CCP_CDP_CountVerifications"/>
+                </methods>
+            </class>
+            <class name="TestCasesCE.PerformInspection">
+                <methods>
+                    <include name="PerformInspection_PreRequisite_Contacts"/>
+                    <include name="PerformInspection_OpenVerificationInspectionInProgressPage"/>
+                    <include name="PerformInspection_ValidationMessageSection1"/>
+                    <include name="PerformInspection_VerifySection1Status"/>
+                    <include name="PerformInspection_AddAViolation"/>
+                    <include name="PerformInspection_VerifyVerificationPendingStatusForViolation"/>
+                    <include name="PerformInspection_SelectAnyToggleButtonForViolation"/>
+                    <include name="PerformInspection_VerifyClosedStatusForViolation"/>
+                    <include name="PerformInspection_VerifyOpenStatusForViolation"/>
+                    <include name="PerformInspection_VerifyContinueButtonPresence"/>
+                    <include name="PerformInspection_OpenConfirmationPopupForCloseCaseButton"/>
+                    <include name="PerformInspection_CloseConfirmationPopup"/>
+                    <include name="PerformInspection_VerifySection2Title"/>
+                    <include name="PerformInspection_OpenCloseCasePopup"/>
+                    <include name="PerformInspection_VerifyVoluntaryToggleButtonState"/>
+                    <include name="PerformInspection_SelectForcedToggleButton"/>
+                    <include name="PerformInspection_CloseCloseCasePopup"/>
+                    <include name="PerformInspection_AddInspectionNote"/>
+                    <include name="PerformInspection_AddAttachment"/>
+                    <include name="PerformInspection_ExpandSection2OnContinue"/>
+                    <include name="PerformInspection_VerifySection1Label"/>
+                    <include name="PerformInspection_EditVerifyViolationSection"/>
+                    <include name="PerformInspection_VerifyFirstNoticeState"/>
+                    <include name="PerformInspection_SelectAnyNotice"/>
+                    <include name="PerformInspection_VerifySection3Title"/>
+                    <include name="PerformInspection_SelectNoNoticeRequiredCheckbox"/>
+                    <include name="PerformInspection_UpdateNoticeIssueDate"/>
+                    <include name="PerformInspection_VerifyIssueNoticeAndCompleteInspectionButton"/>
+                    <include name="PerformInspection_VerifyContinueButtonPresenceOnHtmlSelected"/>
+                    <include name="PerformInspection_VerifyViolationsUnderReviewOpenViolations"/>
+                    <include name="PerformInspection_UpdateComplyByDate"/>
+                    <include name="PerformInspection_UpdateFollowUpInspectionDate"/>
+                    <include name="PerformInspection_VerifyLoggedInUserToggleButtonState"/>
+                    <include name="PerformInspection_ExpandSection3"/>
+                    <include name="PerformInspection_EnterCertifiedMailNumber"/>
+                    <include name="PerformInspection_VerifyRecipientSubSectionPresence"/>
+                    <include name="PerformInspection_VerifyRecipientNoLongerMandatory"/>
+                    <include name="PerformInspection_SelectMultipleContact"/>
+                    <include name="PerformInspection_VerifyResponsiblePartySectionPresence"/>
+                    <include name="PerformInspection_OpenConfirmationPopupOnExitButton"/>
+                    <include name="PerformInspection_CloseConfirmationPopupForExitButto"/>
+                    <include name="PerformInspection_OpenGenerateNoticepopup"/>
+                    <include name="PerformInspection_CloseGenerateNoticePopup"/>
+                    <include name="PerformInspection_AddTextToTextBox"/>
+                    <include name="PerformInspection_VerifyPrintToggleButtonState"/>
+                    <include name="PerformInspection_SelectAnyToggleButton"/>
+                    <include name="PerformInspection_OpenConfirmationPopupForCompleteInspection"/>
+                    <include name="PerformInspection_CloseConfirmationPopupOnCancel"/>
+                    <include name="PerformInspection_VerifyTheNoticeIssued"/>
+                    <include name="FollowUpInspection_VerifyFollowUpInspectionSubSection"/>
+                    <include name="FollowUpInspection_OpenEditFollowUpInspectionPopup"/>
+                    <include name="FollowUpInspection_VerifyEditedDetails"/>
+                    <include name="FollowUpInspection_OpenFollowUpInspectionInProgressPopup"/>
+                    <include name="FollowUpInspection_VerifyInspectViolationsHeadersection1"/>
+                    <include name="FollowUpInspection_PerformFollowUpInspection"/>
+                    <include name="FollowUpInspection_VerifyFollowUpInspection2Title"/>
+                    <include name="CDP_PerformInspection_AddedNoteVerification"/>
+                    <include name="CDP_VerifyOpenAddCaseNotePopup"/>
+                    <include name="CDP_VerifyPopopClosesOnclickingCancel"/>
+                    <include name="CDP_ValidationMessageForAddCaseNoteField"/>
+                    <include name="CDP_validationMsgForMoreThan5000Characters"/>
+                    <include name="CDP_VerifyCaseNoteGetsAdded"/>
+                </methods>
+            </class>
+
+            <class name="TestCasesCE.ForcedAbatement">
+                <methods>
+                    <include name="ForcedAbatement_OpenInitiateForcedAbabtementPopup"/>
+                    <include name="ForcedAbatement_ValidationMsgForEmptyNote"/>
+                    <include name="ForcedAbatement_ValidationMsgForCharactersOver500InNote"/>
+                    <include name="ForcedAbatement_InitiateForcedAbatement"/>
+                    <include name="ForcedAbatement_VerifyForcedStageBadge"/>
+                    <include name="ForcedAbatement_OpenEditFaNotePopup"/>
+                    <include name="ForcedAbatement_EditNoteInEditFaNoteField"/>
+                    <include name="ForcedAbatement_VerifyTheUpdatedNote"/>
+                    <include name="ForcedAbatement_VerifyAddActivityBtn"/>
+                    <include name="ForcedAbatement_OpenAddForcedAbatementActivityPopup"/>
+                    <include name="ForcedAbatement_VerifyFirstActivityBtnState"/>
+                    <include name="ForcedAbatement_ValidationMsgForNoDataOfActivity"/>
+                    <include name="ForcedAbatement_AddForcedAbatementActivity"/>
+                    <include name="ForcedAbatement_OpenEditForcedAbatementActivityPopup"/>
+                    <include name="ForcedAbatement_EditAddedActivity"/>
+                    <include name="ForcedAbatement_ConfirmationPopupForDeletingActivity"/>
+                    <include name="ForcedAbatement_DeleteAddedActivity"/>
+
+                    <include name="ForcedAbatement_VerifyAbleToSelectActivityType"></include>
+                    <include name="ForceAbatement_AbatementDetailsPopupopen"></include>
+                    <include name="ForceAbatement_AbatementDetailsDetails"></include>
+                    <include name="ForceAbatement_AttachmentSectionAppearFAADocSelected"></include>
+                    <include name="ForceAbatement_ContactAppearUnderResponsibleParty"></include>
+                </methods>
+            </class>
+
+            <class name="TestCasesCE.CloseCase">
+                <methods>
+                    <include name="CloseCase_PreRequisite"/>
+                    <include name="CloseCase_OpenCloseCasePopup"/>
+                    <include name="CloseCase_CloseCloseCasePopup"/>
+                    <include name="CloseCase_VerifyVoluntaryToggleBtnState"/>
+                    <include name="CloseCase_SelectForcedToggleBtn"/>
+                    <include name="CloseCase_VerifyClosedStatus"/>
+                    <include name="CloseCase_PreRequisiteCaseCreationForCloseCase"/>
+                    <include name="CloseCase_ConfirmationPopupForCloseCaseInvalidViolations"/>
+                    <include name="CloseCase_CloseConfirmationPopupForCloseCase"/>
+                    <include name="CloseCase_VerifyClosedStatusViaPerformInspection"/>
+                    <include name="CloseCase_CloseCasewithValidViolations"/>
+                </methods>
+            </class>
+
+           <class name="TestCasesCE.Dashboard">
+                <methods>
+                    <include name="TC_Dashboard_ViewAllStaffDashboard"/>
+                    <include name="TC_Dashboard_ViewMeDashboard"/>
+                    <include name="TC_Dashboard_OpenCasesAssignedToMeLink"/>
+                    <include name="TC_Dashboard_OpenCasesForMyAgencyLink"/>
+                    <include name="TC_Dashboard_OverdueInspectionsLink"/>
+                    <include name="TC_Dashboard_InspectionsDueTodayLink"/>
+                    <include name="TC_Dashboard_TotalInspectionsLink"/>
+                    <include name="TC_Dashboard_AllStaff_OpenCasesForMyAgency"/>
+                    <include name="TC_Dashboard_TotalcasesForMyAgencyLink"/>
+                    <include name="TC_Dashboard_AllStaff_OverdueInspections"/>
+                    <include name="TC_Dashboard_AllStaff_InspectionsDueToday"/>
+                    <include name="TC_Dashboard_AllStaff_TotalInspectionsLink"/>
+                    <include name="TC_Dashboard_OpenTotalInspectionPopup"/>
+                    <include name="TC_Dashboard_CompareCountOfCasesWithCLP"/>
+                    <include name="TC_Dashboard_OpenPrintQueuePopup"/>
+                </methods>
+            </class>
+
+            <class name="TestCasesCE.Notices">
+                <methods>
+                    <include name="Notices_PreRequisite"/>
+                    <include name="Notices_OpenCreateNonHtmlNoticePopup"/>
+                    <include name="Notices_CreateNonHTMLNotice"/>
+                    <include name="Notices_OpenCreateHtmlNoticePopup"/>
+                    <include name="Notices_OpenAddMergeFieldsPopup"/>
+                    <include name="Notices_ApplyCategoryOnMergeFields"/>
+                    <include name="Notices_VerifyMergeFieldsOnHtmleditor"/>
+                    <include name="Notices_VerifyPreviewPopup"/>
+                    <include name="Notices_CreateHtmlCaseNotice"/>
+                    <include name="Notices_CreateFADocumentHtmlNotice"/>
+                    <include name="Notices_VerifyEditNotices"/>
+                    <include name="Notices_VerifyCountOfNotices"/>
+                    <include name="Notices_VerifyAutoPopulationOfNotices"/>
+                </methods>
+            </class>
+
+            <class name="TestCasesCE.ReopenCase">
+                <methods>
+                    <include name="ReopenCase_PreRequisite"/>
+                    <include name="ReopenCase_OpenReopenCasePopup"/>
+                    <include name="ReopenCase_VerifyViolationsFromCDP"/>
+                    <include name="ReopenCase_NonCompliantViolationIsRequired"/>
+                    <include name="ReopenCase_CaseDoesNotReopenOnCancel"/>
+                    <include name="ReopenCase_VerifyCaseReopened"/>
+                    <include name="ReopenCase_VerifyCaseReopenedDetails"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
